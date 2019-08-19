@@ -26,6 +26,9 @@ if (isset($page))
         case 'test':
             echo $twig->render('test.twig');
             break;
+        case 'readuser':
+            $registrationController->listInformationUsers($_GET['username']);
+            break;
         case 'adduser':
             if (!empty($_POST['name']) AND !empty($_POST['firstname']) AND !empty($_POST['address']) AND !empty($_POST['postal_code']) AND 
             !empty($_POST['town']) AND !empty($_POST['phone_number']) AND isset($_POST['music_stand']) AND isset($_POST['status'])

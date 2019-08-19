@@ -1,6 +1,6 @@
 label
 {
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .form-control
@@ -8,7 +8,17 @@ label
     width: 30%;
 }
 
-.bloc-form
+body
 {
     margin-left: 20px;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.payment
+{
+    margin-top: 10px;
 }

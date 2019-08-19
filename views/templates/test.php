@@ -27,8 +27,8 @@
         ?>
         </p>
         <p>
-            <a href="index.php?action=acceptuser&amp;username=<?= $data['username'] ?>">Accepter</a>
-            <a href="index.php?action=test">Modifier</a>
+            <a href="index.php?action=readuser&amp;username=<?= $data['username'] ?>">Lire</a>
+            <a href="index.php?action=home-modify">Modifier</a>
             <a href="index.php?action=deleteuser&amp;username=<?= $data['username'] ?>">Supprimer</a>
         </p>
         <?php

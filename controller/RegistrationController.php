@@ -23,6 +23,14 @@ class RegistrationController
         }
     }
 
+    public function listInformationUsers($username)
+    {
+        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $infos = $registrationManager->getInfos($username);
+
+        require('views/templates/infos.php');
+    }
+
     public function listRegisteredUsers($q)
     {
         $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();

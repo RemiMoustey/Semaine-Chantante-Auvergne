@@ -15,6 +15,15 @@ class RegistrationManager extends PDOFactory
         return $registration;
     }
 
+    public function getInfos($username)
+    {
+        $db = $this->getMySqlConnexion();
+        $query = $db->query("SELECT username, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment
+        FROM choristes_inscrits WHERE username LIKE \"%$username%\"");
+
+        return $query;
+    }
+
     public function getUsers($q)
     {
         $db = $this->getMySqlConnexion();
