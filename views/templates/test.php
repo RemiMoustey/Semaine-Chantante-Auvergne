@@ -23,13 +23,11 @@
         ?>
         <p>
         <?php
-            echo strtoupper($data['username']) . " " . $data['firstname'];
+            echo strtoupper($data['surname']) . " " . $data['firstname'];
         ?>
         </p>
         <p>
-            <a href="index.php?action=readuser&amp;username=<?= $data['username'] ?>">Lire</a>
-            <a href="index.php?action=home-modify">Modifier</a>
-            <a href="index.php?action=deleteuser&amp;username=<?= $data['username'] ?>">Supprimer</a>
+            <a href="index.php?action=readuser&amp;id=<?= $data['id'] ?>">Lire</a>
         </p>
         <?php
         }

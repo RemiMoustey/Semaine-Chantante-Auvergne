@@ -12,8 +12,16 @@
     <body>
         <?php $data = $infos->fetchAll();
         $info = $data[0];
+        $isAccepted = false;
+        foreach ($acceptedUsers as $acceptedUser)
+        {
+            if (in_array($info['id'], $acceptedUser))
+            {
+                $isAccepted = true;
+            }
+        }
         ?>
-        <h3>Informations sur <?= $info['firstname'] . " " . $info['username'] ?></h3>
+        <h3>Informations sur <?= $info['firstname'] . " " . $info['surname'] ?></h3>
         <p class="bold">
                 <?php
                 if ($info['status'] === 'Choriste')
@@ -24,8 +32,6 @@
                 {
                     echo "Chef de Choeur";
                 }
-                ?>
-                <?php
                 echo " - ";
                 switch ($info['music_stand'])
                 {
@@ -42,15 +48,17 @@
                         echo "Basse";
                         break;
                 }
+                $printedText = $isAccepted ? ' - <span class="green">Inscription réglée</span>' : ' - <span class="red">Règlement en attente</span>';
+                echo $printedText;
                 ?>
             </p>
-        <form method="post" action="index.php?action=adduser">
-            <label for="name">Nom</label>
-            <input type="text" name="name" id="name" class="form-control" value="<?= $info['username'] ?>" required />
+        <form method="post" action="index.php?action=updateuser&amp;id=<?= $info['id'] ?>">
+            <label for="surname">Nom</label>
+            <input type="text" name="surname" id="surname" class="form-control" value="<?= $info['surname'] ?>" required />
             <label for="firstname">Prénom</label>
             <input type="text" name="firstname" id="firstname" class="form-control" value="<?= $info['firstname'] ?>" required />
-            <label for="address">Adresse</label>
-            <input type="text" name="address" id="address" class="form-control" value="<?= $info['user_address'] ?>" required />
+            <label for="user_address">Adresse</label>
+            <input type="text" name="user_address" id="user_address" class="form-control" value="<?= $info['user_address'] ?>" required />
             <label for="postal_code">Code postal</label>
             <input type="text" name="postal_code" id="postal_code" class="form-control" value="<?= $info['postal_code'] ?>" required />
             <label for="town">Ville</label>
@@ -70,9 +78,23 @@
             <p class="bold payment">Mode de versement : <?= $info["payment"] ?></p>
             <label for="additional">Complément d'information</label>
             <p><?= $info['additional'] ?></p>
+            <p><input type="submit" value="Modifier" id="submit"></p>
         </form>
         <p>
-            <a href="index.php?action=acceptuser&amp;username=<?= $info['username'] ?>">Accepter</a>
-        </p>
+        <?php
+        if (!$isAccepted)
+        {
+        ?>
+            <a href="index.php?action=acceptuser&amp;id=<?= $info['id'] ?>" class="green">Valider le règlement</a>
+        <?php
+        }
+        else
+        {
+        ?>
+            <a href="index.php?action=deleteaccepteduser&amp;id=<?= $info['id'] ?>">Annuler le règlement</a>
+        <?php
+        }
+        ?>
+        <a href="index.php?action=deleteregistereduser&amp;id=<?= $info['id'] ?>">Supprimer l'inscription</a>
     </body>
 </html>

@@ -5,21 +5,21 @@ require_once('PDOFactory.php');
 
 class RegistrationManager extends PDOFactory
 {
-    public function insertRegisteredUser($name, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
+    public function insertRegisteredUser($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->prepare("INSERT INTO choristes_inscrits(username, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment)
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $registration = $query->execute(array($name, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment));
-    
+        $query = $db->prepare("INSERT INTO chorists(surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+        $registration = $query->execute(array($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment, 0));
+
         return $registration;
     }
 
-    public function getInfos($username)
+    public function getInfos($id)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->query("SELECT username, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment
-        FROM choristes_inscrits WHERE username LIKE \"%$username%\"");
+        $query = $db->query("SELECT id, surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid
+        FROM chorists WHERE id LIKE \"%$id%\"");
 
         return $query;
     }
@@ -27,29 +27,45 @@ class RegistrationManager extends PDOFactory
     public function getUsers($q)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->query("SELECT username, firstname FROM choristes_inscrits WHERE username LIKE \"%$q%\" OR firstname LIKE \"%$q%\" ORDER BY username");
+        $query = $db->query("SELECT id, surname, firstname FROM chorists WHERE surname LIKE \"%$q%\" OR firstname LIKE \"%$q%\" ORDER BY surname");
 
         return $query;
     }
 
-    public function insertAcceptedUser($username)
+    public function getAcceptedUsers()
+    {
+        return $this->getMySqlConnexion()->query("SELECT * FROM chorists WHERE paid=1")->fetchAll();
+    }
+
+    public function acceptUser($id)
     {
         $db = $this->getMySqlConnexion();
-        $queryAcceptedUser = $db->query("SELECT username, firstname, user_address, user_address, postal_code, town, phone_number, phone_number_office, music_stand, email FROM choristes_inscrits WHERE username LIKE \"%$username%\"");
-        $requestAcceptedUser = $queryAcceptedUser->fetch();
-        $acceptedUsers = $db->query("SELECT * FROM chorists_for_excel")->fetchAll();
-        $numberOfAccepted = count($acceptedUsers);
-        foreach ($acceptedUsers as $acceptedUser)
-        {
-            if (in_array($username, $acceptedUser) === true)
-            {
-                return "already";
-            }
-        }
-        $query = $db->prepare("INSERT INTO chorists_for_excel(id, username, firstname, user_address, postal_code_town, phone_number, phone_number_office, music_stand, email)
-        VALUES(?,?,?,?,?,?,?,?,?)");
-        $insertedUser = $query->execute(array($numberOfAccepted + 1, $username, $requestAcceptedUser['firstname'], $requestAcceptedUser['user_address'], $requestAcceptedUser['postal_code'] . " - " . strtoupper($requestAcceptedUser['town']), $requestAcceptedUser['phone_number'], $requestAcceptedUser['phone_number_office'], $requestAcceptedUser['music_stand'], $requestAcceptedUser['email']));
+        $query = $db->query("UPDATE chorists SET paid=1 WHERE id=$id");
     
         return $insertedUser;
+    }
+
+    public function deleteRegisteredUser($id)
+    {
+        $db = $this->getMySqlConnexion();
+        $db->exec("DELETE FROM chorists WHERE id = $id");
+    }
+
+    public function deleteAcceptedUser($id)
+    {
+        $db = $this->getMySqlConnexion();
+        $db->exec("UPDATE chorists SET paid=0 WHERE id=$id");
+    }
+
+    public function modifyUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown)
+    {
+        $db = $this->getMySqlConnexion();
+        $db->exec("UPDATE chorists
+        SET surname = '$surname', firstname = '$firstname',
+        user_address = '$address', postal_code = '$postalCode',
+        town = '$town', phone_number = '$phoneNumber',
+        phone_number_office = '$phoneNumberOffice', email = '$email',
+        birthday = '$birthday', choir_name = '$choirName',
+        choir_town = '$choirTown' WHERE id=$id");
     }
 }

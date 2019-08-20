@@ -7,11 +7,11 @@ require_once('model/RegistrationManager.php');
 
 class RegistrationController
 {
-    public function addRegistration($name, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
+    public function addRegistration($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
 
-        $newRegisteredUser = $registrationManager->insertRegisteredUser($name, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
+        $newRegisteredUser = $registrationManager->insertRegisteredUser($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
     
         if ($newRegisteredUser === false)
         {
@@ -23,11 +23,12 @@ class RegistrationController
         }
     }
 
-    public function listInformationUsers($username)
+    public function listInformationUsers($id)
     {
         $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
-        $infos = $registrationManager->getInfos($username);
-
+        $infos = $registrationManager->getInfos($id);
+        $acceptedUsers = $registrationManager->getAcceptedUsers();
+        
         require('views/templates/infos.php');
     }
 
@@ -39,10 +40,10 @@ class RegistrationController
         require('views/templates/test.php');
     }
 
-    public function acceptOneUser($username)
+    public function acceptOneUser($id)
     {
         $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
-        $userAccepted = $registrationManager->insertAcceptedUser($username);
+        $userAccepted = $registrationManager->acceptUser($id);
 
         if ($userAccepted === false)
         {
@@ -51,6 +52,51 @@ class RegistrationController
         elseif ($userAccepted === "already")
         {
             echo "<p>L'utilisateur a déjà été accepté.</p>";
+        }
+        else
+        {
+            header('Location: index.php?action=test');
+        }
+    }
+
+    public function removeAcceptedUser($id)
+    {
+        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $user = $registrationManager->deleteAcceptedUser($id);
+
+        if ($user === false)
+        {
+            throw new Exception ("Impossible de supprimer l'utilisateur.");
+        }
+        else
+        {
+            header('Location: index.php?action=test');
+        }
+    }
+
+    public function removeRegisteredUser($id)
+    {
+        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $user = $registrationManager->deleteRegisteredUser($id);
+
+        if ($user === false)
+        {
+            throw new Exception ("Impossible de supprimer l'utilisateur.");
+        }
+        else
+        {
+            header('Location: index.php?action=test');
+        }
+    }
+
+    public function updateUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown)
+    {
+        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $user = $registrationManager->modifyUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown);
+
+        if ($user === false)
+        {
+            throw new Exception("Impossible de modifier les informations de l'utilisateur.");
         }
         else
         {
