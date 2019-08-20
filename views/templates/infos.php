@@ -54,30 +54,30 @@
             </p>
         <form method="post" action="index.php?action=updateuser&amp;id=<?= $info['id'] ?>">
             <label for="surname">Nom</label>
-            <input type="text" name="surname" id="surname" class="form-control" value="<?= $info['surname'] ?>" required />
+            <input type="text" name="surname" id="surname" class="form-control" value="<?= htmlspecialchars($info['surname']) ?>" required />
             <label for="firstname">Prénom</label>
-            <input type="text" name="firstname" id="firstname" class="form-control" value="<?= $info['firstname'] ?>" required />
+            <input type="text" name="firstname" id="firstname" class="form-control" value="<?= htmlspecialchars($info['firstname']) ?>" required />
             <label for="user_address">Adresse</label>
-            <input type="text" name="user_address" id="user_address" class="form-control" value="<?= $info['user_address'] ?>" required />
+            <input type="text" name="user_address" id="user_address" class="form-control" value="<?= htmlspecialchars($info['user_address']) ?>" required />
             <label for="postal_code">Code postal</label>
-            <input type="text" name="postal_code" id="postal_code" class="form-control" value="<?= $info['postal_code'] ?>" required />
+            <input type="text" name="postal_code" id="postal_code" class="form-control" value="<?= htmlspecialchars($info['postal_code']) ?>" required />
             <label for="town">Ville</label>
-            <input type="text" name="town" id="town" class="form-control" value="<?= $info['town'] ?>" required />
+            <input type="text" name="town" id="town" class="form-control" value="<?= htmlspecialchars($info['town']) ?>" required />
             <label for="phone_number">Téléphone</label>
-            <input type="tel" name="phone_number" id="phone_number" class="form-control" value="<?= $info['phone_number'] ?>" required />
+            <input type="tel" name="phone_number" id="phone_number" class="form-control" value="<?= htmlspecialchars($info['phone_number']) ?>" required />
             <label for="phone_number_office">Téléphone Bureau</label>
-            <input type="tel" name="phone_number_office" id="phone_number_office" class="form-control" value="<?= $info['phone_number_office'] ?>" />
+            <input type="tel" name="phone_number_office" id="phone_number_office" class="form-control" value="<?= htmlspecialchars($info['phone_number_office']) ?>" />
             <label for="email">Courriel</label>
-            <input type="text" name="email" id="email" class="form-control" value="<?= $info['email'] ?>" required />
+            <input type="text" name="email" id="email" class="form-control" value="<?= htmlspecialchars($info['email']) ?>" required />
             <label for="birthday">Date de naissance</label>
-            <input type="date" name="birthday" id="birthday" class="form-control" value="<?= $info['birthday'] ?>" required />
+            <input type="date" name="birthday" id="birthday" class="form-control" value="<?= htmlspecialchars($info['birthday']) ?>" required />
             <label for="choir_name">Nom de la chorale</label>
-            <input type="text" name="choir_name" id="choir_name" value="<?= $info['choir_name'] ?>" class="form-control" required />
+            <input type="text" name="choir_name" id="choir_name" value="<?= htmlspecialchars($info['choir_name']) ?>" class="form-control" required />
             <label for="choir_town">Ville de la chorale</label>
-            <input type="text" name="choir_town" id="choir_town" value="<?= $info['choir_town'] ?>" class="form-control" required />
-            <p class="bold payment">Mode de versement : <?= $info["payment"] ?></p>
+            <input type="text" name="choir_town" id="choir_town" value="<?= htmlspecialchars($info['choir_town']) ?>" class="form-control" required />
+            <p class="bold payment">Mode de versement : <?= htmlspecialchars($info["payment"]) ?></p>
             <label for="additional">Complément d'information</label>
-            <p><?= $info['additional'] ?></p>
+            <p><?= htmlspecialchars($info['additional']) ?></p>
             <p><input type="submit" value="Modifier" id="submit"></p>
         </form>
         <p>

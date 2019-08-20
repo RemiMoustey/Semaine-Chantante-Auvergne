@@ -103,4 +103,19 @@ class RegistrationController
             header('Location: index.php?action=test');
         }
     }
+
+    public function exportData()
+    {
+        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $users = $registrationManager->exportByCSV();
+
+        if ($users === false)
+        {
+            throw new Exception("Impossible d'exporter les données");
+        }
+        else
+        {
+            require('views/templates/export.php');
+        }
+    }
 }

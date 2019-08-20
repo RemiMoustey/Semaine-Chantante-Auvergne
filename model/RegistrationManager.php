@@ -27,7 +27,8 @@ class RegistrationManager extends PDOFactory
     public function getUsers($q)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->query("SELECT id, surname, firstname FROM chorists WHERE surname LIKE \"%$q%\" OR firstname LIKE \"%$q%\" ORDER BY surname");
+        $query = $db->prepare("SELECT id, surname, firstname FROM chorists WHERE surname LIKE ? OR firstname LIKE ? ORDER BY surname");
+        $query->execute(array('%' . $q . '%', '%' . $q . '%'));
 
         return $query;
     }
@@ -67,5 +68,13 @@ class RegistrationManager extends PDOFactory
         phone_number_office = '$phoneNumberOffice', email = '$email',
         birthday = '$birthday', choir_name = '$choirName',
         choir_town = '$choirTown' WHERE id=$id");
+    }
+
+    public function exportByCSV()
+    {
+        $db = $this->getMySqlConnexion();
+        $query = $db->query("SELECT surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, email, paid FROM chorists");
+
+        return $query;
     }
 }

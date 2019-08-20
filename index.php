@@ -59,6 +59,9 @@ if (isset($_GET['action']))
         case 'updateuser':
             $registrationController->updateUser($_GET['id'], $_POST['surname'], $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'], $_POST['town'], $_POST['phone_number'], $_POST['phone_number_office'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'], $_POST['choir_town']);
             break;
+        case 'export':
+            $registrationController->exportData();
+            break;
         default:
             echo ('Erreur 404');
     }

@@ -11,6 +11,9 @@
             <input type="submit" value="Rechercher" />
         </form>
     </p>
+    </p>
+        <a href="index.php?action=export">Exporter les données</a>
+    <p>
     {% for data in users.fetch() %}
         
         <a href="index.php?action=acceptuser">Accepter</a>

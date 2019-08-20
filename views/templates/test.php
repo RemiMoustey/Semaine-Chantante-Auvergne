@@ -16,6 +16,9 @@
                 <input type="submit" value="Rechercher" />
             </form>
         </p>
+        </p>
+            <a href="index.php?action=export">Exporter les données</a>
+        <p>
         <?php
 
         while ($data = $users->fetch())
@@ -25,8 +28,6 @@
         <?php
             echo strtoupper($data['surname']) . " " . $data['firstname'];
         ?>
-        </p>
-        <p>
             <a href="index.php?action=readuser&amp;id=<?= $data['id'] ?>">Lire</a>
         </p>
         <?php
