@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name=viewport content="width=device-width, initial-scale=1.0" />
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous" />
+        <link href="./public/css/home-page.css" rel="stylesheet" />
+        <link href="./public/css/styles.css" rel="stylesheet" />
+        <script src="./public/js/Image.js"></script>
+        <script src="./public/js/Carousel.js"></script>
+    </head>
+
 <?php
 require_once 'vendor/autoload.php';
 
@@ -34,8 +49,8 @@ if (isset($_GET['action']))
             AND !empty($_POST['email']) AND !empty($_POST['birthday']) AND !empty($_POST['choir_name']) AND !empty($_POST['choir_town'])
             AND isset($_POST['payment']))
             {
-                $registrationController->addRegistration($_POST['surname'], $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'],
-                $_POST['town'], $_POST['phone_number'], $_POST['phone_number_office'], $_POST['music_stand'],
+                $registrationController->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'],
+                strtoupper($_POST['town']), $_POST['phone_number'], $_POST['phone_number_office'], $_POST['music_stand'],
                 $_POST['status'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'],
                 $_POST['choir_town'], $_POST['additional'], $_POST['payment']);
             }
@@ -66,3 +81,22 @@ if (isset($_GET['action']))
             echo ('Erreur 404');
     }
 }
+?>
+
+<body>
+    <nav class="navbar-inverse navbar-fixed-top">
+        <ul class="nav navbar-nav">
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">Projet</a></li>
+            <li><a href="#">Programme</a></li>
+            <li><a href="#">Images & sons</a></li>
+            <li><a href="#">En savoir plus</a></li>
+            <li><a href="#">Inscriptions</a></li>
+        </ul>
+    </nav>
+    <div id="bloc_page">
+        <div id="carousel_item">
+            <img src="public/img/1-r.png" alt="Volcans du département du Puy-de-Dôme" class="image-1" />
+        </div>
+    </div>
+</body>

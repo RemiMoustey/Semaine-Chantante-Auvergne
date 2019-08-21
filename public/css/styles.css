@@ -1,3 +1,8 @@
+body
+{
+    background-image: url('../img/fond2.png');
+}
+
 label
 {
     margin-top: 10px;
@@ -10,7 +15,7 @@ label
 
 body
 {
-    margin-left: 20px;
+    margin: 0;
 }
 
 .bold
@@ -31,4 +36,44 @@ body
 .payment
 {
     margin-top: 10px;
+}
+
+.bloc-page
+{
+    background-color: rgba(0,255,0,0.5);
+}
+
+label
+{
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a
+{
+    text-transform: uppercase;
+    color: #00b247;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover
+{
+    color: #fff;
+}
+
+#carousel_item
+{
+    margin-top: 50px;
+}
+
+#carousel_item img
+{
+    width: 100%;
+    height: auto;
+}
+
+@media all and (max-width: 767px)
+{
+    #carousel_item
+    {
+        margin-top: 255px;
+    }
 }

@@ -10,7 +10,7 @@ class RegistrationManager extends PDOFactory
         $db = $this->getMySqlConnexion();
         $query = $db->prepare("INSERT INTO chorists(surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid)
         VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $registration = $query->execute(array($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment, 0));
+        $registration = $query->execute(array($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment, 'Non payé'));
 
         return $registration;
     }
@@ -35,13 +35,13 @@ class RegistrationManager extends PDOFactory
 
     public function getAcceptedUsers()
     {
-        return $this->getMySqlConnexion()->query("SELECT * FROM chorists WHERE paid=1")->fetchAll();
+        return $this->getMySqlConnexion()->query("SELECT * FROM chorists WHERE paid='Payé'")->fetchAll();
     }
 
     public function acceptUser($id)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->query("UPDATE chorists SET paid=1 WHERE id=$id");
+        $query = $db->query("UPDATE chorists SET paid='Payé' WHERE id=$id");
     
         return $insertedUser;
     }
@@ -55,19 +55,25 @@ class RegistrationManager extends PDOFactory
     public function deleteAcceptedUser($id)
     {
         $db = $this->getMySqlConnexion();
-        $db->exec("UPDATE chorists SET paid=0 WHERE id=$id");
+        $db->exec("UPDATE chorists SET paid='Non payé' WHERE id=$id");
     }
 
     public function modifyUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown)
     {
         $db = $this->getMySqlConnexion();
-        $db->exec("UPDATE chorists
-        SET surname = '$surname', firstname = '$firstname',
-        user_address = '$address', postal_code = '$postalCode',
-        town = '$town', phone_number = '$phoneNumber',
-        phone_number_office = '$phoneNumberOffice', email = '$email',
-        birthday = '$birthday', choir_name = '$choirName',
-        choir_town = '$choirTown' WHERE id=$id");
+        $query = $db->prepare("UPDATE chorists
+        SET surname = :surname, firstname = :firstname,
+        user_address = :user_address, postal_code = :postal_code,
+        town = :town, phone_number = :phone_number,
+        phone_number_office = :phone_number_office, email = :email,
+        birthday = :birthday, choir_name = :choir_name,
+        choir_town = :choir_town WHERE id=$id");
+        $query->execute(array(':surname' => $surname, ':firstname' => $firstname,
+        ':user_address' => $address, ':postal_code' => $postalCode,
+        ':town' =>  $town, ':phone_number' => $phoneNumber,
+        ':phone_number_office' => $phoneNumberOffice, ':email' => $email,
+        ':birthday' => $birthday, ':choir_name' => $choirName,
+        ':choir_town' => $choirTown));
     }
 
     public function exportByCSV()

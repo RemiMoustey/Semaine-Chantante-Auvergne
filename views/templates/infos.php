@@ -48,7 +48,8 @@
                         echo "Basse";
                         break;
                 }
-                $printedText = $isAccepted ? ' - <span class="green">Inscription réglée</span>' : ' - <span class="red">Règlement en attente</span>';
+                $printedText = $isAccepted ? ' - <span class="green">Inscription réglée par ' : '<br /><span class="red">Règlement en attente par ';
+                $printedText .= htmlspecialchars($info["payment"]) . "</span>";
                 echo $printedText;
                 ?>
             </p>
@@ -75,7 +76,6 @@
             <input type="text" name="choir_name" id="choir_name" value="<?= htmlspecialchars($info['choir_name']) ?>" class="form-control" required />
             <label for="choir_town">Ville de la chorale</label>
             <input type="text" name="choir_town" id="choir_town" value="<?= htmlspecialchars($info['choir_town']) ?>" class="form-control" required />
-            <p class="bold payment">Mode de versement : <?= htmlspecialchars($info["payment"]) ?></p>
             <label for="additional">Complément d'information</label>
             <p><?= htmlspecialchars($info['additional']) ?></p>
             <p><input type="submit" value="Modifier" id="submit"></p>

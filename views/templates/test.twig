@@ -11,13 +11,14 @@
             <input type="submit" value="Rechercher" />
         </form>
     </p>
-    </p>
-        <a href="index.php?action=export">Exporter les données</a>
     <p>
-    {% for data in users.fetch() %}
-        
-        <a href="index.php?action=acceptuser">Accepter</a>
-        <a href="index.php?action=updateuser">Modifier</a>
-        <a href="index.php?action=deleteuser">Supprimer</a>
+        <a href="index.php?action=export">Exporter les données</a>
+    </p>
+    {% for data in users %}
+    <p>
+        {{ data.surname }} {{ data.firstname }}<br />
+        <a href="index.php?action=readuser&amp;id={{data.id}}">Lire</a>
+    </p>
+
     {% endfor %}
 {% endblock %}
