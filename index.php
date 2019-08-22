@@ -7,8 +7,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous" />
-        <link href="./public/css/home-page.css" rel="stylesheet" />
+        
         <link href="./public/css/styles.css" rel="stylesheet" />
+        <link href="./public/css/home-page.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="./public/js/Image.js"></script>
         <script src="./public/js/Carousel.js"></script>
     </head>
@@ -81,22 +83,43 @@ if (isset($_GET['action']))
             echo ('Erreur 404');
     }
 }
+else
+{
 ?>
 
 <body>
-    <nav class="navbar-inverse navbar-fixed-top">
-        <ul class="nav navbar-nav">
-            <li><a href="#">Accueil</a></li>
-            <li><a href="#">Projet</a></li>
-            <li><a href="#">Programme</a></li>
-            <li><a href="#">Images & sons</a></li>
-            <li><a href="#">En savoir plus</a></li>
-            <li><a href="#">Inscriptions</a></li>
-        </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="nav navbar-nav">
+                <li class="nav-item active dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Accueil</button>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#">Équipe d'animation</a></li>
+                            <li><a href="#">Hébergement</a></li>
+                            <li><a href="#">Objectifs</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Projet</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Programme</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Images & sons</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">En savoir plus</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Inscriptions</a></li>
+            </ul>
+        </div>
     </nav>
     <div id="bloc_page">
         <div id="carousel_item">
-            <img src="public/img/1-r.png" alt="Volcans du département du Puy-de-Dôme" class="image-1" />
+            <div class="printed_image">
+                <img src="public/img/1-r.png" alt="Volcans du département du Puy-de-Dôme" class="image-1" />
+            </div>
         </div>
     </div>
 </body>
+<?php
+}
+?>

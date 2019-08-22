@@ -5,16 +5,14 @@
 class Carousel {
 
 	// Crée l'objet et met à disposition le tableau des slides
-	constructor(element) {
-		this.element = element;
-		this.element.classList.add("carousel");
+	constructor() {
 		this.slides = this.createDivWithClass("slides");
 		this.container = this.createDivWithClass("carousel_container");
 		this.slides.appendChild(this.container);
-		document.getElementById("bloc_page").appendChild(this.element);
 		this.images = [this.getImage("./public/img/1-r.png", "Volcans du département du Puy-de-Dôme", "image-1"),
 		this.getImage("./public/img/2-r.png", "Image de choristes", "image-2")];
-		this.animationId = null;
+		this.intervalId = null;
+		this.animationStop = false;
 		this.createNavigation();
 	}
 
@@ -23,31 +21,33 @@ class Carousel {
 	*/
 	createNavigation () {
 		let callNext = this.determineNewItem.bind(this);
-		setInterval(callNext, 5000);
+		this.intervalId = setInterval(callNext, 5000);
 	}
 
 	/*
 		Sélectionne le slide suivant
 	*/
 	determineNewItem() {
-		if(document.querySelector("img").classList.contains("image-1")) {
+		if(this.animationStop)
+		{
+			clearInterval(this.intervalId);
+		}
+		else if(document.querySelector("img").classList.contains("image-1")) {
 			this.newItem(1);
-			/* this.animationNewItem(); */
 			return;
 		}
 		else if(document.querySelector("img").classList.contains("image-2")) {
 			this.newItem(0);
-			/* this.animationNewItem(); */
 			return;
 		}
 	}
 
 	// Sélectionne (grâce au tableau this.images) et crée le nouveau slide après un changement automatique ou par l'utilisateur.
 	newItem(range) {
-		let image = document.createElement("img");
-		image.setAttribute("src", this.images[range].src);
-		image.setAttribute("alt", this.images[range].alt);
-		image.classList.add(this.images[range].classHTML);
+		let image = this.createDivWithClass("new-img");
+		$("#carousel_item").append(image);
+		$(".new-img").html('<img src="' + this.images[range].src + '" alt="' + this.images[range].alt + '" class="' + this.images[range].classHTML + '" />');
+		
 		let classImage = '';
 		if (document.querySelector('img').classList[0] === 'image-1')
 		{
@@ -57,7 +57,17 @@ class Carousel {
 		{
 			classImage = '.image-2';
 		}
-		document.querySelector("#carousel_item").replaceChild(image, document.querySelector(classImage));
+		$('.new-img').css("position", "absolute");
+		$('.new-img').css("top", "50px");
+		$('.new-img').css("display", "none");
+		
+		$('.new-img').fadeIn(2000).queue(function() {
+			$('.new-img').css("display", "block");
+			$('.printed_image').remove();
+			$('.new-img').addClass('printed_image');
+			$('.new-img').removeClass('new-img');
+			$(this).dequeue();
+		});
 	}
 
 	// Définit l'animation du nouveau slide jusqu'à son arrêt.
