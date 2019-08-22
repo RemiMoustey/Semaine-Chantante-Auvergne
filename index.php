@@ -94,8 +94,10 @@ else
         </a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav">
-                <li class="nav-item active dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">Accueil</button>
+                <li class="dropdown active">
+                    <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Accueil</a>
+                </li>
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Projet</a>
                     <div class="dropdown-menu">
                         <ul>
                             <li><a href="#">Équipe d'animation</a></li>
@@ -104,11 +106,41 @@ else
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item"><a href="#" class="nav-link">Projet</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Programme</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Images & sons</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">En savoir plus</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Inscriptions</a></li>
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Programme</a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#">Chant commun</a></li>
+                            <li><a href="#">Mise en scène</a></li>
+                            <li><a href="#">Temps libre</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Images & sons</a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#">Photos</a></li>
+                            <li><a href="#">Chansons</a></li>
+                            <li><a href="#">Vidéos</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">En savoir plus</a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#">Infos pratiques</a></li>
+                            <li><a href="#">Questions Réponses</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Inscriptions</a>
+                    <div class="dropdown-menu">
+                        <ul>
+                            <li><a href="#">Formulaire d'inscription</a></li>
+                            <li><a href="#">Espace réservé inscrits</a></li>
+                            <li><a href="#">Gestion Administrateur</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

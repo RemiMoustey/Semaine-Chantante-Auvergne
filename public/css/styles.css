@@ -54,6 +54,9 @@ label
     display: none;
 }
 
+
+
+
 @media all and (min-width: 768px)
 {
     #navbarNav
@@ -68,6 +71,17 @@ label
         width: 95%;
         display: flex;
         justify-content: space-between;
+    }
+
+    .dropdown-toggle:hover + .dropdown-menu 
+    {
+        display: block;
+    }
+
+    .dropdown-menu ul
+    {
+        padding: 0;
+        list-style: none;
     }
 }
 
