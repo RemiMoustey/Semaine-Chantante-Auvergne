@@ -98,7 +98,7 @@ else
                     <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Accueil</a>
                 </li>
                 <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Projet</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu project">
                         <ul>
                             <li><a href="#">Équipe d'animation</a></li>
                             <li><a href="#">Hébergement</a></li>
@@ -107,7 +107,7 @@ else
                     </div>
                 </li>
                 <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Programme</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu program">
                         <ul>
                             <li><a href="#">Chant commun</a></li>
                             <li><a href="#">Mise en scène</a></li>
@@ -116,7 +116,7 @@ else
                     </div>
                 </li>
                 <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Images & sons</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu images_sounds">
                         <ul>
                             <li><a href="#">Photos</a></li>
                             <li><a href="#">Chansons</a></li>
@@ -125,19 +125,19 @@ else
                     </div>
                 </li>
                 <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">En savoir plus</a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu infos">
                         <ul>
-                            <li><a href="#">Infos pratiques</a></li>
                             <li><a href="#">Questions Réponses</a></li>
+                            <li><a href="#">Infos pratiques</a></li>
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Inscriptions</a>
-                    <div class="dropdown-menu">
+                <li class="nav-item"><a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Membres</a>
+                    <div class="dropdown-menu inscriptions">
                         <ul>
-                            <li><a href="#">Formulaire d'inscription</a></li>
-                            <li><a href="#">Espace réservé inscrits</a></li>
-                            <li><a href="#">Gestion Administrateur</a></li>
+                            <li><a href="#">Espace inscrits</a></li>
+                            <li><a href="#">Administrateur</a></li>
+                            <li><a href="#">S'inscrire</a></li>
                         </ul>
                     </div>
                 </li>

@@ -42,6 +42,7 @@ label
 {
     text-transform: uppercase;
     color: #00b247;
+    font-weight: bold;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover
@@ -73,15 +74,51 @@ label
         justify-content: space-between;
     }
 
-    .dropdown-toggle:hover + .dropdown-menu 
+    .dropdown-toggle:hover + .dropdown-menu, .dropdown-menu:hover
     {
         display: block;
+        text-align: center;
+    }
+
+    .dropdown-menu
+    {
+        background-color: #00b247;
+        font-weight: bold;
+        border-radius: 15px;
+        border: 0;
+        box-shadow: 3px 3px 7px #000;
+    }
+
+    .dropdown-menu a
+    {
+        color: #fff;
+        text-decoration: none;
     }
 
     .dropdown-menu ul
     {
         padding: 0;
         list-style: none;
+    }
+    
+    .project
+    {
+        min-width: 150px;
+    }
+
+    .program
+    {
+        min-width: 120px;
+    }
+
+    .images_sounds
+    {
+        min-width: 90px;
+    }
+
+    .inscriptions
+    {
+        min-width: 120px;
     }
 }
 
