@@ -2,15 +2,15 @@
 	Cette classe met en place le diaporama présent en haut de la page
 */
 
-class Carousel {
+class CarouselHome {
 
 	// Crée l'objet et met à disposition le tableau des slides
 	constructor() {
 		this.slides = this.createDivWithClass("slides");
 		this.container = this.createDivWithClass("carousel_container");
 		this.slides.appendChild(this.container);
-		this.images = [this.getImage("./public/img/1-r.png", "Volcans du département du Puy-de-Dôme", "image-1"),
-		this.getImage("./public/img/2-r.png", "Image de choristes", "image-2")];
+		this.images = [this.getImage("./public/img/1.png", "Volcans du département du Puy-de-Dôme", "image-1"),
+		this.getImage("./public/img/2.png", "Image de choristes", "image-2")];
 		this.intervalId = null;
 		this.animationStop = false;
 		this.createNavigation();
@@ -93,8 +93,3 @@ class Carousel {
 		return div;
 	}
 }
-
-// L'événement DOMContentLoaded permet de ne créer le diaporama qu'une fois que le document HTML a été entièrement chargé.
-document.addEventListener('DOMContentLoaded', function() {
-	new Carousel(document.createElement("div"));
-});
