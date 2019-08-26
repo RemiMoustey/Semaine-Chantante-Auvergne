@@ -79,6 +79,12 @@ if (isset($_GET['action']))
         case 'accommodation':
             echo $twig->render('accommodation.twig');
             break;
+        case 'communal-song':
+        case 'staging':
+        case 'free-time':
+        case 'shows':
+            echo $twig->render('program.twig', ['page' => $_GET['action']]);
+            break;
         default:
             echo ('Erreur 404');
     }
