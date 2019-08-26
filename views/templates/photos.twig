@@ -1,0 +1,32 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <title>Presse</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="./public/js/Image.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+    <p><a href="#diapo1">Ouvrir la boîte modale</a></p>
+    <aside id="diapo1" class="modal" role="dialog" aria-labelledby="title-modal">
+        <div class="modal-wrapper">
+            <h2 class="title-modal">Fenêtre</h2>
+            {# <img href="./public/img/photos/capture001.png" alt="Exemple de capture" />
+            <img href="./public/img/photos/capture002.png" alt="Autre exemple de capture" /> #}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae consequat sem. Quisque tincidunt pharetra elit, vel varius elit porta vel. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc at nisi suscipit, ornare felis et, molestie leo. Cras cursus elementum ultricies. Nullam auctor nulla ut vulputate blandit. Praesent laoreet id lacus sed viverra. Sed at dignissim nisl, ac cursus risus. Integer dignissim at ante quis condimentum. Sed sollicitudin accumsan lorem. Phasellus interdum ante urna, vel vestibulum sem consequat nec.
+
+Cras tempus dapibus ex, non finibus turpis egestas vitae. Curabitur non neque et lacus varius sodales. Etiam in posuere elit. Phasellus pulvinar sollicitudin urna. Ut et mauris felis. Quisque vehicula erat metus, ut auctor dui ultricies id. Nullam malesuada nisl ipsum, non hendrerit dolor laoreet id. Nulla facilisi. Phasellus ut volutpat lorem, sit amet placerat lacus. Mauris malesuada convallis nisl, vel accumsan metus faucibus ac. Ut et lectus facilisis, ultrices magna ut, pharetra lacus. Praesent ut est eu lectus tincidunt lobortis eget ac eros. Cras fermentum tincidunt ligula vitae tempus. Phasellus neque tellus, malesuada ac viverra eget, vulputate id ligula.
+
+Integer ultricies faucibus eros, at vehicula eros commodo at. Cras sollicitudin vulputate justo quis tincidunt. Aliquam condimentum ligula ac fermentum fringilla. Donec vel hendrerit augue. Proin quam tortor, aliquet egestas faucibus elementum, dapibus id tortor. Donec at efficitur quam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis in imperdiet nunc, vitae blandit metus. Praesent nec blandit mauris, blandit venenatis nulla. Nulla lorem justo, posuere viverra egestas vitae, accumsan ut enim. Mauris mauris neque, rutrum sit amet pharetra a, dignissim a ligula. Donec egestas nisi nec pretium volutpat. Nunc molestie vestibulum volutpat.
+
+Aenean luctus lobortis scelerisque. Duis mollis felis id volutpat tempus. Nam magna metus, ultricies nec nisl lacinia, faucibus eleifend elit. In hac habitasse platea dictumst. Sed ultricies finibus nulla, sed accumsan tortor. Nam sagittis aliquam orci, eu varius est venenatis sit amet. Curabitur cursus pretium bibendum. Morbi commodo neque vel lectus eleifend, a facilisis neque facilisis. Cras consectetur ex nec lacus fringilla aliquet. Sed eu laoreet nisl. Nullam aliquet porta posuere. Fusce ut pellentesque lectus, aliquam dignissim ligula. In et mauris tincidunt, mattis purus quis, euismod risus. Fusce eu diam dolor.
+
+Integer varius mi non eros suscipit, ut efficitur purus luctus. Maecenas non dolor vitae ligula imperdiet sagittis. Mauris fringilla, dolor ac efficitur mollis, augue dui mollis enim, ac faucibus orci felis eu dui. Cras et mattis eros, tincidunt maximus sem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean at nibh non ex rutrum laoreet vitae et felis. Praesent dignissim dignissim quam, id fermentum mi sollicitudin efficitur. Morbi facilisis massa at volutpat tincidunt. Praesent tempus interdum porttitor. Praesent urna enim, imperdiet id metus nec, luctus ultrices orci. Sed mattis fringilla scelerisque. Duis sit amet vestibulum neque, et fermentum nibh. Fusce in nisi ligula. Sed et lobortis est.
+            </p>
+        </div>
+    </aside>
+{% endblock %}

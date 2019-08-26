@@ -13,9 +13,29 @@ label
     font-weight: bold;
 }
 
+.uppercase
+{
+    text-transform: uppercase;
+}
+
+.justify
+{
+    text-align: justify;
+}
+
+.align-right
+{
+    text-align: right;
+}
+
+h1
+{
+    text-align: center;
+}
+
 .green
 {
-    color: green;
+    color: #51c90b;
 }
 
 .red
@@ -23,9 +43,19 @@ label
     color: red;
 }
 
+.white
+{
+    color: #fff;
+}
+
 .payment
 {
     margin-top: 10px;
+}
+
+.title-page
+{
+    margin-top: 50px;
 }
 
 .bloc-page
@@ -48,6 +78,64 @@ label
 .navbar-toggler
 {
     display: none;
+}
+
+.animation-text-image
+{
+    text-align: justify;
+}
+
+.gilles-claude, .veronique-francois, .daniel-phil, .diane-dany
+{
+    display: flex;
+    justify-content: center;
+}
+
+.claude, .gilles, .veronique, .francois, .daniel, .phil, .diane, .dany
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.claude, .veronique, .daniel, .diane
+{
+    margin-right: 50px;
+}
+
+.gilles, .francois, .phil, .dany
+{
+    margin-left: 50px;
+}
+
+.claude p, .gilles p, .francois p, .veronique p
+{
+    text-align: justify;
+    width: 300px;
+}
+
+.musicians
+{
+    width: 700px;
+    margin: auto;
+}
+
+.aquarelle img
+{
+    width: 40%;
+    height: auto;
+}
+
+.aquarelle-mini
+{
+    display: none;
+}
+
+.aquarelle-mini img
+{
+    width: 95%;
+    height: auto;
 }
 
 .carousel
@@ -110,6 +198,14 @@ label
     width: 60%;
 }
 
+.image-animation img
+{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 3px 3px 0px rgb(102, 101, 101);
+}
+
 @media all and (max-width: 1199px)
 {
     .carousel_image img, .new_carousel_image img
@@ -118,11 +214,31 @@ label
     }
 }
 
-@media all and (max-width: 911px)
+@media all and (max-width: 991px)
 {
     .carousel_image img, .new_carousel_image img
     {
         width: 80%;
+    }
+
+    .gilles-claude, .veronique-francois, .daniel-phil, .diane-dany
+    {
+        flex-direction: column;
+    }
+
+    .claude, .veronique, .daniel, .diane
+    {
+        margin-right: 0;
+    }
+
+    .gilles, .francois, .phil, .dany
+    {
+        margin-left: 0;
+    }
+    
+    .musicians
+    {
+        width: 300px;
     }
 }
 
@@ -131,6 +247,16 @@ label
     .carousel_image img, .new_carousel_image img
     {
         width: 90%;
+    }
+
+    .aquarelle
+    {
+        display: none;
+    }
+
+    .aquarelle-mini
+    {
+        display: block
     }
 }
 

@@ -50,7 +50,6 @@ class RegistrationController
         $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
         $users = $registrationManager->getUsers($q);
         echo $this->twig->render('test.twig', ['users' => $users->fetchAll()]);
-        /* require('views/templates/test.twig'); */
     }
 
     public function acceptOneUser($id)

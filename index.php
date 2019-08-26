@@ -68,6 +68,12 @@ if (isset($_GET['action']))
         case 'newspaper':
             echo $twig->render('newspaper.twig');
             break;
+        case 'photos':
+            echo $twig->render('photos.twig');
+            break;
+        case 'animation':
+            echo $twig->render('animation.twig');
+            break;
         default:
             echo ('Erreur 404');
     }
