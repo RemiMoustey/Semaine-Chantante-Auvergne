@@ -1,16 +1,16 @@
 <?php
+namespace App;
 require_once 'vendor/autoload.php';
 
-use Semaine_Chantante\Controller;
-require_once('controller/RegistrationController.php');
+use controller\RegistrationController;
 
 // Routing
-$registrationController = new Semaine_Chantante\Controller\RegistrationController();
+$registrationController = new RegistrationController();
 
 // Rendu du template
-$loader = new Twig_Loader_Filesystem(__DIR__  . '\views\templates');
+$loader = new \Twig_Loader_Filesystem(__DIR__  . '\views\templates');
 
-$twig = new Twig_Environment($loader, [
+$twig = new \Twig_Environment($loader, [
     'debug' => true,
     'cache' => false
 ]);
@@ -48,7 +48,9 @@ if (isset($_GET['action']))
             }
             break;
         case 'listusers':
-            $registrationController->listRegisteredUsers($_POST['q']);
+            $users = $registrationController->listRegisteredUsers($_POST['q']);
+            var_dump($users);
+            echo $twig->render('test.twig', ['user' => $users]);
             break;
         case 'acceptuser':
             $registrationController->acceptOneUser($_GET['id']);
@@ -73,6 +75,9 @@ if (isset($_GET['action']))
             break;
         case 'animation':
             echo $twig->render('animation.twig');
+            break;
+        case 'accommodation':
+            echo $twig->render('accommodation.twig');
             break;
         default:
             echo ('Erreur 404');

@@ -1,7 +1,9 @@
 <?php
 
-namespace Semaine_Chantante\Model;
-require_once('PDOFactory.php');
+namespace model\Registration;
+
+require './vendor/autoload.php';
+use model\PDOFactory;
 
 class RegistrationManager extends PDOFactory
 {

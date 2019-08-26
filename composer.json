@@ -1,10 +1,19 @@
 {
-    "name": "rm/projet5",
+    "name": "rmoustey/projet5",
     "authors": [
         {
-            "name": "moustey",
+            "name": "Remi Moustey",
             "email": "remimoustey@gmail.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "App\\": "/",
+            "model\\": "model/",
+            "controller\\": "controller/"
+        }
+    },
+    "require": {
+        "twig/twig": "^2.0"
+    }
 }

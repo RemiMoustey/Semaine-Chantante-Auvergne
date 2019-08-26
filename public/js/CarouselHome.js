@@ -93,3 +93,5 @@ class CarouselHome {
 		return div;
 	}
 }
+
+new CarouselHome;

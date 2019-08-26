@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Briquet';
+	src: url('fonts/briquetn.TTF');
+}
+
 label
 {
     margin-top: 10px;
@@ -11,6 +16,11 @@ label
 .bold
 {
     font-weight: bold;
+}
+
+.without-bold
+{
+    font-weight: normal;
 }
 
 .uppercase
@@ -33,11 +43,6 @@ h1
     text-align: center;
 }
 
-.green
-{
-    color: #51c90b;
-}
-
 .red
 {
     color: red;
@@ -55,7 +60,17 @@ h1
 
 .title-page
 {
-    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.title-page, .search-bar
+{
+    margin-top: 60px;
+}
+
+.briquet
+{
+    font-family: 'Briquet', Arial, serif;
 }
 
 .bloc-page
@@ -123,7 +138,7 @@ h1
 
 .aquarelle img
 {
-    width: 40%;
+    width: 700px;
     height: auto;
 }
 
@@ -136,6 +151,22 @@ h1
 {
     width: 95%;
     height: auto;
+}
+
+.row-two-images figure figcaption
+{
+    text-align: center;
+    font-size: 24px;
+}
+
+.row-two-images img
+{
+    max-height: 292px;
+}
+
+.container-fluid
+{
+    padding: 0;
 }
 
 .carousel
@@ -206,13 +237,52 @@ h1
     box-shadow: 3px 3px 0px rgb(102, 101, 101);
 }
 
+.bloc-holiday h2
+{
+    margin: 10px 0 18px 0
+}
+
+.text-holiday
+{
+    width: 1185px;
+    margin: auto;
+}
+
+.grand-panorama-images
+{
+    max-width: 1185px;
+    margin:auto;
+}
+
+.grand-panorama-images img
+{
+    max-width: 395px;
+    border: 2px solid white;
+}
+
 @media all and (max-width: 1199px)
 {
     .carousel_image img, .new_carousel_image img
     {
         width: 70%;
     }
+
+    .text-holiday
+    {
+        width: 100%;
+        margin: auto;
+    }
 }
+
+@media all and (max-width: 1172px)
+{
+    .text-holiday
+    {
+        width: 675px;
+        margin: auto;
+    }
+}
+
 
 @media all and (max-width: 991px)
 {
@@ -256,7 +326,31 @@ h1
 
     .aquarelle-mini
     {
-        display: block
+        display: block;
+    }
+    
+    .aquarelle-mini img, .aquarelle-text
+    {
+        width: 300px;
+        margin: auto;
+    }
+
+    .row-two-images img
+    {
+        width: 100%;
+        height: auto;
+    }
+
+    .text-holiday
+    {
+        width: 100%;
+        margin: auto;
+    }
+
+    .grand-panorama-images img
+    {
+        width: 100%;
+        height: auto;
     }
 }
 

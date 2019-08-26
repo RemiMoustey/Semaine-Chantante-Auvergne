@@ -1,28 +1,29 @@
 <?php
 
-namespace Semaine_Chantante\Controller;
-use \Semaine_Chantante\Model;
+namespace controller;
 
-require_once('model/RegistrationManager.php');
+use model\Registration\RegistrationManager;
+
+require './vendor/autoload.php';
 
 class RegistrationController
 {
-    protected $loader;
+    /* protected $loader;
     protected $twig;
 
     public function __construct()
     {
         // Rendu du template
         $this->loader = new \Twig_Loader_Filesystem('C:\wamp64\www\projet5\views\templates');
-        $this->twig = new \Twig_Environment($this->loader, [
+        $this->twig = new Twig_Environment($this->loader, [
             'debug' => true,
             'cache' => false
         ]);
-    }
+    } */
 
     public function addRegistration($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
 
         $newRegisteredUser = $registrationManager->insertRegisteredUser($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
     
@@ -38,7 +39,7 @@ class RegistrationController
 
     public function listInformationUsers($id)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $infos = $registrationManager->getInfos($id);
         $acceptedUsers = $registrationManager->getAcceptedUsers();
         
@@ -47,14 +48,14 @@ class RegistrationController
 
     public function listRegisteredUsers($q)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $users = $registrationManager->getUsers($q);
-        echo $this->twig->render('test.twig', ['users' => $users->fetchAll()]);
+        return $users->fetchAll();
     }
 
     public function acceptOneUser($id)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $userAccepted = $registrationManager->acceptUser($id);
 
         if ($userAccepted === false)
@@ -73,7 +74,7 @@ class RegistrationController
 
     public function removeAcceptedUser($id)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $user = $registrationManager->deleteAcceptedUser($id);
 
         if ($user === false)
@@ -88,7 +89,7 @@ class RegistrationController
 
     public function removeRegisteredUser($id)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $user = $registrationManager->deleteRegisteredUser($id);
 
         if ($user === false)
@@ -103,7 +104,7 @@ class RegistrationController
 
     public function updateUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown)
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $user = $registrationManager->modifyUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown);
 
         if ($user === false)
@@ -118,7 +119,7 @@ class RegistrationController
 
     public function exportData()
     {
-        $registrationManager = new \Semaine_Chantante\Model\RegistrationManager();
+        $registrationManager = new RegistrationManager();
         $users = $registrationManager->exportByCSV();
 
         if ($users === false)

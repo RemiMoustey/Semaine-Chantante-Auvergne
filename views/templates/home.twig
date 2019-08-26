@@ -2,13 +2,9 @@
 
 {% block head %}
     <title>Accueil</title>
-    <script src="./public/js/Image.js">
-        // L'événement DOMContentLoaded permet de ne créer le diaporama qu'une fois que le document HTML a été entièrement chargé.
-        document.addEventListener('DOMContentLoaded', function() {
-            new CarouselHome(document.createElement("div"));
-        });
+    <script src="./public/js/Image.js"></script>
+    <script src="./public/js/CarouselHome.js">
     </script>
-    <script src="./public/js/CarouselHome.js"></script>
 {% endblock %}
 
 {% block content %}

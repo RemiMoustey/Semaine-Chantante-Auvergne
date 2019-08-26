@@ -1,6 +1,6 @@
 <?php
 
-namespace Semaine_Chantante\Model;
+namespace model;
 
 abstract class PDOFactory
 {
