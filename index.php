@@ -85,6 +85,9 @@ if (isset($_GET['action']))
         case 'shows':
             echo $twig->render('program.twig', ['page' => $_GET['action']]);
             break;
+        case 'songs':
+            echo $twig->render('songs.twig');
+            break;
         case 'videos':
             echo $twig->render('videos.twig');
             break;

@@ -1,21 +1,21 @@
-{% macro blockVideos(modalId, picture, title, paragraph, nameSrcVideo) %}
-    <div class="col-md-2">
-            <a href="#{{ modalId }}" data-toggle="modal" data-target="#{{ modalId }}"><img class="img-fluid" src="./public/videos/{{ picture }}.png" alt="Vignette de la vidéo" /></a>
+{% macro blockVideo(modalId, picture, title, paragraph, nameSrcVideo) %}
+        <div class="bloc-picture-video">
+            <a href="#{{ modalId }}" data-toggle="modal" data-target="#{{ modalId }}"><img style="width:160px;" src="./public/videos/{{ picture }}.png" alt="Vignette de la vidéo" /></a>
             <h2>{{ title }}</h2>
             <p>{{ paragraph }}</p>
         </div>
-        <aside id="{{ modalId }}" class="modal" role="dialog" tabindex="-1">
+        <aside id="{{ modalId }}" class="modal" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
              <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h2 id="title-video-modal">{{ title }}</h2>
-                        <button type="button" class="close" data-dismiss="modal">
+                        <button onclick="document.getElementById('{{ nameSrcVideo }}').pause()" type="button" class="close" data-dismiss="modal">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <p>{{ paragraph }}</p>
                     <div>
-                        <video src="./public/videos/{{ nameSrcVideo }}.mp4" controls poster="./public/videos/{{ picture }}.png" width="600"></video>
+                        <video id="{{ nameSrcVideo }}" src="./public/videos/{{ nameSrcVideo }}.mp4" controls poster="./public/videos/{{ picture }}.png" width="600"></video>
                     </div>
                 </div>
             </div>

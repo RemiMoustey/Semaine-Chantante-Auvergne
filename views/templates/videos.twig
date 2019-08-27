@@ -6,22 +6,24 @@
 {% endblock %}
 
 {% block content %}
-    <div class="pictures row justify-content-center">
-        {{ video.blockVideos("modal1", "picture", "Titre", "Paragraphe", "fr3") }}
-        <div class="col-md-2">
-            <a href="#modal2"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
-            <h2>Titre</h2>
-            <p>Pragraphe</p>
-        </div>
-        <div class="col-md-2">
-            <a href="#modal3"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
-            <h2>Titre</h2>
-            <p>Pragraphe</p>
-        </div>
-        <div class="col-md-2">
-            <a href="#modal4"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
-            <h2>Titre</h2>
-            <p>Pragraphe</p>
+    <div class="container-fluid">
+        <div class="pictures row justify-content-center">
+            {{ video.blockVideo("modal1", "ouverture", "Titre", "Paragraphe", "ouverture") }}
+            {{ video.blockVideo("modal2", "decouverte_partitions", "Titre", "Paragraphe", "decouverte_partitions") }}
+            {{ video.blockVideo("modal3", "kamouraska", "Titre", "Paragraphe", "kamouraska") }}
+            {{ video.blockVideo("modal4", "music_hall", "Titre", "Paragraphe", "music_hall") }}
+            {{ video.blockVideo("modal5", "bamba_vero", "Titre", "Paragraphe", "bamba_vero") }}
+            {{ video.blockVideo("modal6", "medley_becaud", "Titre", "Paragraphe", "medley_becaud") }}
+            {{ video.blockVideo("modal7", "tequila_vero", "Titre", "Paragraphe", "tequila_vero") }}
+            {{ video.blockVideo("modal8", "montage", "Titre", "Paragraphe", "montage") }}
+            {{ video.blockVideo("modal9", "banquet", "Titre", "Paragraphe", "banquet") }}
+            {{ video.blockVideo("modal10", "fr3", "Titre", "Paragraphe", "fr3") }}
+            {{ video.blockVideo("modal11", "tractage", "Titre", "Paragraphe", "tractage") }}
+            {{ video.blockVideo("modal12", "pique_nique", "Titre", "Paragraphe", "pique_nique") }}
+            {{ video.blockVideo("modal13", "avant_spectacle", "Titre", "Paragraphe", "avant_spectacle") }}
+            {{ video.blockVideo("modal14", "rangement_1", "Titre", "Paragraphe", "rangement_1") }}
+            {{ video.blockVideo("modal15", "rangement_2", "Titre", "Paragraphe", "rangement_2") }}
+            {{ video.blockVideo("modal16", "au_revoir", "Titre", "Paragraphe", "au_revoir") }}
         </div>
     </div>
 {% endblock %}

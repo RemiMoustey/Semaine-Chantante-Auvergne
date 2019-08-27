@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% import 'song.twig' as song %}
+
+{% block head %}
+    <title>Musiques</title>
+{% endblock %}
+
+{% block content %}
+    <div class="songs">
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "a_tous_ceux_que_jaime") }}
+        {# {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }} #}
+    </div>
+    <script src="./public/js/management-songs.js"></script>
+{% endblock %}
