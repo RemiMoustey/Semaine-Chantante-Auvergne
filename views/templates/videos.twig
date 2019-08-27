@@ -1,0 +1,27 @@
+{% extends 'layout.twig' %}
+{% import 'video.twig' as video %}
+
+{% block head %}
+    <title>Vidéos</title>
+{% endblock %}
+
+{% block content %}
+    <div class="pictures row justify-content-center">
+        {{ video.blockVideos("modal1", "picture", "Titre", "Paragraphe", "fr3") }}
+        <div class="col-md-2">
+            <a href="#modal2"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
+            <h2>Titre</h2>
+            <p>Pragraphe</p>
+        </div>
+        <div class="col-md-2">
+            <a href="#modal3"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
+            <h2>Titre</h2>
+            <p>Pragraphe</p>
+        </div>
+        <div class="col-md-2">
+            <a href="#modal4"><img class="img-fluid" src="./public/videos/picture.png" alt="Vignette de la vidéo" /></a>
+            <h2>Titre</h2>
+            <p>Pragraphe</p>
+        </div>
+    </div>
+{% endblock %}

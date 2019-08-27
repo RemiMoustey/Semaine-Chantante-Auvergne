@@ -283,6 +283,21 @@ h1
     margin: auto;
 }
 
+.pictures
+{
+    margin-top: 80px;
+}
+
+.pictures .col-md-2
+{
+    padding: 0;
+}
+
+.modal-content
+{
+    width: 120%;
+}
+
 @media all and (max-width: 1199px)
 {
     .carousel_image img, .new_carousel_image img
@@ -374,6 +389,17 @@ h1
     {
         width: 100%;
         height: auto;
+    }
+
+    .modal-content
+    {
+        width: 300px;
+        margin: auto;
+    }
+
+    .modal-content video
+    {
+        width: 280px;
     }
 }
 

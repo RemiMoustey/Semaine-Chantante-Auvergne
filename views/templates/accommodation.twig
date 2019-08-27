@@ -1,3 +1,5 @@
+{% import 'accommodation-img.twig' as img %}
+
 {% extends 'layout.twig' %}
 
 {% block head %}
@@ -21,31 +23,21 @@
         </div>
         <p class="text-holiday">Vous allez vivre une semaine inoubliable dans un cadre exceptionnel : Le Grand Panorama, village-vacances situé au bord du lac <span class="uppercase">chambon</span> vous offre des chambres de 1 à 4 lits tout confort (salle de bains, téléphone), une salle de restaurant avec vue sur le lac et une cuisine de qualité. Baignade, VTT, randonnées, tout est fait pour que la semaine chantante soit aussi le meilleur souvenir de vos vacances.</p>
         <div class="grand-panorama-images">
-            <div class="row justify-content-center">
-                <img class="img-fluid" src="./public/img/accommodation/gp/chalet.png" alt="Le chalet" title="Bâtiment chalet - 18 chambres" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/panorama.png" alt="Le panorama" title="Bâtiment panorama - 23 chambres" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/residence.png" alt="La résidence" title="Bâtiment résidence - 17 chambres" />
-            </div>
-            <div class="row justify-content-center">
-                <img class="img-fluid" src="./public/img/accommodation/gp/accueil.png" alt="La salle d'accueil" title="Hall d'accueil principal" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/restaurant.png" alt="La dalle de restaurant" title="Le restaurant" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/hall_bas.png" alt="Le hall" title="Hall d'accueil hiver" />
-            </div>
-            <div class="row justify-content-center">
-                <img class="img-fluid" src="./public/img/accommodation/gp/grande_salle.png" alt="La salle de spectacle" title="Salle de spectacle" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/poly.png" alt=" La salle polyvalente" title='Bâtiment "activités"' />
-                <img class="img-fluid" src="./public/img/accommodation/gp/grande_salle_1.png" alt="La salle de spectacle" title="Salle de spectacle" />
-            </div>
-            <div class="row justify-content-center">
-                <img class="img-fluid" src="./public/img/accommodation/gp/salle_du_lac.png" alt="La salle du lac" title="Salle du Lac" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/chambre_panorama.png" alt="Une chambre du panorama" title=""/>
-                <img class="img-fluid" src="./public/img/accommodation/gp/salle_sancy.png" alt="La salle Sancy" title="Salle Sancy" />
-            </div>
-            <div class="row justify-content-center">
-                <img class="img-fluid" src="./public/img/accommodation/gp/chambre_chalet.png" alt="Une chambre du chalet" title="Chambre chalet" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/chambre_panorama_1.png" alt="Une chambre du panorama" title="Chambre résidence" />
-                <img class="img-fluid" src="./public/img/accommodation/gp/chambre_panorama_2.png" alt="Une chambre du panorama" title="chambre panorama" />
-            </div>
+            {{ img.blockImages({src1 : 'chalet', alt1 : 'Le Chalet', title1 : "Bâtiment Chalet - 18 chambres"},
+            {src2 : 'panorama', alt2 : 'Le Panorama', title2 : 'Bâtiment Panorama - 23 chambres'},
+            {src3 : 'residence', alt3 : 'La Résidence', title3 : 'Bâtiment Résidence - 17 chambres'}) }}
+            {{ img.blockImages({src1 : 'accueil', alt1 : 'La salle d\'accueil', title1 : 'Hall d\'accueil principal'},
+            {src2 : 'restaurant', alt2 : 'La salle de restaurant', title2 : 'Le restaurant'},
+            {src3 : 'hall_bas', alt3 : 'Le hall d\'accueil hiver', title3 : 'Hall d\'accueil hiver'}) }}
+            {{ img.blockImages({src1 : 'grande_salle', alt1 : 'La salle de spectacle', title1 : 'Salle de spectacle'},
+            {src2 : 'poly', alt2 : 'La salla polyvalente', title2 : 'Bâtiment "activités"'},
+            {src3 : 'grande_salle_1', alt3 : 'La salle de spectacle', title3 : 'Salle de spectacle'}) }}
+            {{ img.blockImages({src1 : 'salle_du_lac', alt1 : 'La salle du lac', title1 : 'Salle du Lac'},
+            {src2 : 'chambre_panorama', alt2 : 'Une chambre du Panorama', title2 : 'Chambre Panorama'},
+            {src3 : 'residence', alt3 : 'La Résidence', title3 : 'Bâtiment Résidence - 17 chambres'}) }}
+            {{ img.blockImages({src1 : 'chambre_chalet', alt1 : 'Une chambre du Chalet', title1 : 'Chambre Chalet'},
+            {src2 : 'chambre_residence', alt2 : 'Une chambre de la Résidence', title2 : 'Chambre Résidence'},
+            {src3 : 'chambre_panorama_1', alt3 : 'Une chambre du Panorama', title3 : 'Chambre Panorama'}) }}
         </div>
     </div>
 {% endblock %}

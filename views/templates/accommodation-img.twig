@@ -1,0 +1,7 @@
+{% macro blockImages(image1, image2, image3) %}
+    <div class="row justify-content-center">
+        <img class="img-fluid" src="./public/img/accommodation/gp/{{ image1.src1 }}.png" alt="{{ image1.alt1 }}" title="{{ image1.title1 }}" />
+        <img class="img-fluid" src="./public/img/accommodation/gp/{{ image2.src2 }}.png" alt="{{ image2.alt2 }}" title="{{ image2.title2 }}" />
+        <img class="img-fluid" src="./public/img/accommodation/gp/{{ image3.src3 }}.png" alt="{{ image3.alt3 }}" title="{{ image3.title3 }}" />
+    </div>
+{% endmacro %}
