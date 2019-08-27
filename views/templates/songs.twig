@@ -2,14 +2,15 @@
 {% import 'song.twig' as song %}
 
 {% block head %}
+    <link rel="stylesheet" href="public/css/songs-page.css" />
     <title>Musiques</title>
 {% endblock %}
 
 {% block content %}
+    <h1 class="briquet">Aquarelle chante</h1>
     <div class="songs">
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "a_tous_ceux_que_jaime") }}
-        {# {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
@@ -21,7 +22,8 @@
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
         {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
-        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }} #}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
+        {{ song.blockSong("Titre", "Paragraphe", "kamouraska") }}
     </div>
     <script src="./public/js/management-songs.js"></script>
 {% endblock %}

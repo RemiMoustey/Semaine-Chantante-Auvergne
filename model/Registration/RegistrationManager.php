@@ -85,4 +85,13 @@ class RegistrationManager extends PDOFactory
 
         return $query;
     }
+
+    public function getPassword()
+    {
+        $db = $this->getMySqlConnexion();
+        $query = $db->query('SELECT * FROM passwordusers');
+        $password = $query->fetch();
+
+        return $password;
+    }
 }

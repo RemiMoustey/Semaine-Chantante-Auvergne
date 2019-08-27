@@ -131,4 +131,10 @@ class RegistrationController
             require('views/templates/export.php');
         }
     }
+
+    public function password()
+    {
+        $registrationManager = new RegistrationManager();
+        $password = $registrationManager->getPassword();
+    }
 }

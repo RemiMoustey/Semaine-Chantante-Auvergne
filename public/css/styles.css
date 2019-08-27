@@ -3,6 +3,11 @@
 	src: url('fonts/briquetn.TTF');
 }
 
+.bloc-page
+{
+    margin-top: 60px;
+}
+
 label
 {
     margin-top: 10px;
@@ -323,6 +328,44 @@ h1
 .songs
 {
     margin-top: 70px;
+}
+
+.modal-content
+{
+    background-color: #222;
+}
+
+.modal-header
+{
+    height: 30px;
+    padding-top: 0;
+}
+
+.bloc-picture-video h2
+{
+    color: #aaa;
+    font-size: 20px;
+}
+
+.bloc-picture-video p
+{
+    font-size: 14px;
+}
+
+.bloc-picture-video
+{
+    width: 160px;
+}
+
+#title-video-modal
+{
+    font-size: 24px;
+}
+
+audio
+{
+    height: 30px;
+    color: #222;
 }
 
 @media all and (max-width: 1199px)

@@ -1,0 +1,13 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <title>Se connecter</title>
+{% endblock %}
+
+{% block content %}
+    <form method="post" action="#">
+        <label for="password">Entrez le mot de passe</label>
+        <input type="password" id="password" name="password" />
+        <button class="btn btn-default" type="submit">Se connecter</button>
+    </form>
+{% endblock %}
