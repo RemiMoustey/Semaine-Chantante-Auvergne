@@ -8,19 +8,6 @@ require './vendor/autoload.php';
 
 class RegistrationController
 {
-    /* protected $loader;
-    protected $twig;
-
-    public function __construct()
-    {
-        // Rendu du template
-        $this->loader = new \Twig_Loader_Filesystem('C:\wamp64\www\projet5\views\templates');
-        $this->twig = new Twig_Environment($this->loader, [
-            'debug' => true,
-            'cache' => false
-        ]);
-    } */
-
     public function addRegistration($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $registrationManager = new RegistrationManager();

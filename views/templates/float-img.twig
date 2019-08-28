@@ -1,0 +1,4 @@
+{% macro blockImgText(srcImg1, altImg1, h21, p1, srcImg2, altImg2, h22, p2) %}
+    <div class="goal d-md-flex flex-md-row justify-content-md-center mt-5 ml-3"><img src="./public/img/goals/{{ srcImg1 }}.png" alt="{{ altImg1 }}" class="left-img" /><div class="ml-md-3 mr-md-3 goal-right-text"><h2 class="briquet grey-text">{{ h21 }}</h2><p class="text-justify">{{ p1 }}</p></div></div>
+    <div class="goal d-md-flex flex-md-row-reverse justify-content-md-center mt-5 ml-3"><img src="./public/img/goals/{{ srcImg2 }}.png" alt="{{ altImg2 }}" class="right-img" /><div class="ml-md-3 mr-md-3 goal-left-text"><h2 class="briquet grey-text text-right">{{ h22 }}</h2><p class="text-justify">{{ p2 }}</p></div></div>
+{% endmacro %}

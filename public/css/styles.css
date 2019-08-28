@@ -58,6 +58,11 @@ h1
     color: #fff;
 }
 
+.green
+{
+    color: #00b050;
+}
+
 .payment
 {
     margin-top: 10px;
@@ -71,6 +76,11 @@ h1
 .title-page, .search-bar
 {
     margin-top: 60px;
+}
+
+.grey-text
+{
+    color: #aaa;
 }
 
 .bloc-page
@@ -288,6 +298,50 @@ h1
     margin: auto;
 }
 
+.goal p
+{
+    width: 300px;
+}
+
+.goal img
+{
+    width: 150px;
+    height: 150px;
+}
+
+.goal .right-img
+{
+    margin-left: 150px;
+}
+
+.goal .left-img
+{
+    margin-right: 150px;
+}
+
+.goal-left-text
+{
+    position: relative;
+    left: 150px;
+}
+
+.goal-right-text
+{
+    position: relative;
+    right: 150px;
+}
+
+.intro-goals
+{
+    width: 767px;
+    font-size: 24px;
+}
+
+.detailed-program
+{
+    font-size: 32px;
+}
+
 .pictures
 {
     margin-top: 80px;
@@ -343,7 +397,6 @@ h1
 
 .bloc-picture-video h2
 {
-    color: #aaa;
     font-size: 20px;
 }
 
@@ -470,6 +523,37 @@ audio
     .modal-content video
     {
         width: 280px;
+    }
+
+    .goal p
+    {
+        width: 95%;
+    }
+
+    .intro-goals
+    {
+        width: 95%;
+    }
+
+    .goal .right-img
+    {
+        margin-left: 0;
+    }
+
+    .goal .left-img
+    {
+        margin-right: 0;
+    }
+
+    .goal-left-text
+    {
+        position: static;
+        left: 150px;
+    }
+
+    .goal-right-text
+    {
+        position: static;
     }
 }
 

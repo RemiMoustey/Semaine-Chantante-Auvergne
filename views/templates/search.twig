@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <title>Test</title>
+{% endblock %}
+
+{% block content %}
+    <p class="search-bar">
+        <form method="post" action="index.php?action=listusers">
+            Rechercher : <input type="text" name="q" required />
+            <input type="submit" value="Rechercher" />
+        </form>
+    </p>
+    <p>
+        <a href="index.php?action=export">Exporter les données</a>
+    </p>
+
+    {% for data in users %}
+    <p>
+        {{ data.surname }} {{ data.firstname }}<br />
+        <a href="index.php?action=readuser&amp;id={{data.id}}">Lire</a>
+    </p>
+
+    {% endfor %}
+{% endblock %}

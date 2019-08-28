@@ -25,11 +25,11 @@ if (isset($_GET['action']))
         case 'registration':
             echo $twig->render('registration.twig');
             break;
-        case 'test':
-            echo $twig->render('test.twig');
+        case 'search':
+            echo $twig->render('search.twig');
             break;
         case 'readuser':
-            $registrationController->listInformationUsers($_GET['id']);
+            $infos = $registrationController->listInformationUsers($_GET['id']);
             break;
         case 'adduser':
             if (!empty($_POST['surname']) AND !empty($_POST['firstname']) AND !empty($_POST['user_address']) AND !empty($_POST['postal_code']) AND 
@@ -49,8 +49,7 @@ if (isset($_GET['action']))
             break;
         case 'listusers':
             $users = $registrationController->listRegisteredUsers($_POST['q']);
-            var_dump($users);
-            echo $twig->render('test.twig', ['user' => $users]);
+            echo $twig->render('search.twig', ['users' => $users]);
             break;
         case 'acceptuser':
             $registrationController->acceptOneUser($_GET['id']);
@@ -79,6 +78,8 @@ if (isset($_GET['action']))
         case 'accommodation':
             echo $twig->render('accommodation.twig');
             break;
+        case 'goals':
+            echo $twig->render('goals.twig');
         case 'communal-song':
         case 'staging':
         case 'free-time':
