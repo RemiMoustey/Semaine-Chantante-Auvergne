@@ -12,22 +12,30 @@
         <form method="post" action="index.php?action=adduser">
             <label for="surname">Nom</label>
             <input type="text" name="surname" id="surname" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-surname"></span>
             <label for="firstname">Prénom</label>
             <input type="text" name="firstname" id="firstname" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-firstname"></span>
             <label for="user_address">Adresse</label>
             <input type="text" name="user_address" id="user_address" placeholder="Votre réponse" class="form-control" required />
             <label for="postal_code">Code postal</label>
             <input type="text" name="postal_code" id="postal_code" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-postal_code"></span>
             <label for="town">Ville</label>
             <input type="text" name="town" id="town" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-town"></span>
             <label for="phone_number">Téléphone</label>
             <input type="tel" name="phone_number" id="phone_number" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-phone_number"></span>
             <label for="phone_number_office">Téléphone Bureau</label>
             <input type="tel" name="phone_number_office" id="phone_number_office" placeholder="Votre réponse" class="form-control" />
+            <span id="miss-phone_number_office"></span>
             <label for="email">Courriel</label>
             <input type="text" name="email" id="email" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-email"></span>
             <label for="birthday">Date de naissance</label>
             <input type="date" name="birthday" id="birthday" class="form-control" required />
+            <span id="miss-birthday"></span>
             <label for="choir_name">Nom de la chorale</label>
             <input type="text" name="choir_name" id="choir_name" placeholder="Votre réponse" class="form-control" required />
             <label for="choir_town">Ville de la chorale</label>
@@ -62,4 +70,5 @@
             <input type="submit" value="Envoyer" id="submit" />
         </form>
     </div>
+    <script src="./public/js/test-formular.js"></script>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% macro blockVideo(modalId, picture, title, paragraph, nameSrcVideo) %}
     <div class="bloc-picture-video">
-        <a href="#modal{{ modalId }}" data-toggle="modal" data-target="#modal{{ modalId }}"><img style="width:160px;" src="./public/videos/{{ picture }}.png" alt="Vignette de la vidéo" /></a>
-        <h2 class="grey-text" >{{ title }}</h2>
+        <a href="#modal{{ modalId }}" data-toggle="modal" data-target="#modal{{ modalId }}"><img class="picture" src="./public/videos/{{ picture }}.png" alt="Vignette de la vidéo" /></a>
+        <h2 class="title-video-song" >{{ title }}</h2>
         <p>{{ paragraph }}</p>
     </div>
     <aside id="modal{{ modalId }}" class="modal" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">

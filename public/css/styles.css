@@ -45,12 +45,8 @@ label
 
 h1
 {
+    font-size: 70px;
     text-align: center;
-}
-
-.red
-{
-    color: red;
 }
 
 .white
@@ -81,6 +77,16 @@ h1
 .grey-text
 {
     color: #aaa;
+}
+
+.title-video-song
+{
+    color: #ccc;
+}
+
+.text-videos-songs
+{
+    color: #00e065;
 }
 
 .bloc-page
@@ -298,6 +304,16 @@ h1
     margin: auto;
 }
 
+.title-free-time
+{
+    font-size: 50px;
+}
+
+.goal .title-right
+{
+    text-align: right;
+}
+
 .goal p
 {
     width: 300px;
@@ -331,10 +347,14 @@ h1
     right: 150px;
 }
 
+.intro
+{
+    font-size: 24px;
+}
+
 .intro-goals
 {
     width: 767px;
-    font-size: 24px;
 }
 
 .detailed-program
@@ -364,14 +384,14 @@ h1
 
 .pictures
 {
-    width: 70%;
+    width: 65%;
     margin: auto;
-    padding-top: 100px;
 }
 
-.pictures img
+.picture
 {
-    position: relative;
+    width: 160px;
+    border-radius: 10px;    
 }
 
 .pictures img:hover
@@ -419,6 +439,11 @@ audio
 {
     height: 30px;
     color: #222;
+}
+
+.group-song
+{
+    margin: 0 75px;
 }
 
 @media all and (max-width: 1199px)
@@ -530,9 +555,10 @@ audio
         width: 95%;
     }
 
-    .intro-goals
+    .intro
     {
         width: 95%;
+        font-size: 20px;
     }
 
     .goal .right-img
@@ -670,6 +696,11 @@ audio
     #carousel_item .printed_image, #carousel_item .new-img
     {
         margin-top: 0px;
+    }
+
+    .goal .title-right
+    {
+        text-align: left;
     }
 }
 

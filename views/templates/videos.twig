@@ -2,28 +2,31 @@
 {% import 'video.twig' as video %}
 
 {% block head %}
+    <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
     <title>Vidéos</title>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
+    <div class="container-fluid text-videos-songs">
+        <h1 class="briquet title-page">Vidéos</h1>
+        <div class="mb-5"><img class="img-fluid" src="./public/videos/bandeau_videos.png" alt="Bandeau de vidéos" /></div>
         <div class="pictures row justify-content-center">
-            {{ video.blockVideo("1", "ouverture", "Titre", "Paragraphe", "ouverture") }}
-            {{ video.blockVideo("2", "decouverte_partitions", "Titre", "Paragraphe", "decouverte_partitions") }}
+            {{ video.blockVideo("1", "ouverture", "Ouverture", "La semaine chantante débute par la présenta-tion des musiciens.", "ouverture") }}
+            {{ video.blockVideo("2", "decouverte_partitions", "Les partitions", "Les choristes reçoivent leur dossier de partitions le jour de l'arrivée.", "decouverte_partitions") }}
             {{ video.blockVideo("3", "kamouraska", "Kamouraska", "Claude Bégin à la direc-tion pour l'apprentissage d'un titre.", "kamouraska") }}
-            {{ video.blockVideo("4", "music_hall", "Titre", "Paragraphe", "music_hall") }}
-            {{ video.blockVideo("5", "bamba_vero", "Titre", "Paragraphe", "bamba_vero") }}
-            {{ video.blockVideo("6", "medley_becaud", "Titre", "Paragraphe", "medley_becaud") }}
-            {{ video.blockVideo("7", "tequila_vero", "Titre", "Paragraphe", "tequila_vero") }}
-            {{ video.blockVideo("8", "montage", "Programmation", "Les responsables grand chœur et mise en scène déterminent l'ordre des chansons exécutées pour le spectacle.", "montage") }}
-            {{ video.blockVideo("9", "banquet", "Titre", "Paragraphe", "banquet") }}
-            {{ video.blockVideo("10", "fr3", "Titre", "Paragraphe", "fr3") }}
-            {{ video.blockVideo("11", "tractage", "Titre", "Paragraphe", "tractage") }}
-            {{ video.blockVideo("12", "pique_nique", "Titre", "Paragraphe", "pique_nique") }}
-            {{ video.blockVideo("13", "avant_spectacle", "Titre", "Paragraphe", "avant_spectacle") }}
-            {{ video.blockVideo("14", "rangement_1", "Démontage", "À la fin du spectacle de Clermont-Ferrand, le staff technique vide la scène.", "rangement_1") }}
-            {{ video.blockVideo("15", "rangement_2", "Titre", "Paragraphe", "rangement_2") }}
-            {{ video.blockVideo("16", "au_revoir", "Titre", "Paragraphe", "au_revoir") }}
+            {{ video.blockVideo("4", "music_hall", "Music-hall", "Apprentissage de la mise en scène du premier titre du spectacle.", "music_hall") }}
+            {{ video.blockVideo("5", "bamba_vero", "La Bamba", "Un petit groupe travaille une chorégraphie parti-culière.", "bamba_vero") }}
+            {{ video.blockVideo("6", "medley_becaud", "Medley Bécaud", "Extraits de répétitions.", "medley_becaud") }}
+            {{ video.blockVideo("7", "tequila_vero", "Téquila", "Le groupe des \"danseurs\" présente son travail au grand groupe.", "tequila_vero") }}
+            {{ video.blockVideo("8", "montage", "Programme", "Les responsables déter-minent l'ordre des chan-sons exécutées pour le spectacle.", "montage") }}
+            {{ video.blockVideo("9", "banquet", "Banquet", "La phase d'apprentissage est terminée. Il faut fêter cela !", "banquet") }}
+            {{ video.blockVideo("10", "fr3", "Fr3 Auvergne", "Annonce à la télévision régionale de la Semaine Chantante.", "fr3") }}
+            {{ video.blockVideo("11", "tractage", "Tractage", "Deux heures avant les spectacles, les choristes font leur propre publicité.", "tractage") }}
+            {{ video.blockVideo("12", "pique_nique", "Pique-nique", "On se restaure après la balance son et avant les trois coups.", "pique_nique") }}
+            {{ video.blockVideo("13", "avant_spectacle", "Avant-spectacle", "Dernières mises au point. On prend possession de la scène.", "avant_spectacle") }}
+            {{ video.blockVideo("14", "rangement_1", "Démontage 1", "À la fin du spectacle de Clermont-Ferrand, le staff technique vide la scène.", "rangement_1") }}
+            {{ video.blockVideo("15", "rangement_2", "Démontage 2", "Comme à Clermont-Fd, l'équipe technique joue les gros bras.", "rangement_2") }}
+            {{ video.blockVideo("16", "au_revoir", "Au revoir", "L'émotion du groupe est profonde à l'heure de se quitter.", "au_revoir") }}
         </div>
     </div>
 {% endblock %}
