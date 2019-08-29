@@ -23,14 +23,19 @@ label
     font-weight: bold;
 }
 
+.underline
+{
+    text-decoration: underline;
+}
+
+.italic
+{
+    font-style: italic;
+}
+
 .without-bold
 {
     font-weight: normal;
-}
-
-.uppercase
-{
-    text-transform: uppercase;
 }
 
 .justify
@@ -391,11 +396,14 @@ h1
 .picture
 {
     width: 160px;
-    border-radius: 10px;    
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px #000;  
+    margin-bottom: 10px;
 }
 
-.pictures img:hover
+.picture:hover
 {
+    position: relative;
     top: -5px;
 }
 

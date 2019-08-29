@@ -18,6 +18,7 @@
             <span id="miss-firstname"></span>
             <label for="user_address">Adresse</label>
             <input type="text" name="user_address" id="user_address" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-user_address"></span>
             <label for="postal_code">Code postal</label>
             <input type="text" name="postal_code" id="postal_code" placeholder="Votre réponse" class="form-control" required />
             <span id="miss-postal_code"></span>
@@ -33,22 +34,26 @@
             <label for="email">Courriel</label>
             <input type="text" name="email" id="email" placeholder="Votre réponse" class="form-control" required />
             <span id="miss-email"></span>
-            <label for="birthday">Date de naissance</label>
-            <input type="date" name="birthday" id="birthday" class="form-control" required />
+            <label for="birthday">Date de naissance (format : "JJ/MM/AAAA")</label>
+            <input type="text" name="birthday" id="birthday" placeholder="Votre réponse" class="form-control" required />
             <span id="miss-birthday"></span>
             <label for="choir_name">Nom de la chorale</label>
             <input type="text" name="choir_name" id="choir_name" placeholder="Votre réponse" class="form-control" required />
+            <span id="miss-choir_name"></span>
             <label for="choir_town">Ville de la chorale</label>
             <input type="text" name="choir_town" id="choir_town" placeholder="Votre réponse" class="form-control" required />
-            <p>Êtes-vous :<br />
+            <span id="miss-choir_town"></span>
+            <p id="status">Êtes-vous :<br />
                 <input type="radio" name="status" id="Choriste" value="Choriste" /><label for="Choriste">Choriste</label><br />
                 <input type="radio" name="status" id="Chef de choeur" value="Chef de choeur" /><label for="Chef de choeur">Chef de choeur</label>
+                <span id="miss-status"></span>
             </p>
-            <p>Pupitre :<br />
+            <p id="music_stand">Pupitre :<br />
                 <input type="radio" name="music_stand" id="soprano" value="Soprane" /><label for="Soprane">Soprane</label><br />
                 <input type="radio" name="music_stand" id="alto" value="Alto" /><label for="Alto">Alto</label><br />
                 <input type="radio" name="music_stand" id="tenor" value="Tenor" /><label for="Tenor">Ténor</label><br />
                 <input type="radio" name="music_stand" id="bass" value="Basse" /><label for="Basse">Basse</label>
+                <span id="miss-music_stand"></span>
             </p>
             <label for="additional">Complément d'information (expérience chorale, scénique, autres précisions...)</label>
             <textarea type="text" name="additional" id="additional" placeholder="Votre réponse" class="form-control"></textarea>
@@ -63,9 +68,10 @@
                     63000 Clermont-Ferrand</li>
                 </ul>
             </p>
-            <p>Mode de versement :<br />
+            <p id="payment">Mode de versement :<br />
                 <input type="radio" name="payment" id="bank_transfer" value="Virement bancaire" /><label for="Virement bancaire">Virement bancaire</label><br />
                 <input type="radio" name="payment" id="check" value="Chèque" /><label for="Chèque">Chèque</label>
+                <span id="miss-payment"></span>
             </p>
             <input type="submit" value="Envoyer" id="submit" />
         </form>

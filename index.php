@@ -96,6 +96,15 @@ if (isset($_GET['action']))
             $password = $registrationController->password();
             echo $twig->render('login.twig', ['password' => $password]);
             break;
+        case 'infos':
+            echo $twig->render('infos.twig');
+            break;
+        case 'questions':
+            echo $twig->render('questions.twig');
+            break;
+        case 'contact':
+            echo $twig->render('contact.php');
+            break;
         default:
             echo ('Erreur 404');
     }
