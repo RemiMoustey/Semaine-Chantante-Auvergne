@@ -1,0 +1,19 @@
+{% macro groupText(name, label, type = "text", required = true) %}
+    <div class="form-group">
+        <label for="{{ name }}">{{ label }}</label>
+        {% if required == true %}
+            <input type={{ type }} name="{{ name }}" id="{{ name }}" placeholder="Votre réponse" class="form-control" required />
+        {% else %}
+            <input type={{ type }} name="{{ name }}" id="{{ name }}" placeholder="Votre réponse" class="form-control" />
+        {% endif %}
+        <span id="miss-{{ name }}"></span>
+    </div>
+{% endmacro %}
+
+{% macro groupRadio(question, name, labelInputs = []) %}
+    <p id="{{ name }}">{{ question }}</p>
+    {% for label in labelInputs %}
+        <p><input type="radio" name="{{ name }}" id="{{ label }}" value="{{ label }}" /><label for="{{ label }}">{{ label }}</label></p>
+    {% endfor %}
+    <span id="miss-{{ name }}"></span>
+{% endmacro %}

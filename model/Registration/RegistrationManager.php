@@ -1,8 +1,6 @@
 <?php
 
 namespace model\Registration;
-
-require './vendor/autoload.php';
 use model\PDOFactory;
 
 class RegistrationManager extends PDOFactory
@@ -84,14 +82,5 @@ class RegistrationManager extends PDOFactory
         $query = $db->query("SELECT surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, email, paid FROM chorists");
 
         return $query;
-    }
-
-    public function getPassword()
-    {
-        $db = $this->getMySqlConnexion();
-        $query = $db->query('SELECT * FROM passwordusers');
-        $password = $query->fetch();
-
-        return $password;
     }
 }

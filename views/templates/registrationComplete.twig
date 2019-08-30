@@ -1,0 +1,15 @@
+{% extends 'layout.twig' %}
+{% import 'group-form.twig' as groupForm %}
+
+{% block head %}
+    <title>S'inscrire</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid bloc-success">
+        <div class="alert alert-success successRegistration w-75 m-auto">
+            Félicitations ! Vous avez terminé votre inscription ! Elle est en attente de validation. Une fois validée, l'administrateur vous contactera par courrier et vous donnera les coordonnées vous permettant d'accéder à l'epsace membre !<br />
+            En attendant, vous pouvez (re)découvrir les meilleurs moments des précédentes éditions de la Semaine Chantante <a href="index.php?action=videos">ici</a>.
+        </div>
+    </div>   
+{% endblock %}

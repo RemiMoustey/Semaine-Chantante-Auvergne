@@ -3,11 +3,12 @@
 namespace controller;
 
 use model\Registration\RegistrationManager;
+use model\Logs\LogsManager;
 
 require './vendor/autoload.php';
 
 class RegistrationController
-{
+{  
     public function addRegistration($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $registrationManager = new RegistrationManager();
@@ -20,8 +21,24 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=home');
+            header('Location: index.php?action=registration-complete');
         }
+    }
+
+    public function login()
+    {
+        $logsManager = new LogsManager();
+        $logs = $logsManager->getAdminLogs();
+
+        require('views/templates/login.php');
+    }
+
+    public function loginUser()
+    {
+        $logsManager = new LogsManager();
+        $password = $logsManager->getUserPassword();
+
+        require('views/templates/login-user.php');
     }
 
     public function listInformationUsers($id)
@@ -55,7 +72,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=test');
+            header('Location: index.php?action=search');
         }
     }
 
@@ -70,7 +87,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=test');
+            header('Location: index.php?action=search');
         }
     }
 
@@ -85,7 +102,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=test');
+            header('Location: index.php?action=search');
         }
     }
 
@@ -100,7 +117,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=test');
+            header('Location: index.php?action=search');
         }
     }
 
@@ -117,11 +134,5 @@ class RegistrationController
         {
             require('views/templates/export.php');
         }
-    }
-
-    public function password()
-    {
-        $registrationManager = new RegistrationManager();
-        $password = $registrationManager->getPassword();
     }
 }

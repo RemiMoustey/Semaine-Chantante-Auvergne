@@ -1,7 +1,7 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
-    <title>Test</title>
+    <title>Rechercher des utilisateurs</title>
 {% endblock %}
 
 {% block content %}
@@ -16,10 +16,9 @@
     </p>
 
     {% for data in users %}
-    <p>
-        {{ data.surname }} {{ data.firstname }}<br />
-        <a href="index.php?action=readuser&amp;id={{data.id}}">Lire</a>
-    </p>
-
+        <p>
+            {{ data.surname }} {{ data.firstname }}<br />
+            <a href="index.php?action=readuser&amp;id={{data.id}}">Lire</a>
+        </p>
     {% endfor %}
 {% endblock %}

@@ -15,6 +15,8 @@ $twig = new \Twig_Environment($loader, [
     'cache' => false
 ]);
 
+require_once('auth.php');
+
 if (isset($_GET['action']))
 {
     switch ($_GET['action'])
@@ -22,10 +24,20 @@ if (isset($_GET['action']))
         case 'home':
             echo $twig->render('home.twig');
             break;
+        case 'login':
+            $registrationController->login();
+            break;
+        case 'login-user':
+            $registrationController->loginUser();
+            break;
         case 'registration':
             echo $twig->render('registration.twig');
             break;
+        case 'registration-complete':
+            echo $twig->render('registrationComplete.twig');
+            break;
         case 'search':
+            authenticatedAdmin();
             echo $twig->render('search.twig');
             break;
         case 'readuser':
@@ -48,22 +60,28 @@ if (isset($_GET['action']))
             }
             break;
         case 'listusers':
+            authenticatedAdmin();
             $users = $registrationController->listRegisteredUsers($_POST['q']);
             echo $twig->render('search.twig', ['users' => $users]);
             break;
         case 'acceptuser':
+            authenticatedAdmin();
             $registrationController->acceptOneUser($_GET['id']);
             break;
         case 'deleteaccepteduser':
+            authenticatedAdmin();
             $registrationController->removeAcceptedUser($_GET['id']);
             break;
         case 'deleteregistereduser':
+            authenticatedAdmin();
             $registrationController->removeRegisteredUser($_GET['id']);
             break;
         case 'updateuser':
+            authenticatedAdmin();
             $registrationController->updateUser($_GET['id'], $_POST['surname'], $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'], $_POST['town'], $_POST['phone_number'], $_POST['phone_number_office'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'], $_POST['choir_town']);
             break;
         case 'export':
+            authenticatedAdmin();
             $registrationController->exportData();
             break;
         case 'newspaper':
@@ -80,6 +98,7 @@ if (isset($_GET['action']))
             break;
         case 'goals':
             echo $twig->render('goals.twig');
+            break;
         case 'communal-song':
         case 'staging':
         case 'free-time':
@@ -92,10 +111,6 @@ if (isset($_GET['action']))
         case 'videos':
             echo $twig->render('videos.twig');
             break;
-        case 'login':
-            $password = $registrationController->password();
-            echo $twig->render('login.twig', ['password' => $password]);
-            break;
         case 'infos':
             echo $twig->render('infos.twig');
             break;
@@ -104,6 +119,10 @@ if (isset($_GET['action']))
             break;
         case 'contact':
             echo $twig->render('contact.php');
+            break;
+        case 'space-users':
+            authenticatedUser();
+            echo "Essai";
             break;
         default:
             echo ('Erreur 404');

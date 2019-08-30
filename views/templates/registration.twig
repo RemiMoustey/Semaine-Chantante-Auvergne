@@ -1,80 +1,47 @@
 {% extends 'layout.twig' %}
+{% import 'group-form.twig' as groupForm %}
 
 {% block head %}
     <title>S'inscrire</title>
 {% endblock %}
 
 {% block content %}
-
-    <div class="bloc-form">
-        <h2>Inscription en ligne</h2>
-        <h3>Coordonnées</h3>
-        <form method="post" action="index.php?action=adduser">
-            <label for="surname">Nom</label>
-            <input type="text" name="surname" id="surname" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-surname"></span>
-            <label for="firstname">Prénom</label>
-            <input type="text" name="firstname" id="firstname" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-firstname"></span>
-            <label for="user_address">Adresse</label>
-            <input type="text" name="user_address" id="user_address" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-user_address"></span>
-            <label for="postal_code">Code postal</label>
-            <input type="text" name="postal_code" id="postal_code" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-postal_code"></span>
-            <label for="town">Ville</label>
-            <input type="text" name="town" id="town" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-town"></span>
-            <label for="phone_number">Téléphone</label>
-            <input type="tel" name="phone_number" id="phone_number" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-phone_number"></span>
-            <label for="phone_number_office">Téléphone Bureau</label>
-            <input type="tel" name="phone_number_office" id="phone_number_office" placeholder="Votre réponse" class="form-control" />
-            <span id="miss-phone_number_office"></span>
-            <label for="email">Courriel</label>
-            <input type="text" name="email" id="email" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-email"></span>
-            <label for="birthday">Date de naissance (format : "JJ/MM/AAAA")</label>
-            <input type="text" name="birthday" id="birthday" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-birthday"></span>
-            <label for="choir_name">Nom de la chorale</label>
-            <input type="text" name="choir_name" id="choir_name" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-choir_name"></span>
-            <label for="choir_town">Ville de la chorale</label>
-            <input type="text" name="choir_town" id="choir_town" placeholder="Votre réponse" class="form-control" required />
-            <span id="miss-choir_town"></span>
-            <p id="status">Êtes-vous :<br />
-                <input type="radio" name="status" id="Choriste" value="Choriste" /><label for="Choriste">Choriste</label><br />
-                <input type="radio" name="status" id="Chef de choeur" value="Chef de choeur" /><label for="Chef de choeur">Chef de choeur</label>
-                <span id="miss-status"></span>
-            </p>
-            <p id="music_stand">Pupitre :<br />
-                <input type="radio" name="music_stand" id="soprano" value="Soprane" /><label for="Soprane">Soprane</label><br />
-                <input type="radio" name="music_stand" id="alto" value="Alto" /><label for="Alto">Alto</label><br />
-                <input type="radio" name="music_stand" id="tenor" value="Tenor" /><label for="Tenor">Ténor</label><br />
-                <input type="radio" name="music_stand" id="bass" value="Basse" /><label for="Basse">Basse</label>
-                <span id="miss-music_stand"></span>
-            </p>
-            <label for="additional">Complément d'information (expérience chorale, scénique, autres précisions...)</label>
-            <textarea type="text" name="additional" id="additional" placeholder="Votre réponse" class="form-control"></textarea>
-            <h3>Validation</h3>
-            <p>Votre inscription sera validée à réception du versement de réservation de 200 €
-                <ul>
-                    <li>soit par virement aux coordonnées bancaires suivantes :<br />
-                    IBAN FR76 1600 6000 1000 0000 9000 1000 / BIC AGRIFRXX000</li>
-                    <li>soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
-                    Semaine Chantante Auvergne<br />
-                    BP 100<br />
-                    63000 Clermont-Ferrand</li>
-                </ul>
-            </p>
-            <p id="payment">Mode de versement :<br />
-                <input type="radio" name="payment" id="bank_transfer" value="Virement bancaire" /><label for="Virement bancaire">Virement bancaire</label><br />
-                <input type="radio" name="payment" id="check" value="Chèque" /><label for="Chèque">Chèque</label>
-                <span id="miss-payment"></span>
-            </p>
-            <input type="submit" value="Envoyer" id="submit" />
-        </form>
+    <div class="container-fluid">
+        <h1 class="green-title title-page text-center briquet">Inscription en ligne</h1>
+        <div class="bloc-form col-6 m-auto">
+            <h2>Coordonnées</h2>
+            <form method="post" action="index.php?action=adduser">
+                {{ groupForm.groupText('surname', 'Nom') }}
+                {{ groupForm.groupText('firstname', 'Prénom') }}
+                {{ groupForm.groupText('user_address', 'Adresse') }}
+                {{ groupForm.groupText('postal_code', 'Code postal', 'number') }}
+                {{ groupForm.groupText('town', 'Ville') }}
+                {{ groupForm.groupText('phone_number', 'Téléphone', 'tel') }}
+                {{ groupForm.groupText('phone_number_office', 'Téléphone bureau', 'tel', false) }}
+                {{ groupForm.groupText('email', 'Courriel', 'email') }}
+                {{ groupForm.groupText('birthday', 'Date de naisance', 'date') }}
+                {{ groupForm.groupText('choir_name', 'Nom de la chorale') }}
+                {{ groupForm.groupText('choir_town', 'Ville de la chorale') }}
+                {{ groupForm.groupRadio('Êtes-vous :', 'status', {'label1' : 'Choriste', 'label2' : 'Chef de chœur'}) }}
+                {{ groupForm.groupRadio('Pupitre :', 'music_stand', {'label1' : 'Soprane', 'label2' : 'Alto', 'label3' : 'Ténor', 'label4' : 'Basse'}) }}
+    
+                <label for="additional">Complément d'information (expérience chorale, scénique, autres précisions...)</label>
+                <textarea type="text" name="additional" id="additional" placeholder="Votre réponse" class="form-control"></textarea>
+                <h3>Validation</h3>
+                <p>Votre inscription sera validée à réception du versement de réservation de 200 €
+                    <ul>
+                        <li>soit par virement aux coordonnées bancaires suivantes :<br />
+                        IBAN FR76 1600 6000 1000 0000 9000 1000 / BIC AGRIFRXX000</li>
+                        <li>soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
+                        Semaine Chantante Auvergne<br />
+                        BP 100<br />
+                        63000 Clermont-Ferrand</li>
+                    </ul>
+                </p>
+                {{ groupForm.groupRadio('Mode de versement :', 'payment', {'label1' : 'Virement bancaire', 'label2' : 'Chèque'}) }}
+                <input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm('Êtes-vous sûr enregistrer ces informations ?'));" disabled />
+            </form>
+        </div>
     </div>
-    <script src="./public/js/test-formular.js"></script>
+    <script src="./public/js/test-formular.js"></script>    
 {% endblock %}
