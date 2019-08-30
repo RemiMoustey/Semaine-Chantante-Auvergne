@@ -1,6 +1,7 @@
 <?php
 
 namespace model\Comments;
+define('PER_PAGE', 5);
 use model\PDOFactory;
 
 class CommentsManager extends PDOFactory
@@ -8,8 +9,13 @@ class CommentsManager extends PDOFactory
     public function getComments()
     {
         $db = $this->getMysqlConnexion();
-        $query = $db->query('SELECT id, author, comment, DATE_FORMAT(creation_date, \'%d/%m/%Y à %H:%i\') AS creation_date_fr FROM comments ORDER BY creation_date DESC');
-        return $query;
+        $page = (int)($_GET['p'] ?? 1);
+        $offset = ($page - 1) * PER_PAGE;
+        if ($offset < 0)
+        {
+            $offset = 0;
+        }
+        return $query = $db->query('SELECT id, author, comment, DATE_FORMAT(creation_date, \'%d/%m/%Y à %H:%i\') AS creation_date_fr FROM comments ORDER BY creation_date DESC LIMIT ' . PER_PAGE . " OFFSET $offset");;
     }
 
     public function getNotifiedComments()
@@ -47,5 +53,11 @@ class CommentsManager extends PDOFactory
     {
         $db = $this->getMysqlConnexion();
         $db->exec("DELETE FROM comments WHERE id=$commentId");
+    }
+
+    public function getNumberComments()
+    {
+        $db = $this->getMysqlConnexion();
+        return $db->query('SELECT count(id) as count FROM comments');
     }
 }

@@ -144,6 +144,13 @@ class RegistrationController
         return $comments->fetchAll();
     }
 
+    public function countComments()
+    {
+        $commentsManager = new CommentsManager();
+        $countComments = $commentsManager->getNumberComments();
+        return $countComments;
+    }
+
     public function notifiedComments()
     {
         $commentsManager = new CommentsManager();

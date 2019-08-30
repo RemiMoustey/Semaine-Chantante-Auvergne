@@ -23,6 +23,16 @@
             {% endif %}
         </div>
     {% endfor %}
+    {% if pages > 1 and page > 1 %}
+        <p>
+            <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires précédents</a>
+        </p>
+    {% endif %}
+    {% if pages > 1 and page < pages %}
+        <p>
+            <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires suivants</a>
+        </p>
+    {% endif %}
     <div class="form_add_comment w-50">
         <h2>Ajouter un commentaire</h2>
         <form method="post" action="index.php?action=add-comment">

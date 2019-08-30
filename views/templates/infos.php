@@ -81,7 +81,7 @@
                     </div>
                     <div class="form-group">
                         <label for="postal_code">Code postal</label>
-                        <input type="number" name="postal_code" id="postal_code" class="form-control" value="<?= htmlspecialchars($info['postal_code']) ?>" required />
+                        <input type="text" name="postal_code" id="postal_code" class="form-control" value="<?= htmlspecialchars($info['postal_code']) ?>" required />
                         <span id="miss-postal_code"></span>
                     </div>
                     <div class="form-group">
