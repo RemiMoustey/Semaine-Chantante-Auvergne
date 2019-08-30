@@ -1,0 +1,36 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <title>Espace inscrits</title>
+{% endblock %}
+
+{% block content %}
+    <h2 class="title-comments">Commentaires</h2>
+    {% for comment in comments %}
+        <div class="comment">
+            <h3>{{ comment.author }} le {{ comment.creation_date_fr }}</h3>
+            <p>{{ comment.comment }}</p>
+            {% set notified = false %} 
+            {% for notifiedComment in notifiedComments %}
+                {% if notifiedComment.comment_id == comment.id %}
+                    {% set notified = true %} 
+                {% endif %}
+            {% endfor %}
+            {% if notified %}
+                <p>Ce commentaire a déjà été signalé.</p>
+            {% else %}
+                <a href="index.php?action=notify-comment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'));">Signaler</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div class="form_add_comment w-50">
+        <h2>Ajouter un commentaire</h2>
+        <form method="post" action="index.php?action=add-comment">
+            <label for="author">Auteur :</label>
+            <input type="text" name="author" class="form-control" required />
+            <label for="comment">Commentaire :</label>
+            <textarea name="comment" class="form-control" rows="5" required></textarea>
+            <button class="btn btn-primary mt-3" type="submit" onclick="return(confirm('Êtes-vous sûr de vouloir poster ce commentaire ?'));">Envoyer</button>
+        </form>
+    </div>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace controller;
 
 use model\Registration\RegistrationManager;
 use model\Logs\LogsManager;
+use model\Comments\CommentsManager;
 
 require './vendor/autoload.php';
 
@@ -134,5 +135,60 @@ class RegistrationController
         {
             require('views/templates/export.php');
         }
+    }
+
+    public function comments()
+    {
+        $commentsManager = new CommentsManager();
+        $comments = $commentsManager->getComments();
+        return $comments->fetchAll();
+    }
+
+    public function notifiedComments()
+    {
+        $commentsManager = new CommentsManager();
+        $notifiedComments = $commentsManager->getNotifiedComments();
+        return $notifiedComments->fetchAll();
+    }
+
+    public function reportComment($commentId)
+    {
+        $commentsManager = new CommentsManager();
+        $reportedComment = $commentsManager->notifyComment($commentId);
+        $commentsManager->addNotifiedComment($commentId, $reportedComment['author'], $reportedComment['comment']);
+
+        if ($reportedComment === false)
+		{
+			echo '<p>Impossible de signaler le commentaire.</p>';
+			return;
+		}
+
+		header('Location: index.php?action=space-users');
+    }
+
+    public function addComment($author, $comment)
+    {
+        $commentsManager = new CommentsManager();
+        $affectedLines = $commentsManager->postComment($author, $comment);
+        if ($affectedLines === false)
+	    {
+			echo '<p>Impossible d\'ajouter le commentaire.</p>';
+			return;
+        }
+        
+        header('Location: index.php?action=space-users');
+    }
+
+    public function removeComment($commentId)
+    {
+        $commentsManager = new CommentsManager();
+        $comment = $commentsManager->deleteComment($commentId);
+        if ($comment === false)
+		{
+			throw new Exception("Impossible de supprimer le commentaire.");
+			return;
+        }
+
+        header('Location: index.php?action=search');
     }
 }

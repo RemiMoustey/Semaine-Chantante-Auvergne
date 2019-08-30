@@ -21,4 +21,22 @@
             <a href="index.php?action=readuser&amp;id={{data.id}}">Lire</a>
         </p>
     {% endfor %}
+
+    <h2>Commentaires signalés</h2>
+    {% for notifiedComment in notifiedComments %}
+        <div class="notified-comment">
+            <h4>Commentaire de {{ notifiedComment.author }} signalé le {{ notifiedComment.notify_date_fr }}</h4>
+            <p>{{ notifiedComment.comment }}</p>
+            <a href="index.php?action=removeComment&amp;id={{ notifiedComment.comment_id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+        </div>
+    {% endfor %}
+
+    <h2>Commentaires</h2>
+    {% for comment in comments %}
+        <div class="comment">
+            <h4>{{ comment.author }} le {{ comment.creation_date_fr }}</h4>
+            <p>{{ comment.comment }}</p>
+            <a href="index.php?action=removeComment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+        </div>
+    {% endfor %}
 {% endblock %}

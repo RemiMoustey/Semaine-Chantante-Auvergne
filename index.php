@@ -38,7 +38,9 @@ if (isset($_GET['action']))
             break;
         case 'search':
             authenticatedAdmin();
-            echo $twig->render('search.twig');
+            $comments = $registrationController->comments();
+            $notifiedComments = $registrationController->notifiedComments();
+            echo $twig->render('search.twig', ['comments' => $comments, 'notifiedComments' => $notifiedComments]);
             break;
         case 'readuser':
             $infos = $registrationController->listInformationUsers($_GET['id']);
@@ -62,7 +64,9 @@ if (isset($_GET['action']))
         case 'listusers':
             authenticatedAdmin();
             $users = $registrationController->listRegisteredUsers($_POST['q']);
-            echo $twig->render('search.twig', ['users' => $users]);
+            $comments = $registrationController->comments();
+            $notifiedComments = $registrationController->notifiedComments();
+            echo $twig->render('search.twig', ['users' => $users, 'comments' => $comments, 'notifiedComments' => $notifiedComments]);
             break;
         case 'acceptuser':
             authenticatedAdmin();
@@ -117,15 +121,47 @@ if (isset($_GET['action']))
         case 'questions':
             echo $twig->render('questions.twig');
             break;
-        case 'contact':
-            echo $twig->render('contact.php');
-            break;
         case 'space-users':
             authenticatedUser();
-            echo "Essai";
+            $comments = $registrationController->comments();
+            $notifiedComments = $registrationController->notifiedComments();
+            echo $twig->render('space-users.twig', ['comments' => $comments, 'notifiedComments' => $notifiedComments]);
+            break;
+        case 'notify-comment':
+            authenticatedUser();
+            if (isset($_GET['id']) AND $_GET['id'] > 0)
+            {
+                $registrationController->reportComment($_GET['id']);
+            }
+            else
+            {
+                echo "<p>Erreur : aucun identifiant de commentaire n'a été envoyé</p>";
+            }
+            break;
+        case 'add-comment':
+            authenticatedUser();
+            if (!empty($_POST['author']) AND !empty($_POST['comment']))
+            {
+                $registrationController->addComment($_POST['author'], $_POST['comment']);
+            }
+            else
+            {
+                echo "<p>Erreur : tous les champs ne sont pas remplis.</p>";
+            }
+            break;
+        case 'removeComment':
+            authenticatedUser();
+            if (isset($_GET['id']) AND $_GET['id'] > 0)
+            {
+                $registrationController->removeComment($_GET['id']);
+            }
+            else
+            {
+                echo "<p>Erreur : aucun identifiant de commentaire envoyé";
+            }
             break;
         default:
-            echo ('Erreur 404');
+            echo ('<p>Erreur 404.</p>');
     }
 }
 else
