@@ -87,11 +87,19 @@ h1
 .title-video-song
 {
     color: #ccc;
+    font-size: 28px;
 }
 
 .text-videos-songs, a
 {
     color: #01ff73;
+}
+
+.harmonisation
+{
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
 }
 
 .bloc-page
@@ -450,6 +458,11 @@ audio
 .group-song
 {
     margin: 0 75px;
+}
+
+#mapid
+{
+    height: 600px;
 }
 
 @media all and (max-width: 1199px)

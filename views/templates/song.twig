@@ -1,7 +1,7 @@
-{% macro blockSong(title, paragraph, nameSrcSong) %}
+{% macro blockSong(title, author, nameSrcSong) %}
     <div class="bloc-song">
         <h2 class="title-video-song">{{ title }}</h2>
         <audio id="{{ nameSrcSong }}" src="./public/songs/{{ nameSrcSong }}.mp3" controls></audio>
-        <p>{{ paragraph }}</p>
+        <p>Paroles et musique : {{ author }}</p>
     </div>
 {% endmacro %}

@@ -9,8 +9,8 @@ class RegistrationManager extends PDOFactory
     {
         $db = $this->getMySqlConnexion();
         $query = $db->prepare("INSERT INTO chorists(surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid)
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $registration = $query->execute(array($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment, 'Non payé'));
+        VALUES(:surname, :firstname, :user_address, :postal_code, :town, :phone_number, :phone_number_office, :music_stand, :status, :email, :birthday, :choir_name, :choir_town, :additional, :payment, :paid)");
+        $registration = $query->execute(['surname' => $surname, 'firstname' => $firstname, 'user_address' => $address, 'postal_code' => $postalCode, 'town' => $town, 'phone_number' => $phoneNumber, 'phone_number_office' => $phoneNumberOffice, 'music_stand' => $musicStand, 'status' => $status, 'email' => $email, 'birthday' => $birthday, 'choir_name' => $choirName, 'choir_town' => $choirTown, 'additional' => $additional, 'payment' => $payment, 'paid' => 'Non payé']);
 
         return $registration;
     }
@@ -27,8 +27,8 @@ class RegistrationManager extends PDOFactory
     public function getUsers($q)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->prepare("SELECT id, surname, firstname FROM chorists WHERE surname LIKE ? OR firstname LIKE ? ORDER BY surname");
-        $query->execute(array('%' . $q . '%', '%' . $q . '%'));
+        $query = $db->prepare("SELECT id, surname, firstname FROM chorists WHERE surname LIKE :surname OR firstname LIKE :firstname ORDER BY surname");
+        $query->execute(['surname' => '%' . $q . '%', 'firstname' => '%' . $q . '%']);
 
         return $query;
     }

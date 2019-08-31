@@ -3,11 +3,14 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
     <title>Les animateurs</title>
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid bloc-holiday">
+    <div class="container-fluid bloc-holiday mb-5">
         <h1 class="green-title title-page text-center briquet">Un Accueil Grandeur Nature</h1>
         <div class="mb-5"><img class="img-fluid" src="./public/img/accommodation/chaine_des_puys.png" alt="Panorama sur la chaîne de Puys" /></div>
         <h2 class="green-title text-center briquet">Des Vacances Enchantées !</h2>
@@ -39,5 +42,10 @@
             {src2 : 'chambre_residence', alt2 : 'Une chambre de la Résidence', title2 : 'Chambre Résidence'},
             {src3 : 'chambre_panorama_1', alt3 : 'Une chambre du Panorama', title3 : 'Chambre Panorama'}) }}
         </div>
+        <div id="mapid" class="w-50 m-auto"></div>
     </div>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+    integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+    crossorigin=""></script>
+    <script src="./public/js/Map.js"></script>
 {% endblock %}
