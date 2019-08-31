@@ -44,7 +44,7 @@ if(isAuthenticatedAdmin())
             <?php
             }
             ?>
-            <form method="post" action="#">
+            <form method="post" action="index.php?action=connexion">
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" id="password" class="form-control" required />
                 <button class="btn btn-primary mt-5" type="submit">Se connecter</button>

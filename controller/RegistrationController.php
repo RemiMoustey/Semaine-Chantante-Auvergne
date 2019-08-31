@@ -26,13 +26,18 @@ class RegistrationController
         }
     }
 
-    public function loginUser()
+    public function passwordUser()
     {
         $logsManager = new LogsManager();
         $password = $logsManager->getUserPassword();
+        return $password;
+    }
+    
+    public function passwordAdmin()
+    {
+        $logsManager = new LogsManager();
         $adminPassword = $logsManager->getAdminPassword();
-
-        require('views/templates/login-user.php');
+        return $adminPassword;
     }
 
     public function listInformationUsers($id)

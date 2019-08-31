@@ -25,7 +25,36 @@ if (isset($_GET['action']))
             echo $twig->render('home.twig');
             break;
         case 'login-user':
-            $registrationController->loginUser();
+        case 'connexion':
+            $twig->addFunction(new \Twig_SimpleFunction('password_verify', function($password, $hashedPassword) {
+                return password_verify($password, $hashedPassword);
+            }));
+            $twig->addFunction(new \Twig_SimpleFunction('empty', function($value) {
+                return empty($value);
+            }));
+            $twig->addFunction(new \Twig_SimpleFunction('sessionStart', function() {
+                return session_start();
+            }));
+            $twig->addFunction(new \Twig_SimpleFunction('header', function($path) {
+                return header('Location: ' . $path);
+            }));
+            $passwordUser = $registrationController->passwordUser();
+            $passwordAdmin = $registrationController->passwordAdmin();
+            require_once 'auth.php';
+            $twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedUser', function() {
+                return isAuthenticatedUser();
+            }));
+            $twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function() {
+                return isAuthenticatedAdmin();
+            }));
+            if(!empty($_POST['password']))
+            {   
+                echo $twig->render('login-user.twig', ['sentPassword' => $_POST['password'], 'passwordUser' => $passwordUser, 'passwordAdmin' => $passwordAdmin, 'session' => $_SESSION]);
+            }
+            else
+            {
+                echo $twig->render('login-user.twig');
+            }
             break;
         case 'registration':
             echo $twig->render('registration.twig');
