@@ -26,18 +26,11 @@ class RegistrationController
         }
     }
 
-    public function login()
-    {
-        $logsManager = new LogsManager();
-        $logs = $logsManager->getAdminLogs();
-
-        require('views/templates/login.php');
-    }
-
     public function loginUser()
     {
         $logsManager = new LogsManager();
         $password = $logsManager->getUserPassword();
+        $adminPassword = $logsManager->getAdminPassword();
 
         require('views/templates/login-user.php');
     }

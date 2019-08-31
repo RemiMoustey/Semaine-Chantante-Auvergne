@@ -5,42 +5,90 @@
 {% endblock %}
 
 {% block content %}
-    <h2 class="title-comments">Commentaires</h2>
-    {% for comment in comments %}
-        <div class="comment">
-            <h3>{{ comment.author }} le {{ comment.creation_date_fr }}</h3>
-            <p>{{ comment.comment }}</p>
-            {% set notified = false %} 
-            {% for notifiedComment in notifiedComments %}
-                {% if notifiedComment.comment_id == comment.id %}
-                    {% set notified = true %} 
+    {% if user == 'chorist' %}
+        <h2 class="title-comments">Commentaires</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <h3>{{ comment.author }} le {{ comment.creation_date_fr }}</h3>
+                <p>{{ comment.comment }}</p>
+                {% set notified = false %} 
+                {% for notifiedComment in notifiedComments %}
+                    {% if notifiedComment.comment_id == comment.id %}
+                        {% set notified = true %}
+                    {% endif %}
+                {% endfor %}
+                {% if notified %}
+                    <p>Ce commentaire a déjà été signalé.</p>
+                {% else %}
+                    <a href="index.php?action=notify-comment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'));">Signaler</a>
                 {% endif %}
-            {% endfor %}
-            {% if notified %}
-                <p>Ce commentaire a déjà été signalé.</p>
-            {% else %}
-                <a href="index.php?action=notify-comment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'));">Signaler</a>
-            {% endif %}
+            </div>
+        {% endfor %}
+        {% if pages > 1 and page > 1 %}
+            <p>
+                <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires précédents</a>
+            </p>
+        {% endif %}
+        {% if pages > 1 and page < pages %}
+            <p>
+                <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires suivants</a>
+            </p>
+        {% endif %}
+        <div class="form_add_comment w-50">
+            <h2>Ajouter un commentaire</h2>
+            <form method="post" action="index.php?action=add-comment">
+                <label for="author">Auteur :</label>
+                <input type="text" name="author" class="form-control" required />
+                <label for="comment">Commentaire :</label>
+                <textarea name="comment" class="form-control" rows="5" required></textarea>
+                <button class="btn btn-primary mt-3" type="submit" onclick="return(confirm('Êtes-vous sûr de vouloir poster ce commentaire ?'));">Envoyer</button>
+            </form>
         </div>
-    {% endfor %}
-    {% if pages > 1 and page > 1 %}
-        <p>
-            <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires précédents</a>
-        </p>
     {% endif %}
-    {% if pages > 1 and page < pages %}
-        <p>
-            <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires suivants</a>
-        </p>
-    {% endif %}
-    <div class="form_add_comment w-50">
-        <h2>Ajouter un commentaire</h2>
-        <form method="post" action="index.php?action=add-comment">
-            <label for="author">Auteur :</label>
-            <input type="text" name="author" class="form-control" required />
-            <label for="comment">Commentaire :</label>
-            <textarea name="comment" class="form-control" rows="5" required></textarea>
-            <button class="btn btn-primary mt-3" type="submit" onclick="return(confirm('Êtes-vous sûr de vouloir poster ce commentaire ?'));">Envoyer</button>
+    {% if user == 'admin' %}
+        <p class="search-bar">
+        <form method="post" action="index.php?action=listusers">
+            Rechercher : <input type="text" name="q" required />
+            <input type="submit" value="Rechercher" />
         </form>
-    </div>
+        </p>
+        <p>
+            <a href="index.php?action=export">Exporter les données</a>
+        </p>
+
+        {% for data in users %}
+            <p>
+                {{ data.surname }} {{ data.firstname }}<br />
+                <a href="index.php?action=readuser&amp;id={{ data.id }}">Lire</a>
+            </p>
+        {% endfor %}
+
+        <h2>Commentaires signalés</h2>
+        {% for notifiedComment in notifiedComments %}
+            <div class="notified-comment">
+                <h4>Commentaire de {{ notifiedComment.author }} signalé le {{ notifiedComment.notify_date_fr }}</h4>
+                <p>{{ notifiedComment.comment }}</p>
+                <a href="index.php?action=removeComment&amp;id={{ notifiedComment.comment_id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+            </div>
+        {% endfor %}
+
+        <h2>Commentaires</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <h4>{{ comment.author }} le {{ comment.creation_date_fr }}</h4>
+                <p>{{ comment.comment }}</p>
+                <a href="index.php?action=removeComment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+            </div>
+        {% endfor %}
+        {% if pages > 1 and page > 1 %}
+            <p>
+                <a href="?action=search&amp;p={{ page - 1 }}">Commentaires précédents</a>
+            </p>
+        {% endif %}
+        {% if pages > 1 and page < pages %}
+            <p>
+                <a href="?action=search&amp;p={{ page + 1 }}">Commentaires suivants</a>
+            </p>
+        {% endif %}
+    {% endif %}
 {% endblock %}

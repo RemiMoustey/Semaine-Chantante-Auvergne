@@ -24,9 +24,6 @@ if (isset($_GET['action']))
         case 'home':
             echo $twig->render('home.twig');
             break;
-        case 'login':
-            $registrationController->login();
-            break;
         case 'login-user':
             $registrationController->loginUser();
             break;
@@ -115,17 +112,22 @@ if (isset($_GET['action']))
         case 'questions':
             echo $twig->render('questions.twig');
             break;
-        case 'search':
         case 'space-users':
-            if ($_GET['action'] === 'search')
+            $user = null;
+            if(isAuthenticatedUser())
             {
                 authenticatedUser();
-                $calledTemplate = 'search.twig';
+                $user = 'chorist';
             }
-            elseif ($_GET['action'] === 'space-users')
+            else if(isAuthenticatedAdmin())
             {
                 authenticatedAdmin();
-                $calledTemplate = 'space-users.twig';
+                $user = 'admin';
+            }
+            else
+            {
+                $registrationController->loginUser();
+                break;
             }
             $comments = $registrationController->comments();
             $countComments = $registrationController->countComments();
@@ -133,7 +135,7 @@ if (isset($_GET['action']))
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
             $notifiedComments = $registrationController->notifiedComments();
-            echo $twig->render($calledTemplate, ['comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
+            echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
             break;
         case 'notify-comment':
             authenticatedUser();

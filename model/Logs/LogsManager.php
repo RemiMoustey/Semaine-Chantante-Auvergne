@@ -10,13 +10,13 @@ class LogsManager extends PDOFactory
 	*
 	* @return array
 	*/
-	public function getAdminLogs()
+	public function getAdminPassword()
 	{
 		$db = $this->getMysqlConnexion();
-		$query = $db->query('SELECT * FROM logs');
-		$logs = $query->fetch();
+		$query = $db->query('SELECT hashed_password FROM passwordadmin');
+		$adminPassword = $query->fetch()[0];
 
-		return $logs;
+		return $adminPassword;
 	}
 
 	public function getUserPassword()

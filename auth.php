@@ -18,8 +18,7 @@ function authenticatedAdmin()
 {
     if(!isAuthenticatedAdmin())
     {
-        header('Location: index.php?action=login');
-        exit();
+        header('Location: index.php?action=login-user');
     }
 }
 
@@ -37,6 +36,5 @@ function authenticatedUser()
     if(!isAuthenticatedUser())
     {
         header('Location: index.php?action=login-user');
-        exit();
     }
 }

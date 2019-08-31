@@ -14,7 +14,7 @@
     </head>
     
     <body>
-        <nav class="navbar navbar-expand-sm fixed-top bg-dark">
+    <nav class="navbar navbar-expand-sm fixed-top bg-dark">
             <a class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </a>
@@ -25,51 +25,49 @@
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Projet</a>
                         <div class="dropdown-menu project">
-                            <a class="dropdown-item" href="#">Équipe d'animation</a>
-                            <a class="dropdown-item" href="#">Hébergement</a>
-                            <a class="dropdown-item" href="#">Objectifs</a>
+                            <a class="dropdown-item" href="?action=goals">Objectifs</a>
+                            <a class="dropdown-item" href="?action=accommodation">Hébergement</a>
+                            <a class="dropdown-item" href="?action=animation">Équipe d'animation</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Programme</a>
                         <div class="dropdown-menu program">
                             <ul>
-                                <li><a class="dropdown-item" href="#">Chant commun</a></li>
-                                <li><a class="dropdown-item" href="#">Mise en scène</a></li>
-                                <li><a class="dropdown-item" href="#">Temps libre</a></li>
+                                <li><a class="dropdown-item" href="?action=communal-song">Chant commun</a></li>
+                                <li><a class="dropdown-item" href="?action=staging">Mise en scène</a></li>
+                                <li><a class="dropdown-item" href="?action=free-time">Temps libre</a></li>
+                                <li><a class="dropdown-item" href="?action=shows">Spectacles</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Images & sons</a>
                         <div class="dropdown-menu images_sounds">
                             <ul>
-                                <li><a class="dropdown-item" href="#">Photos</a></li>
-                                <li><a class="dropdown-item" href="#">Chansons</a></li>
-                                <li><a class="dropdown-item" href="#">Vidéos</a></li>
-                                <li><a class="dropdown-item" href="./index.php?action=newspaper">Presse</a></li>
+                                <li><a class="dropdown-item" href="?action=songs">Chansons</a></li>
+                                <li><a class="dropdown-item" href="?action=videos">Vidéos</a></li>
+                                <li><a class="dropdown-item" href="?action=newspaper">Presse</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">En savoir plus</a>
                         <div class="dropdown-menu infos">
                             <ul>
-                                <li><a class="dropdown-item" href="#">Questions Réponses</a></li>
-                                <li><a class="dropdown-item" href="#">Infos pratiques</a></li>
-                                <li><a class="dropdown-item" href="#">Contact</a></li>
+                                <li><a class="dropdown-item" href="?action=infos">Infos pratiques</a></li>
+                                <li><a class="dropdown-item" href="?action=questions">Questions Réponses</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Membres</a>
                         <div class="dropdown-menu inscriptions">
                             <ul>
-                                <li><a class="dropdown-item" href="#">Espace inscrits</a></li>
-                                <li><a class="dropdown-item" href="#">Administrateur</a></li>
-                                <li><a class="dropdown-item" href="#">S'inscrire</a></li>
+                                <li><a class="dropdown-item" href="?action=registration">S'inscrire</a></li>
+                                <li><a class="dropdown-item" href="?action=space-users">Espace inscrits</a></li>
+                                <li><a class="dropdown-item" href="?action=search&amp;p=1">Administrateur</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </nav>
-       
     </body>
 </html>

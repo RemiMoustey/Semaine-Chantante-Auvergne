@@ -89,9 +89,9 @@ h1
     color: #ccc;
 }
 
-.text-videos-songs
+.text-videos-songs, a
 {
-    color: #00e065;
+    color: #01ff73;
 }
 
 .bloc-page
@@ -99,11 +99,9 @@ h1
     background-color: rgba(0,255,0,0.5);
 }
 
-.navbar-inverse .navbar-nav>li>a
+a:hover
 {
-    text-transform: uppercase;
-    color: #00b247;
-    font-weight: bold;
+    color: #fff;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover

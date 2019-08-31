@@ -2,12 +2,18 @@
 $error = null;
 if(!empty($_POST['password']))
 {
-	if (password_verify($_POST['password'], $password))
+    if (password_verify($_POST['password'], $adminPassword))
+	{
+		session_start();
+		$_SESSION['authenticatedAdmin'] = 1;
+		header('Location: index.php?action=space-users');
+	}
+	elseif (password_verify($_POST['password'], $password))
 	{
 		session_start();
 		$_SESSION['authenticatedUser'] = 1;
 		header('Location: index.php?action=space-users');
-	}
+    }
 	else
 	{
 		$error = "Mot de passe incorrect";
@@ -16,6 +22,10 @@ if(!empty($_POST['password']))
 
 require_once 'auth.php';
 if(isAuthenticatedUser())
+{
+	header('Location: index.php?action=space-users');
+}
+if(isAuthenticatedAdmin())
 {
 	header('Location: index.php?action=space-users');
 }
