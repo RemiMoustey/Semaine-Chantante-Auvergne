@@ -74,7 +74,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=search');
+            header('Location: index.php?action=space-users');
         }
     }
 
@@ -89,7 +89,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=search');
+            header('Location: index.php?action=space-users');
         }
     }
 
@@ -104,7 +104,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=search');
+            header('Location: index.php?action=space-users');
         }
     }
 
@@ -119,7 +119,7 @@ class RegistrationController
         }
         else
         {
-            header('Location: index.php?action=search');
+            header('Location: index.php?action=space-users');
         }
     }
 

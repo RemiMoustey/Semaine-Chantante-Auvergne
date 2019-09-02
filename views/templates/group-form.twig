@@ -2,9 +2,9 @@
     <div class="form-group">
         <label for="{{ name }}">{{ label }}</label>
         {% if required == true %}
-            <input type={{ type }} name="{{ name }}" id="{{ name }}" placeholder="Votre réponse" class="form-control" value="{{value}}" required />
+            <input type={{ type }} name="{{ name }}" id="{{ name }}" class="form-control" value="{{value}}" required />
         {% else %}
-            <input type={{ type }} name="{{ name }}" id="{{ name }}" placeholder="Votre réponse" class="form-control" value="{{value}}" />
+            <input type={{ type }} name="{{ name }}" id="{{ name }}" class="form-control" value="{{value}}" />
         {% endif %}
         <span id="miss-{{ name }}"></span>
     </div>

@@ -57,17 +57,19 @@ function verify(type, name, regex, message) {
     }
 }
 
-verify('text', 'surname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
-verify('text', 'firstname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
-verify('text', 'user_address', /./, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
+let currentError = 'Format incorrect. Caractères autorisées : lettres, espaces, apostrophes et tirets.';
+
+verify('text', 'surname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, currentError);
+verify('text', 'firstname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, currentError);
+verify('text', 'user_address', /./, currentError);
 verify('number', 'postal_code', /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/, "Veuillez saisir un code postal valide.");
-verify('text', 'town', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
+verify('text', 'town', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, currentError);
 verify('tel', 'phone_number', /^0?[1-9]([-. ]?\d{2}){4}$/, "Veuillez saisir un numéro de téléphone valide.");
 verify('tel', 'phone_number_office', /^0?[1-9]([-. ]?\d{2}){4}$/, "Veuillez saisir un numéro de téléphone valide.");
-verify('email', 'email', /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/, "Veuillez saisir un courriel valide");
+verify('email', 'email', /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/, "Veuillez saisir un email valide");
 verify('date', 'birthday', /./, "Veuillez saisir une date de naissance valide.");
-verify('text', 'choir_name', /./, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
-verify('text', 'choir_town', /./, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
+verify('text', 'choir_name', /./, currentError);
+verify('text', 'choir_town', /./, currentError);
 verifyCheckbox('radio', 'status', /./, 'Veuillez cocher une option');
 verifyCheckbox('radio', 'music_stand', /./, 'Veuillez cocher une option');
 verifyCheckbox('radio', 'payment', /./, 'Veuillez cocher une option');
@@ -81,12 +83,11 @@ function testInputs() {
             return false;
         }
     });
-    console.log(document.location.href);
     if (pass && $('input:checked').length === 3 || pass && document.location.href.indexOf('readuser') !== -1) {
-        $('.formular-button').removeAttr("disabled");
+        $('.miss-inscription').html('<input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm(\'Êtes-vous sûr de vouloir enregistrer votre inscription ?\'));" />');
     }
     else {
-        $('.formular-button').attr("disabled", "");
+        $('.miss-inscription').html('<input class="mb-2 mr-3 formular-button" type="submit" value="Envoyer" id="submit" disabled /><br /> Attention : Inscription incomplète ou erronée !');
     }
 }
   

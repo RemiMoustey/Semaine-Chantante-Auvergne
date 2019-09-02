@@ -2,6 +2,7 @@
 {% import 'group-form.twig' as groupForm %}
 
 {% block head %}
+    <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
     <title>S'inscrire</title>
 {% endblock %}
 
@@ -10,44 +11,47 @@
         {% if user == 'admin' %}
             {% set isAccepted = false %}
             {% for acceptedUser in acceptedUsers %}
-                {% if acceptedUser.id == infos.id %}
+                {% if acceptedUser.paid == "Payé" %}
                     {% set isAccepted = true %}
                 {% endif %}
             {% endfor %}
             {% set infoUser = infos.0 %}
-            <h1 class="green-title title-page text-center">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
-            <p class="bold">
-                {% if infoUser.status == 'Choriste' %}
-                    {{ 'Choriste' }}
-                {% elseif infoUser.status == 'Chef de choeur' %}
-                    {{ 'Chef de Cbœur' }}
-                {% endif %}
+            <h1 class="green-title title-form title-page text-center information-user">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
+            <p class="text-center">
+                <span class="title-form">
+                    {% if infoUser.status == 'Choriste' %}
+                        {{ 'Choriste' }}
+                    {% elseif infoUser.status == 'Chef de choeur' %}
+                        {{ 'Chef de Cbœur' }}
+                    {% endif %}
 
-                {{ ' - ' }}
+                    {{ ' - ' }}
 
-                {% if infoUser.music_stand == 'Soprane' %}
-                    {{ 'Soprane' }}
-                {% elseif infoUser.music_stand == 'Alto' %}
-                    {{ 'Alto' }}
-                {% elseif infoUser.music_stand == 'Tenor' %}
-                    {{ 'Tenor' }}
-                {% elseif infoUser.music_stand == 'Basse' %}
-                    {{ 'Basse' }}
-                {% endif %}
+                    {% if infoUser.music_stand == 'Soprane' %}
+                        {{ 'Soprane' }}
+                    {% elseif infoUser.music_stand == 'Alto' %}
+                        {{ 'Alto' }}
+                    {% elseif infoUser.music_stand == 'Tenor' %}
+                        {{ 'Tenor' }}
+                    {% elseif infoUser.music_stand == 'Basse' %}
+                        {{ 'Basse' }}
+                    {% endif %}
+                </span>
 
                 {% if isAccepted %}
-                            - <span class="green">Inscription réglée par 
+                            <span class="title-form">- Inscription réglée par 
                 {% else %}
                     <br /><span class="red">Règlement en attente par 
                 {% endif %}
                 {{ infoUser.payment }}</span>
             </p>
+            <form method="post" action="index.php?action=updateuser&amp;id={{ infoUser.id }}">
         {% endif %}
         {% if user != 'admin' %}
-            <h1 class="green-title title-page text-center briquet">Inscription en ligne</h1>
+            <h1 class="green-title title-page text-center briquet title-form">Inscription en ligne</h1>
+            <form method="post" action="index.php?action=adduser">
         {% endif %}
-        <form method="post" action="index.php?action=adduser">
-            <div class="bloc-form col-6 m-auto">
+            <div class="bloc-form m-auto">
                 {{ groupForm.groupText('surname', 'Nom', infoUser.surname) }}
                 {{ groupForm.groupText('firstname', 'Prénom', infoUser.firstname) }}
                 {{ groupForm.groupText('user_address', 'Adresse', infoUser.address) }}
@@ -55,45 +59,51 @@
                 {{ groupForm.groupText('town', 'Ville', infoUser.town) }}
                 {{ groupForm.groupText('phone_number', 'Téléphone', infoUser.phone_number, 'tel') }}
                 {{ groupForm.groupText('phone_number_office', 'Téléphone bureau', infoUser.phone_number_office, 'tel', false) }}
-                {{ groupForm.groupText('email', 'Courriel', infoUser.email, 'email') }}
+                {{ groupForm.groupText('email', 'Email', infoUser.email, 'email') }}
                 {{ groupForm.groupText('birthday', 'Date de naisance', infoUser.birthday, 'date') }}
                 {{ groupForm.groupText('choir_name', 'Nom de la chorale', infoUser.choir_name) }}
                 {{ groupForm.groupText('choir_town', 'Ville de la chorale', infoUser.choir_town) }}
 
         {% if user == 'admin' %}
                 <p class="text-justify"><label for="additional">Complément d'information</label><br />
-                {{ infoUser.additional }}</p>
-                <p><input type="submit" value="Modifier" id="submit" class="formular-button"></p>
+                {% if infoUser.additional == '' %}
+                    (Vide)
+                {% else %}
+                    {{ infoUser.additional }}
+                {% endif %}
+                </p>
+                <p class="mt-5 mb-5"><input type="submit" value="Modifier l'inscription" id="submit" class="formular-button"></p>
+                <p>
+                {% if isAccepted %}
+                    <div class="d-flex flex-row justify-content-between"><button href="index.php?action=deleteaccepteduser&amp;id=<?= $info['id'] ?>" class="cancel formular-button red" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</button>
+                {% else %}
+                    <div class="d-flex flex-row justify-content-between"><button href="index.php?action=acceptuser&amp;id=<?= $info['id'] ?>" class="green accept formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</button>
+                {% endif %}
+                    <button href="index.php?action=deleteregistereduser&amp;id=<?= $info['id'] ?>" class="delete formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</button></div>
+                </p>
             </div>
         </form>
-        <p>
-            {% if isAccepted %}
-                <button href="index.php?action=deleteaccepteduser&amp;id=<?= $info['id'] ?>" class="cancel formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Annuler le règlement</button>
-            {% else %}
-                <button href="index.php?action=acceptuser&amp;id=<?= $info['id'] ?>" class="green accept formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</button>
-            {% endif %}
-            <button href="index.php?action=deleteregistereduser&amp;id=<?= $info['id'] ?>" class="delete formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</button>
-        </p>
 
         {% else %}
             {{ groupForm.groupRadio('Êtes-vous :', 'status', {'label1' : 'Choriste', 'label2' : 'Chef de chœur'}) }}
-            {{ groupForm.groupRadio('Pupitre :', 'music_stand', {'label1' : 'Soprane', 'label2' : 'Alto', 'label3' : 'Ténor', 'label4' : 'Basse'}) }}
+            {{ groupForm.groupRadio('Cochez votre pupitre', 'music_stand', {'label1' : 'Soprane', 'label2' : 'Alto', 'label3' : 'Ténor', 'label4' : 'Basse'}) }}
 
-            <label for="additional">Complément d'information (expérience chorale, scénique, autres précisions...)</label>
-            <textarea type="text" name="additional" id="additional" placeholder="Votre réponse" class="form-control"></textarea>
-            <h3>Validation</h3>
-            <p>Votre inscription sera validée à réception du versement de réservation de 200 €
+            <label for="additional">Complément d'information (expérience chorale et scénique, autres précisions...)</label>
+            <textarea type="text" name="additional" id="additional" class="form-control" rows="4"></textarea>
+            <h3 class="mt-5 briquet text-center validation">Validation</h3>
+            <div>
+                <p>Votre inscription sera validée dès la réception du versement de réservation de <span class="grey-white-color">200 €</span></p>
                 <ul>
-                    <li>soit par virement aux coordonnées bancaires suivantes :<br />
-                    IBAN FR76 1600 6000 1000 0000 9000 1000 / BIC AGRIFRXX000</li>
-                    <li>soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
-                    Semaine Chantante Auvergne<br />
-                    BP 100<br />
-                    63000 Clermont-Ferrand</li>
-                </ul>
-            </p>
+                        <li>soit par virement aux coordonnées bancaires suivantes :<br />
+                        IBAN <span class="grey-white-color">FR76 1600 6000 1000 0000 9000 1000</span><br /> BIC <span class="grey-white-color">AGRIFRXX000</span></li>
+                        <li class="mt-2">soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
+                        <span class="grey-white-color">Semaine Chantante Auvergne<br />
+                        BP 100<br />
+                        63000 Clermont-Ferrand</span></li>
+                    </ul>
+            </div>
             {{ groupForm.groupRadio('Mode de versement :', 'payment', {'label1' : 'Virement bancaire', 'label2' : 'Chèque'}) }}
-            <input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm('Êtes-vous sûr enregistrer ces informations ?'));" disabled />
+            <p class="miss-inscription text-center"><input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm('Êtes-vous sûr enregistrer ces informations ?'));" disabled /></p>
             </div>
         </form>
         {% endif %}

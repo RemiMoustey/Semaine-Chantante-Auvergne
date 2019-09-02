@@ -52,7 +52,7 @@ h1
     color: #00b050;
 }
 
-.red
+.red, .miss-inscription
 {
     color: #f00;
 }
@@ -70,6 +70,12 @@ h1
 .title-page, .search-bar, .bloc-success, .form-login h2, .title-comments
 {
     margin-top: 60px;
+}
+
+.information-user
+{
+    margin-top: 80px;
+    margin-bottom: 10px;
 }
 
 .grey-text
@@ -95,13 +101,23 @@ nav, .picture, .dropdown-menu
 
 
 
-.title-video-song
+.title-video-song, input[type="radio"] + label
 {
     color: #ccc;
     font-size: 28px;
 }
 
-.text-videos-songs, a
+.grey-white-color
+{
+    color: #ccc;
+}
+
+.miss-inscription
+{
+    font-size: 18px;
+}
+
+.text-videos-songs, a, .bloc-form, .title-form
 {
     color: #01ff73;
 }
@@ -260,7 +276,7 @@ nav, .picture, .dropdown-menu
     margin: 10px 0 18px 0
 }
 
-.sub-title-holiday, .caption-shows, .important-points
+.sub-title-holiday, .caption-shows, .important-points, .validation
 {
     font-size: 40px;
 }
@@ -474,6 +490,42 @@ audio
 .title-contact-formular
 {
     font-size: 26px;
+}
+
+.bloc-form
+{
+    width: 470px;
+}
+
+input, textarea
+{
+    box-shadow: 4px 4px 8px #000;
+}
+
+input[type="radio"]
+{
+    box-shadow: none;
+    margin-right: 20px;
+}
+
+label
+{
+    margin: 0;
+}
+
+label, #status, #music_stand, #payment
+{
+    font-size: 20px;
+}
+
+input[type="radio"] + label
+{
+    font-size: 16px;
+}
+
+.information-user
+{
+    font-size: 30px;
 }
 
 @media all and (max-width: 1199px)
@@ -739,5 +791,13 @@ audio
     #carousel_item .printed_image, #carousel_item .new-img, #carousel_item .printed_image img, #carousel_item .new-img img
     {
         width: 84%;
+    }
+}
+
+@media all and (max-width: 497px)
+{
+    .bloc-form
+    {
+        width: 300px;
     }
 }
