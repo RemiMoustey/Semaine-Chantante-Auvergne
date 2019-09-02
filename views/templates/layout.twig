@@ -64,6 +64,9 @@
                             <ul>
                                 <li><a class="dropdown-item" href="?action=registration">S'inscrire</a></li>
                                 <li><a class="dropdown-item" href="?action=login-user">Espace inscrits</a></li>
+                                {% if (isAuthenticatedUser() or isAuthenticatedAdmin()) %}
+                                    <li><a class="dropdown-item" href="?action=logout">Se déconnecter</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </li>

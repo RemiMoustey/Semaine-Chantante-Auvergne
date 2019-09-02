@@ -134,7 +134,7 @@ class RegistrationController
         }
         else
         {
-            require('views/templates/export.php');
+            require('export.php');
         }
     }
 

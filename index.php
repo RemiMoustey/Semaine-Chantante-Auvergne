@@ -14,35 +14,20 @@ $twig = new \Twig_Environment($loader, [
     'debug' => true,
     'cache' => false
 ]);
-$twig->addFunction(new \Twig_SimpleFunction('password_verify', function($password, $hashedPassword) {
-    return password_verify($password, $hashedPassword);
-}));
-$twig->addFunction(new \Twig_SimpleFunction('empty', function($value) {
-    return empty($value);
-}));
-$twig->addFunction(new \Twig_SimpleFunction('sessionStart', function() {
-    return session_start();
-}));
-$twig->addFunction(new \Twig_SimpleFunction('header', function($path) {
-    return header('Location: ' . $path);
-}));
-$passwordUser = $registrationController->passwordUser();
-$passwordAdmin = $registrationController->passwordAdmin();
-require_once 'auth.php';
-$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedUser', function() {
-    return isAuthenticatedUser();
-}));
-$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function() {
-    return isAuthenticatedAdmin();
-}));
-$twig->addGlobal('_post', $_POST);
-$twig->addGlobal('_get', $_GET);
+
 $user = null;
 
 $twig->addExtension(new \Twig\Extension\DebugExtension());
 
 require_once('auth.php');
-
+$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedUser', function ()
+{
+    return isAuthenticatedUser();
+}));
+$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function ()
+{
+    return isAuthenticatedAdmin();
+}));
 if (isset($_GET['action']))
 {
     switch ($_GET['action'])

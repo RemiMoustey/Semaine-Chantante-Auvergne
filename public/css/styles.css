@@ -1,3 +1,5 @@
+/* Éléments généraux */
+
 @font-face {
 	font-family: 'Briquet';
 	src: url('fonts/briquetn.TTF');
@@ -6,6 +8,7 @@
 .bloc-page
 {
     margin-top: 60px;
+    background-color: rgba(0,255,0,0.5);
 }
 
 label
@@ -16,16 +19,6 @@ label
 .bold
 {
     font-weight: bold;
-}
-
-.underline
-{
-    text-decoration: underline;
-}
-
-.italic
-{
-    font-style: italic;
 }
 
 .without-bold
@@ -84,6 +77,24 @@ h1
     color: #aaa;
 }
 
+a:hover
+{
+    color: #fff;
+}
+
+nav, .picture, .dropdown-menu
+{
+    box-shadow: 6px 6px 10px #000;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover
+{
+    color: #fff;
+}
+
+
+
+
 .title-video-song
 {
     color: #ccc;
@@ -100,21 +111,6 @@ h1
     font-size: 20px;
     position: relative;
     bottom: 10px;
-}
-
-.bloc-page
-{
-    background-color: rgba(0,255,0,0.5);
-}
-
-a:hover
-{
-    color: #fff;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover
-{
-    color: #fff;
 }
 
 .animation-text-image
@@ -264,7 +260,7 @@ a:hover
     margin: 10px 0 18px 0
 }
 
-.sub-title-holiday, .caption-shows
+.sub-title-holiday, .caption-shows, .important-points
 {
     font-size: 40px;
 }
@@ -409,7 +405,6 @@ a:hover
 {
     width: 160px;
     border-radius: 10px;
-    box-shadow: 6px 6px 10px #000;  
     margin-bottom: 10px;
 }
 
@@ -474,6 +469,11 @@ audio
 .slides
 {
     overflow: hidden;
+}
+
+.title-contact-formular
+{
+    font-size: 26px;
 }
 
 @media all and (max-width: 1199px)
@@ -642,7 +642,6 @@ audio
         border-radius: 8px;
         border: 0;
         margin: 0;
-        box-shadow: 2px 2px 5px #fff;
     }
 
     .dropdown-menu a
