@@ -14,6 +14,32 @@ $twig = new \Twig_Environment($loader, [
     'debug' => true,
     'cache' => false
 ]);
+$twig->addFunction(new \Twig_SimpleFunction('password_verify', function($password, $hashedPassword) {
+    return password_verify($password, $hashedPassword);
+}));
+$twig->addFunction(new \Twig_SimpleFunction('empty', function($value) {
+    return empty($value);
+}));
+$twig->addFunction(new \Twig_SimpleFunction('sessionStart', function() {
+    return session_start();
+}));
+$twig->addFunction(new \Twig_SimpleFunction('header', function($path) {
+    return header('Location: ' . $path);
+}));
+$passwordUser = $registrationController->passwordUser();
+$passwordAdmin = $registrationController->passwordAdmin();
+require_once 'auth.php';
+$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedUser', function() {
+    return isAuthenticatedUser();
+}));
+$twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function() {
+    return isAuthenticatedAdmin();
+}));
+$twig->addGlobal('_post', $_POST);
+$twig->addGlobal('_get', $_GET);
+$user = null;
+
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 
 require_once('auth.php');
 
@@ -25,36 +51,39 @@ if (isset($_GET['action']))
             echo $twig->render('home.twig');
             break;
         case 'login-user':
-        case 'connexion':
-            $twig->addFunction(new \Twig_SimpleFunction('password_verify', function($password, $hashedPassword) {
-                return password_verify($password, $hashedPassword);
-            }));
-            $twig->addFunction(new \Twig_SimpleFunction('empty', function($value) {
-                return empty($value);
-            }));
-            $twig->addFunction(new \Twig_SimpleFunction('sessionStart', function() {
-                return session_start();
-            }));
-            $twig->addFunction(new \Twig_SimpleFunction('header', function($path) {
-                return header('Location: ' . $path);
-            }));
-            $passwordUser = $registrationController->passwordUser();
-            $passwordAdmin = $registrationController->passwordAdmin();
-            require_once 'auth.php';
-            $twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedUser', function() {
-                return isAuthenticatedUser();
-            }));
-            $twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function() {
-                return isAuthenticatedAdmin();
-            }));
+            $userPassword = $registrationController->passwordUser();
+            $adminPassword = $registrationController->passwordAdmin();
+            $error = null;
             if(!empty($_POST['password']))
-            {   
-                echo $twig->render('login-user.twig', ['sentPassword' => $_POST['password'], 'passwordUser' => $passwordUser, 'passwordAdmin' => $passwordAdmin, 'session' => $_SESSION]);
-            }
-            else
             {
-                echo $twig->render('login-user.twig');
+                if (password_verify($_POST['password'], $adminPassword))
+                {
+                    session_start();
+                    $_SESSION['authenticatedAdmin'] = 1;
+                    header('Location: index.php?action=space-users');
+                }
+                elseif (password_verify($_POST['password'], $userPassword))
+                {
+                    session_start();
+                    $_SESSION['authenticatedUser'] = 1;
+                    header('Location: index.php?action=space-users');
+                }
+                else
+                {
+                    $error = "Mot de passe incorrect";
+                }
             }
+            
+            require_once 'auth.php';
+            if(isAuthenticatedUser())
+            {
+                header('Location: index.php?action=space-users');
+            }
+            if(isAuthenticatedAdmin())
+            {
+                header('Location: index.php?action=space-users');
+            }
+            echo $twig->render('login-user.twig', ['error' => $error]);
             break;
         case 'registration':
             echo $twig->render('registration.twig');
@@ -63,7 +92,10 @@ if (isset($_GET['action']))
             echo $twig->render('registrationComplete.twig');
             break;
         case 'readuser':
+        $user = 'admin';
             $infos = $registrationController->listInformationUsers($_GET['id']);
+            $acceptedUsers = $registrationController->acceptedUsers();
+            echo $twig->render('registration.twig', ['user' => $user, 'infos' => $infos->fetchAll(), 'acceptedUsers' => $acceptedUsers]);
             break;
         case 'adduser':
             if (!empty($_POST['surname']) AND !empty($_POST['firstname']) AND !empty($_POST['user_address']) AND !empty($_POST['postal_code']) AND 
@@ -142,29 +174,30 @@ if (isset($_GET['action']))
             echo $twig->render('questions.twig');
             break;
         case 'space-users':
-            $user = null;
-            if(isAuthenticatedUser())
-            {
-                authenticatedUser();
-                $user = 'chorist';
-            }
-            else if(isAuthenticatedAdmin())
-            {
-                authenticatedAdmin();
-                $user = 'admin';
-            }
-            else
-            {
-                $registrationController->loginUser();
-                break;
-            }
             $comments = $registrationController->comments();
             $countComments = $registrationController->countComments();
             $count = $countComments->fetch()[0];
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
             $notifiedComments = $registrationController->notifiedComments();
-            echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
+            if(isAuthenticatedUser())
+            {
+                authenticatedUser();
+                $user = 'chorist';
+                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
+            }
+            else if(isAuthenticatedAdmin())
+            {
+                authenticatedAdmin();
+                $user = 'admin';
+                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
+            }
+            else
+            {
+                header('Location: index.php?action=login-user');
+                break;
+            }
+            
             break;
         case 'notify-comment':
             authenticatedUser();

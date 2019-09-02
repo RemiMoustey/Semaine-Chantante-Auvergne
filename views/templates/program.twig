@@ -2,54 +2,60 @@
 
 {% block head %}
     <link rel="stylesheet" href="./public/css/special-background.css" />
-    <title>Les animateurs</title>
+    {% if page == 'communal-song' %}
+        <title>Chant commun</title>
+    {% elseif page == 'staging' %}
+        <title>Mise en scène</title>
+    {% elseif page == 'free-time' %}
+        <title>Temps libre</title>
+    {% elseif page == 'shows' %}
+        <title>Spectacles</title>
+    {% endif %}
 {% endblock %}
+
 {% block content %}
     <div class="program container-fluid">
         {% if page == 'communal-song' %}
             <h1 class="title-page briquet">Chant commun</h1>
             <div><img src="./public/img/program/chant_commun.png" alt="Chant commun lors de la Semaine Chantante au Grand Panorama" /></div>
             <div class="program-text col-md-6">
-                <p class="intro mb-5">Les participants découvriront sur place les partitions des chansons, sous la responsabilité de Claude Bégin et Véronique, accompagnés par Gilles Breton et ses musiciens. Ils devront apprendre et mettre au point sur place ce nouveau répertoire.</p>
+                <p class="big-text-program mb-5">Les participants découvriront sur place les partitions des chansons, sous la responsabilité de Claude Bégin et Véronique, accompagnés par Gilles Breton et ses musiciens. Ils devront apprendre et mettre au point sur place ce nouveau répertoire.</p>
                 <h2 class="grey-text">Le répertoire</h2>
                 <p>Le répertoire a été soigneusement choisi dans celui des chanteurs qui comptent et qui font vivre une certaine chanson française et québécoise, aux textes soignés et à la qualité musicale indiscutable. Citons par exemple pour le Québec : Isabelle Boulay, Jean Lapointe, Félix Leclerc, Claude Léveillée, Gilles Vigneault et pour la France : Michel Fugain, Jean-Jacques Goldman, Maurane, Michel Sardou, Gilbert Bécaud...</p>
                 <h2 class="grey-text">La chanson polyphonique</h2>
-                <p>Les arrangements musicaux à plusieurs voix sont réalisés par des musiciens qui ont le talent d'écrire des partitions qui servent l'œuvre de l'auteur de la chanson originale, sans en dénaturer l'esprit. Pour la semaine chantante, il a de plus été fait appel aux talents de Claude Bégin, Gilles Breton et Véronique, du groupe Aquarelle.</p>
+                <p>Les arrangements musicaux à plusieurs voix sont réalisés par des musiciens qui ont le talent d'écrire des harmonisations qui servent l'œuvre de l'auteur de la chanson originale, sans en dénaturer l'esprit. Pour la semaine chantante, il a de plus été fait appel aux talents de Claude Bégin, Gilles Breton et Véronique, du groupe Aquarelle.</p>
             </div>
-
         {% elseif page == 'staging' %}
             <h1 class="title-page briquet">Mise en scène</h1>
             <div><img src="./public/img/program/mise_en_scene.png" alt="Mise en scène lors de la Semaine Chantante au Grand Panorama" /></div>
-            <div class="program-text col-md-6 intro mt-5">
-                <p>La chanson d'aujourd'hui se doit d'offrir à regarder autant qu'à entendre.</p>
+            <div class="program-text col-md-6 big-text-program mt-5">
+                <p><q>La chanson d'aujourd'hui se doit d'offrir à regarder autant qu'à entendre</q>.</p>
                 <p>On n'imagine pas un chanteur immobile sur scène. La semaine chantante s'attaque donc à la mise en scène et offre une image jeune, vivante, tonique. Bref, une chanson qui bouge ! Un Spectacle plutôt qu'un Concert.</p>
                 <p>Nous aurons donc à créer les mouvements qui donneront vie à nos chansons. Parfois en grand groupe, pour une mise en scène simple, parfois en groupe restreint, avec ceux qui le souhaiteront, afin de mettre au point quelques chorégraphies plus élaborées.</p>
             </div>
-
         {% elseif page == 'free-time' %}
             <h1 class="title-page briquet">Temps libre</h1>
             <div><img src="./public/img/program/temps_libre.png" alt="Temps libre lors de la Semaine Chantante au Grand Panorama" /></div>
-            <div class="program-text col-md-6 intro mt-5">
+            <div class="program-text col-md-6 big-text-program mt-5">
                 <h2 class="title-free-time grey-text">Détente</h2>
                 <p>Pour ceux qui n'envisagent pas un séjour en Auvergne sans tourisme ou sans temps libre, il sera possible de prendre le temps de vivre. Le travail commun sera notre seule exigence à tous. Nous proposerons dans le séjour une sortie touristique guidée.</p>
                 <h2 class="title-free-time grey-text">Surprises</h2>
                 <p>Nous pourrons assister à des mini-spectacles présentés par les groupes de chanteurs présents, découvrir un répertoire annexe, échanger des partitions. Il y aura aussi les veillées, animées par nos musiciens et bien sûr de l'inattendu !</p>
             </div>
-
         {% elseif page == 'shows' %}
             <h1 class="title-page briquet">2 Grands Spectacles</h1>
             <figure>
                 <img src="./public/img/program/la_bourboule.png" alt="Spectacle de la Semaine Chantante à La Bourboule" />
-                <figcaption>La Bourboule</figcaption>
+                <figcaption class="caption-shows briquet text-center grey-text mt-2">La Bourboule</figcaption>
             </figure>
             <figure>
                 <img src="./public/img/program/clermont.png" alt="Spectacle de la Semaine Chantante à Clermont-Ferrand"/>
-                <figcaption>Clermont-Ferrand</figcaption>
+                <figcaption class="caption-shows briquet text-center grey-text mt-2">Clermont-Ferrand</figcaption>
             </figure>
-            <div class="program-text">
+            <div class="program-text big-text-program col-md-6 mb-5">
                 <p>En fin de semaine, les chanteurs donneront deux fois un spectacle qui sera la "récompense" et le résultat du travail accompli. Les rendez-vous sont pris à La Bourboule et à Clermont-Ferrand.</p>
-                <p><strong>La Bourboule</strong> : Le spectacle sera donné le 21 août à 21h dans cette station thermale réputée, située au pied du massif du Sancy.</p>
-                <p><strong>Clermont-Ferrand</strong> : Capitale de l'Auvergne.<br />
+                <p><strong class="grey-text">La Bourboule</strong> : Le spectacle sera donné le 21 août à 21h dans cette station thermale réputée, située au pied du massif du Sancy.</p>
+                <p><strong class="grey-text">Clermont-Ferrand</strong> : Capitale de l'Auvergne.<br />
                 Le spectacle aura lieu dans le cadre féérique du Théâtre de Verdure le 22 août à 21h.</p>
             </div>
         {% endif %}

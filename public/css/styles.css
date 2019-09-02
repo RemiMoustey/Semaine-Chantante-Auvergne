@@ -117,11 +117,6 @@ a:hover
     color: #fff;
 }
 
-.navbar-toggler
-{
-    display: none;
-}
-
 .animation-text-image
 {
     text-align: justify;
@@ -269,6 +264,11 @@ a:hover
     margin: 10px 0 18px 0
 }
 
+.sub-title-holiday, .caption-shows
+{
+    font-size: 40px;
+}
+
 .text-holiday
 {
     width: 1185px;
@@ -358,7 +358,7 @@ a:hover
     right: 150px;
 }
 
-.intro
+.big-text-program
 {
     font-size: 24px;
 }
@@ -376,6 +376,12 @@ a:hover
 .pictures
 {
     margin-top: 80px;
+}
+
+.return-text
+{
+    position: relative;
+    bottom: 15px;
 }
 
 .pictures .col-md-2
@@ -463,6 +469,11 @@ audio
 #mapid
 {
     height: 600px;
+}
+
+.slides
+{
+    overflow: hidden;
 }
 
 @media all and (max-width: 1199px)
@@ -628,10 +639,10 @@ audio
     {
         background-color: #00b247;
         font-weight: bold;
-        border-radius: 15px;
+        border-radius: 8px;
         border: 0;
         margin: 0;
-        box-shadow: 3px 3px 7px #000;
+        box-shadow: 2px 2px 5px #fff;
     }
 
     .dropdown-menu a

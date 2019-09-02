@@ -82,12 +82,12 @@
         {% endfor %}
         {% if pages > 1 and page > 1 %}
             <p>
-                <a href="?action=search&amp;p={{ page - 1 }}">Commentaires précédents</a>
+                <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires précédents</a>
             </p>
         {% endif %}
         {% if pages > 1 and page < pages %}
             <p>
-                <a href="?action=search&amp;p={{ page + 1 }}">Commentaires suivants</a>
+                <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires suivants</a>
             </p>
         {% endif %}
     {% endif %}

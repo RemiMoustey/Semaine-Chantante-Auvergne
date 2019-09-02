@@ -43,10 +43,13 @@ class RegistrationController
     public function listInformationUsers($id)
     {
         $registrationManager = new RegistrationManager();
-        $infos = $registrationManager->getInfos($id);
-        $acceptedUsers = $registrationManager->getAcceptedUsers();
-        
-        require('views/templates/infos.php');
+        return $registrationManager->getInfos($id);
+    }
+
+    public function acceptedUsers()
+    {
+        $registrationManager = new RegistrationManager();
+        return $registrationManager->getAcceptedUsers();
     }
 
     public function listRegisteredUsers($q)

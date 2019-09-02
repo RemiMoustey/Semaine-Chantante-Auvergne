@@ -1,37 +1,14 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    {% set error = null %}
-
-    {% if empty(sentPassword) %}
-        {% if password_verify(sentPassword, adminPassword) %}
-            {{ sessionStart() }}
-            {% set sessionAuthenticatedAdmin = 1 %}
-            {{ header('index.php?action=space-users') }}
-        {% elseif password_verify(sentPassword, userPassword) %}
-            {{ sessionStart() }}
-            {% set sessionAuthenticatedUser = 1 %}
-            {{ header('index.php?action=space-users') }}
-        {% else %}
-            {% set error = 'Mot de passe incorect' %}
-        {% endif %}
-    {% endif %}
-
-    {% if isAuthenticatedUser() %}
-        {{ header('index.php?action=space-users') }}
-    {% endif %}
-    {% if isAuthenticatedAdmin() %}
-        {{ header('index.php?action=space-users') }}
-    {% endif %}
-
     <div class="form-login w-50 m-auto">
         <h2>Connexion</h2>
         {% if error != null %}
-        <div class="alert alert-danger">
-            {{ error }}
-        </div>
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
         {% endif %}
-        <form method="post" action="index.php?action=connexion">
+        <form method="post" action="#">
             <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" class="form-control" required />
             <button class="btn btn-primary mt-5" type="submit">Se connecter</button>

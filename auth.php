@@ -18,7 +18,7 @@ function authenticatedAdmin()
 {
     if(!isAuthenticatedAdmin())
     {
-        header('Location: index.php?action=login-user');
+        header('Location: index.php?action=space-users');
     }
 }
 
@@ -35,6 +35,6 @@ function authenticatedUser()
 {
     if(!isAuthenticatedUser())
     {
-        header('Location: index.php?action=login-user');
+        header('Location: index.php?action=space-users');
     }
 }

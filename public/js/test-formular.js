@@ -57,8 +57,8 @@ function verify(type, name, regex, message) {
     }
 }
 
-verify('text', 'surname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
-verify('text', 'firstname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
+verify('text', 'surname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
+verify('text', 'firstname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
 verify('text', 'user_address', /./, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
 verify('number', 'postal_code', /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/, "Veuillez saisir un code postal valide.");
 verify('text', 'town', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, "Format incorrect. Caractères autorisées : lettres, apostrophes, tirets et espaces");
