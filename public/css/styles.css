@@ -93,6 +93,11 @@ nav, .picture, .dropdown-menu
     box-shadow: 6px 6px 10px #000;
 }
 
+nav a
+{
+    color: #01ff73;
+}
+
 .navbar-inverse .navbar-nav>li>a:hover
 {
     color: #fff;
@@ -115,11 +120,6 @@ nav, .picture, .dropdown-menu
 .miss-inscription
 {
     font-size: 18px;
-}
-
-.text-videos-songs, a, .bloc-form, .title-form
-{
-    color: #01ff73;
 }
 
 .harmonisation
@@ -370,7 +370,7 @@ nav, .picture, .dropdown-menu
     right: 150px;
 }
 
-.big-text-program
+.big-text-program, .text-contact
 {
     font-size: 24px;
 }
@@ -495,6 +495,22 @@ audio
 .bloc-form
 {
     width: 470px;
+}
+
+.form-contact form
+{
+    width: 500px;
+}
+
+.contact-link
+{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.contact-link:hover
+{
+    color: #01ff73;
 }
 
 input, textarea
@@ -662,6 +678,11 @@ input[type="radio"] + label
     .goal-right-text
     {
         position: static;
+    }
+
+    .form-contact form
+    {
+        width: 300px;
     }
 }
 

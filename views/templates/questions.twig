@@ -1,43 +1,29 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
+    <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
     <title>Infos pratiques</title>
 {% endblock %}
 
 {% block content %}
-    <h1 class="green-title title-page text-center briquet">Quelques questions courantes</h1>
-    <div class="text-justify col-md-6 m-auto">   
-        <h2 class="briquet grey-text">Quelle chanson ?</h2>
-        <p>Les titres choisis par Claude <span class="text-uppercase">Bégin</span> et Gilles <span class="text-uppercase">Breton</span> pour la semaine chantante sont des titres de chansons d'aujourd'hui, québécoises ou françaises. Des ballades, du rythme, des harmonies parfois difficiles, jamais banales, afin que la qualité soit toujours l'objectif numéro 1 de l'apprentissage.<br />
-        La chanson d'aujourd'hui n'est pas un genre mineur de l'art vocal.</p>
-        <h2 class="briquet grey-text">Est-ce vraiment pour moi ?</h2>
-        <p>La semaine chantante est <span class="bold">ouverte à tous</span>.<br />
-        Les jeunes et les plus âgés s'y côtoient avec bonheur. Il y a place pour chacun. Que l'on fasse partie depuis peu d'une chorale ou que l'on ait une expérience vocale plus affirmée, chacun apporte ses compétences. Une bonne condition physique est cependant souhaitable, car la semaine est intense.</p>
-        <h2 class="briquet grey-text">Combien est-on ?</h2>
-        <p>Le groupe est impérativement limité à <span class="bold">100 participants</span>. Ainsi chacun peut trouver sa place. La convivialité de la semaine s'éparpillerait dans la lourdeur qu'engendre un effectif plus important.</p>
-        <h2 class="briquet grey-text">Des spectacles ?</h2>
-        <p>En fin de semaine, les chanteurs donneront deux fois un spectacle qui sera la "récompense" et le résultat du travail accompli. Les rendez-vous sont pris à La Bourboule et à Clermont-Ferrand.</p>
-        <p>Clermont-Ferrand : Capitale de l'Auvergne.<br />
-        Le spectacle aura lieu dans le cadre féerique du Théâtre de Verdure le 21 août à 21h.</p>
-        <p>La Bourboule : Le spectacle sera donné le 22 août à 21h dans cette station thermale réputée, située au pied du massif du Sancy. Rendez-vous salle du Casino.</p>
-        
-        <p>D'autres questions ? Contactez-nous !</p>
-        <div class="bloc-form mb-5">
-            <h2 class="text-uppercase text-center grey-text title-contact-formular">Formulaire de contact</h2>
-            <form method="post" action="./contact.php">
-                <label for="surname">Nom</label>
-                <input type="text" name="surname" id="surname" placeholder="Nom" class="form-control" required />
-                <span id="miss-surname"></span>
-                <label for="subject">Objet</label>
-                <input type="text" name="subject" id="subject" placeholder="Objet" class="form-control" required />
-                <span id="miss-surname"></span>
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" class="form-control" required />
-                <span id="miss-firstname"></span>
-                <label for="message">Message</label>
-                <textarea  type="text" name="message" id="message" placeholder="Votre message" class="form-control" required></textarea>
-                <input type="submit" value="Envoyer" id="submit" class="mt-2" />
-            </form>
+    <div id="bloc_page">
+        <h1 class="light-green title-page text-center briquet">Quelques questions courantes</h1>
+        <div class="text-justify col-md-6 m-auto pt-5">   
+            <h2 class="briquet grey-white-color">Quelle chanson ?</h2>
+            <p>Les titres choisis par Claude <span class="text-uppercase">Bégin</span> et Gilles <span class="text-uppercase">Breton</span> pour la semaine chantante sont des titres de chansons d'aujourd'hui, québécoises ou françaises. Des ballades, du rythme, des harmonies parfois difficiles, jamais banales, afin que la qualité soit toujours l'objectif numéro 1 de l'apprentissage.<br />
+            La chanson d'aujourd'hui n'est pas un genre mineur de l'art vocal.</p>
+            <h2 class="briquet grey-white-color">Est-ce vraiment pour moi ?</h2>
+            <p>La semaine chantante est <span class="bold">ouverte à tous</span>.<br />
+            Les jeunes et les plus âgés s'y côtoient avec bonheur. Il y a place pour chacun. Que l'on fasse partie depuis peu d'une chorale ou que l'on ait une expérience vocale plus affirmée, chacun apporte ses compétences. Une bonne condition physique est cependant souhaitable, car la semaine est intense.</p>
+            <h2 class="briquet grey-white-color">Combien est-on ?</h2>
+            <p>Le groupe est impérativement limité à <span class="bold">100 participants</span>. Ainsi chacun peut trouver sa place. La convivialité de la semaine s'éparpillerait dans la lourdeur qu'engendre un effectif plus important.</p>
+            <h2 class="briquet grey-white-color">Des spectacles ?</h2>
+            <p>En fin de semaine, les chanteurs donneront deux fois un spectacle qui sera la "récompense" et le résultat du travail accompli. Les rendez-vous sont pris à La Bourboule et à Clermont-Ferrand.</p>
+            <p>Clermont-Ferrand : Capitale de l'Auvergne.<br />
+            Le spectacle aura lieu dans le cadre féerique du Théâtre de Verdure le 21 août à 21h.</p>
+            <p>La Bourboule : Le spectacle sera donné le 22 août à 21h dans cette station thermale réputée, située au pied du massif du Sancy. Rendez-vous salle du Casino.</p>
+            
+            <p>D'autres questions ? <a href="?action=contact" class="contact-link">Contactez-nous !</a></p>
         </div>
     </div>
     <script src="./public/js/test-formular.js"></script>

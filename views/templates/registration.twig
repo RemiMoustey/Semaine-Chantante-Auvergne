@@ -16,9 +16,9 @@
                 {% endif %}
             {% endfor %}
             {% set infoUser = infos.0 %}
-            <h1 class="green-title title-form title-page text-center information-user">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
+            <h1 class="light-green title-page text-center information-user">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
             <p class="text-center">
-                <span class="title-form">
+                <span class="light-green">
                     {% if infoUser.status == 'Choriste' %}
                         {{ 'Choriste' }}
                     {% elseif infoUser.status == 'Chef de choeur' %}
@@ -39,7 +39,7 @@
                 </span>
 
                 {% if isAccepted %}
-                            <span class="title-form">- Inscription réglée par 
+                            <span class="light-green">- Inscription réglée par 
                 {% else %}
                     <br /><span class="red">Règlement en attente par 
                 {% endif %}
@@ -48,7 +48,7 @@
             <form method="post" action="index.php?action=updateuser&amp;id={{ infoUser.id }}">
         {% endif %}
         {% if user != 'admin' %}
-            <h1 class="green-title title-page text-center briquet title-form">Inscription en ligne</h1>
+            <h1 class="green-title title-page text-center briquet light-green">Inscription en ligne</h1>
             <form method="post" action="index.php?action=adduser">
         {% endif %}
             <div class="bloc-form m-auto">

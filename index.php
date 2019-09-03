@@ -158,6 +158,9 @@ if (isset($_GET['action']))
         case 'questions':
             echo $twig->render('questions.twig');
             break;
+        case 'contact':
+            echo $twig->render('contact.twig');
+            break;
         case 'space-users':
             $comments = $registrationController->comments();
             $countComments = $registrationController->countComments();
