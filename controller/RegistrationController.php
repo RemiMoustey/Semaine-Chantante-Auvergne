@@ -10,11 +10,11 @@ require './vendor/autoload.php';
 
 class RegistrationController
 {  
-    public function addRegistration($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
+    public function addRegistration($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $registrationManager = new RegistrationManager();
 
-        $newRegisteredUser = $registrationManager->insertRegisteredUser($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
+        $newRegisteredUser = $registrationManager->insertRegisteredUser($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
     
         if ($newRegisteredUser === false)
         {
@@ -26,18 +26,40 @@ class RegistrationController
         }
     }
 
-    public function passwordUser()
+    public function passwordUser($userEmail)
     {
         $logsManager = new LogsManager();
-        $password = $logsManager->getUserPassword();
+        $password = $logsManager->getUserPassword($userEmail);
         return $password;
     }
     
-    public function passwordAdmin()
+    public function passwordAdmin($adminEmail)
     {
         $logsManager = new LogsManager();
-        $adminPassword = $logsManager->getAdminPassword();
+        $adminPassword = $logsManager->getAdminPassword($adminEmail);
         return $adminPassword;
+    }
+
+    public function emailUser($email)
+    {
+        $logsManager = new LogsManager();
+        $foundEmail = $logsManager->getUserEmail($email);
+        return $foundEmail;
+    }
+
+    public function updatePassword($email, $newPassword)
+    {
+        $logsManager = new LogsManager();
+        $password = $logsManager->modifyPassword($email, $newPassword);
+
+        if ($password === false)
+        {
+            throw new Exception("Impossible de modifier le mot de passe.");
+        }
+        else
+        {
+            header('Location: index.php?action=updated-password');
+        }
     }
 
     public function listInformationUsers($id)

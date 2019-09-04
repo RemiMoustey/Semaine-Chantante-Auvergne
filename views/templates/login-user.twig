@@ -9,9 +9,12 @@
             </div>
         {% endif %}
         <form method="post" action="#">
+            <label for="email">Email :</label>
+            <input type="email" name="email" id="email" class="form-control" required />
             <label for="password">Mot de passe :</label>
             <input type="password" name="password" id="password" class="form-control" required />
             <button class="btn btn-primary mt-5" type="submit">Se connecter</button>
         </form>
+        <p><a href="?action=forgot-password">Mot de passe oublié ?</a></p>
     </div>
 {% endblock %}

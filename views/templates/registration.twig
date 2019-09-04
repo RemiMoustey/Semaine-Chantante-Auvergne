@@ -54,7 +54,10 @@
             <div class="bloc-form m-auto">
                 {{ groupForm.groupText('surname', 'Nom', infoUser.surname) }}
                 {{ groupForm.groupText('firstname', 'Prénom', infoUser.firstname) }}
-                {{ groupForm.groupText('user_address', 'Adresse', infoUser.address) }}
+                {% if user != 'admin' %}
+                    {{ groupForm.groupText('password', 'Mot de passe', infoUser.password, "password") }}
+                {% endif %}
+                {{ groupForm.groupText('user_address', 'Adresse', infoUser.user_address) }}
                 {{ groupForm.groupText('postal_code', 'Code postal', infoUser.postal_code) }}
                 {{ groupForm.groupText('town', 'Ville', infoUser.town) }}
                 {{ groupForm.groupText('phone_number', 'Téléphone', infoUser.phone_number, 'tel') }}

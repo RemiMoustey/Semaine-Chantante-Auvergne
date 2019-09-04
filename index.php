@@ -36,8 +36,11 @@ if (isset($_GET['action']))
             echo $twig->render('home.twig');
             break;
         case 'login-user':
-            $userPassword = $registrationController->passwordUser();
-            $adminPassword = $registrationController->passwordAdmin();
+            if (!empty($_POST['email']))
+            {
+                $userPassword = $registrationController->passwordUser($_POST['email']);
+                $adminPassword = $registrationController->passwordAdmin($_POST['email']);
+            }
             $error = null;
             if(!empty($_POST['password']))
             {
@@ -55,7 +58,7 @@ if (isset($_GET['action']))
                 }
                 else
                 {
-                    $error = "Mot de passe incorrect";
+                    $error = "Email ou mot de passe incorrect.";
                 }
             }
             
@@ -70,11 +73,31 @@ if (isset($_GET['action']))
             }
             echo $twig->render('login-user.twig', ['error' => $error]);
             break;
+        case 'forgot-password':
+            $error = null;
+
+            if (!empty($_POST['email']) AND !empty($_POST['new_password']))
+            {
+                $emailUser = $registrationController->emailUser($_POST['email']);
+                if ($emailUser !== null)
+                {
+                    $registrationController->updatePassword($emailUser, password_hash($_POST['new_password'], PASSWORD_DEFAULT, ['cost' => 12]));
+                }
+                else
+                {
+                    $error = "L'email saisi n'est pas reconnu";
+                }
+            }
+            echo $twig->render('forgot-password.twig', ['error' => $error]);
+            break;
+        case 'updated-password':
+            echo $twig->render('updated-password.twig');
+            break;
         case 'registration':
             echo $twig->render('registration.twig');
             break;
         case 'registration-complete':
-            echo $twig->render('registrationComplete.twig');
+            echo $twig->render('registration-complete.twig');
             break;
         case 'readuser':
         $user = 'admin';
@@ -83,12 +106,12 @@ if (isset($_GET['action']))
             echo $twig->render('registration.twig', ['user' => $user, 'infos' => $infos->fetchAll(), 'acceptedUsers' => $acceptedUsers]);
             break;
         case 'adduser':
-            if (!empty($_POST['surname']) AND !empty($_POST['firstname']) AND !empty($_POST['user_address']) AND !empty($_POST['postal_code']) AND 
+            if (!empty($_POST['surname']) AND !empty($_POST['firstname']) AND !empty($_POST['password']) AND !empty($_POST['user_address']) AND !empty($_POST['postal_code']) AND 
             !empty($_POST['town']) AND !empty($_POST['phone_number']) AND isset($_POST['music_stand']) AND isset($_POST['status'])
             AND !empty($_POST['email']) AND !empty($_POST['birthday']) AND !empty($_POST['choir_name']) AND !empty($_POST['choir_town'])
             AND isset($_POST['payment']))
             {
-                $registrationController->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'],
+                $registrationController->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['password'], $_POST['user_address'], $_POST['postal_code'],
                 strtoupper($_POST['town']), $_POST['phone_number'], $_POST['phone_number_office'], $_POST['music_stand'],
                 $_POST['status'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'],
                 $_POST['choir_town'], $_POST['additional'], $_POST['payment']);

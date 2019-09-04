@@ -5,12 +5,12 @@ use model\PDOFactory;
 
 class RegistrationManager extends PDOFactory
 {
-    public function insertRegisteredUser($surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
+    public function insertRegisteredUser($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $db = $this->getMySqlConnexion();
-        $query = $db->prepare("INSERT INTO chorists(surname, firstname, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid)
-        VALUES(:surname, :firstname, :user_address, :postal_code, :town, :phone_number, :phone_number_office, :music_stand, :status, :email, :birthday, :choir_name, :choir_town, :additional, :payment, :paid)");
-        $registration = $query->execute(['surname' => $surname, 'firstname' => $firstname, 'user_address' => $address, 'postal_code' => $postalCode, 'town' => $town, 'phone_number' => $phoneNumber, 'phone_number_office' => $phoneNumberOffice, 'music_stand' => $musicStand, 'status' => $status, 'email' => $email, 'birthday' => $birthday, 'choir_name' => $choirName, 'choir_town' => $choirTown, 'additional' => $additional, 'payment' => $payment, 'paid' => 'Non payé']);
+        $query = $db->prepare("INSERT INTO chorists(surname, firstname, password, user_address, postal_code, town, phone_number, phone_number_office, music_stand, status, email, birthday, choir_name, choir_town, additional, payment, paid)
+        VALUES(:surname, :firstname, :password, :user_address, :postal_code, :town, :phone_number, :phone_number_office, :music_stand, :status, :email, :birthday, :choir_name, :choir_town, :additional, :payment, :paid)");
+        $registration = $query->execute(['surname' => $surname, 'firstname' => $firstname, 'password' => password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]), 'user_address' => $address, 'postal_code' => $postalCode, 'town' => $town, 'phone_number' => $phoneNumber, 'phone_number_office' => $phoneNumberOffice, 'music_stand' => $musicStand, 'status' => $status, 'email' => $email, 'birthday' => $birthday, 'choir_name' => $choirName, 'choir_town' => $choirTown, 'additional' => $additional, 'payment' => $payment, 'paid' => 'Non payé']);
 
         return $registration;
     }
