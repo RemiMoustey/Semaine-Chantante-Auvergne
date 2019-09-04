@@ -103,6 +103,12 @@ nav a
     color: #fff;
 }
 
+.nav-link
+{
+    text-transform: uppercase;
+}
+
+
 
 
 
@@ -688,13 +694,6 @@ input[type="radio"] + label
 
 @media all and (min-width: 767px)
 {
-    #navbarNav
-    {
-        display: flex!important;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
     .navbar-nav
     {
         width: 95%;
@@ -777,12 +776,9 @@ input[type="radio"] + label
 
 @media all and (max-width: 767px)
 {
-    .navbar-toggler
+    .fixed-top
     {
-        display: block;
-        font-size: 35px;
-        color: #00b247;
-        cursor: pointer;
+        position: static;
     }
 
     nav, .navbar
@@ -805,6 +801,7 @@ input[type="radio"] + label
     {
         text-align: left;
     }
+
 }
 
 @media all and (max-width: 825px)
