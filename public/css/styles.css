@@ -550,6 +550,11 @@ input[type="radio"] + label
     font-size: 30px;
 }
 
+.big-margin
+{
+    margin-top: 200px;
+}
+
 @media all and (max-width: 1199px)
 {
     .carousel_image img, .new_carousel_image img

@@ -11,12 +11,12 @@
         <div id="bloc-page-light-green">
             {% if user == 'admin' %}
                 {% set isAccepted = false %}
-                {% for acceptedUser in acceptedUsers %}
-                    {% if acceptedUser.paid == "Payé" %}
-                        {% set isAccepted = true %}
-                    {% endif %}
-                {% endfor %}
                 {% set infoUser = infos.0 %}
+                {% for acceptedUser in acceptedUsers %}
+                        {% if infoUser.id == acceptedUser.id and acceptedUser.paid == "Payé" %}
+                            {% set isAccepted = true %}
+                        {% endif %}
+                {% endfor %}
                 <h1 class="light-green title-page text-center information-user">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
                 <p class="text-center">
                     <span class="light-green">
@@ -50,7 +50,7 @@
             {% endif %}
             {% if user != 'admin' %}
                 <h1 class="green-title title-page text-center briquet light-green">Inscription en ligne</h1>
-                <form method="post" action="index.php?action=adduser">
+                <form class="mb-5" method="post" action="?action=adduser">
             {% endif %}
                 <div class="bloc-form m-auto">
                     {{ groupForm.groupText('surname', 'Nom', infoUser.surname) }}
@@ -79,11 +79,11 @@
                     <p class="mt-5 mb-5"><input type="submit" value="Modifier l'inscription" id="submit" class="formular-button"></p>
                     <p>
                     {% if isAccepted %}
-                        <div class="d-flex flex-row justify-content-between"><button href="index.php?action=deleteaccepteduser&amp;id=<?= $info['id'] ?>" class="cancel formular-button red" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</button>
+                        <div class="d-flex flex-row justify-content-between"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel formular-button red" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>
                     {% else %}
-                        <div class="d-flex flex-row justify-content-between"><button href="index.php?action=acceptuser&amp;id=<?= $info['id'] ?>" class="green accept formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</button>
+                        <div class="d-flex flex-row justify-content-between"><a href="index.php?action=acceptuser&amp;id={{ infoUser.id }}" class="green accept formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</a>
                     {% endif %}
-                        <button href="index.php?action=deleteregistereduser&amp;id=<?= $info['id'] ?>" class="delete formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</button></div>
+                        <a href="index.php?action=deleteregistereduser&amp;id={{ infoUser.id }}" class="delete formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</a></div>
                     </p>
                 </div>
             </form>
@@ -107,8 +107,7 @@
                         </ul>
                 </div>
                 {{ groupForm.groupRadio('Mode de versement :', 'payment', {'label1' : 'Virement bancaire', 'label2' : 'Chèque'}) }}
-                <p class="miss-inscription text-center"><input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm('Êtes-vous sûr enregistrer ces informations ?'));" disabled /></p>
-                </div>
+                <button type="submit" id="submit" >Envoyer</button>
             </form>
             {% endif %}
         </div>

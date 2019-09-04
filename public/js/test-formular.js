@@ -85,11 +85,11 @@ function testInputs() {
         }
     });
     if (pass && $('input:checked').length === 3 || pass && document.location.href.indexOf('readuser') !== -1) {
-        $('.miss-inscription').html('<input class="mb-5 formular-button" type="submit" value="Envoyer" id="submit" onclick="return(confirm(\'Êtes-vous sûr de vouloir enregistrer votre inscription ?\'));" />');
+        $('#submit').removeAttr('disabled');
     }
     else {
-        $('.miss-inscription').html('<input class="mb-2 mr-3 formular-button" type="submit" value="Envoyer" id="submit" disabled /><br /> Attention : Inscription incomplète ou erronée !');
-    }
+        $('#submit').attr('disabled', '');
+    } 
 }
   
 $(document).ready(function () {

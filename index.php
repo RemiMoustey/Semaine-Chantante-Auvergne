@@ -28,6 +28,7 @@ $twig->addFunction(new \Twig_SimpleFunction('isAuthenticatedAdmin', function ()
 {
     return isAuthenticatedAdmin();
 }));
+
 if (isset($_GET['action']))
 {
     switch ($_GET['action'])

@@ -13,7 +13,7 @@ class RegistrationController
     public function addRegistration($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $registrationManager = new RegistrationManager();
-
+        
         $newRegisteredUser = $registrationManager->insertRegisteredUser($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment);
     
         if ($newRegisteredUser === false)
