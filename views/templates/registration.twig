@@ -17,13 +17,13 @@
                             {% set isAccepted = true %}
                         {% endif %}
                 {% endfor %}
-                <h1 class="light-green title-page text-center information-user">Informations sur {{ infoUser.firstname }} {{ infoUser.surname }}</h1>
+                <h1 class="light-green title-page text-center information-user">{{ infoUser.firstname }} {{ infoUser.surname }}</h1>
                 <p class="text-center">
                     <span class="light-green">
                         {% if infoUser.status == 'Choriste' %}
                             {{ 'Choriste' }}
                         {% elseif infoUser.status == 'Chef de choeur' %}
-                            {{ 'Chef de Cbœur' }}
+                            {{ 'Chef de Chœur' }}
                         {% endif %}
 
                         {{ ' - ' }}
@@ -40,9 +40,9 @@
                     </span>
 
                     {% if isAccepted %}
-                                <span class="light-green">- Inscription réglée par 
+                        <br /><span class="light-green">Inscription réglée par 
                     {% else %}
-                        <br /><span class="red">Règlement en attente par 
+                        <span class="red">Règlement en attente par 
                     {% endif %}
                     {{ infoUser.payment }}</span>
                 </p>
@@ -76,14 +76,14 @@
                         {{ infoUser.additional }}
                     {% endif %}
                     </p>
-                    <p class="mt-5 mb-5"><input type="submit" value="Modifier l'inscription" id="submit" class="formular-button"></p>
+                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Modifier l'inscription" id="submit" class="formular-button"></p>
                     <p>
                     {% if isAccepted %}
-                        <div class="d-flex flex-row justify-content-between"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel formular-button red" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>
+                        <div class="under-button"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel formular-button red formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>
                     {% else %}
-                        <div class="d-flex flex-row justify-content-between"><a href="index.php?action=acceptuser&amp;id={{ infoUser.id }}" class="green accept formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</a>
+                        <div class="under-button"><a href="index.php?action=acceptuser&amp;id={{ infoUser.id }}" class="green accept formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</a>
                     {% endif %}
-                        <a href="index.php?action=deleteregistereduser&amp;id={{ infoUser.id }}" class="delete formular-button" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</a></div>
+                        <a href="index.php?action=deleteregistereduser&amp;id={{ infoUser.id }}" class="delete formular-button-link red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</a></div>
                     </p>
                 </div>
             </form>

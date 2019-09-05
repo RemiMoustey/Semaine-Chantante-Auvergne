@@ -1,20 +1,27 @@
 {% extends 'layout.twig' %}
 
+{% block head %}
+    <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
+    <title>Se connecter</title>
+{% endblock %}
+
 {% block content %}
-    <div class="form-login w-50 m-auto">
-        <h2>Connexion</h2>
+    <div id="bloc-page-light-green">
+        <h1 class="title-page text-center briquet">Connexion</h1>
         {% if error != null %}
             <div class="alert alert-danger">
                 {{ error }}
             </div>
         {% endif %}
         <form method="post" action="#">
-            <label for="email">Email :</label>
-            <input type="email" name="email" id="email" class="form-control" required />
-            <label for="password">Mot de passe :</label>
-            <input type="password" name="password" id="password" class="form-control" required />
-            <button class="btn btn-primary mt-5" type="submit">Se connecter</button>
+            <div class="bloc-form m-auto">
+                <label for="email">Email :</label>
+                <input type="email" name="email" id="email" class="form-control" required />
+                <label for="password" class="mt-4">Mot de passe :</label>
+                <input type="password" name="password" id="password" class="form-control mb-5" required />
+                <div class="text-center"><button class="connect" type="submit">Se connecter</button></div>
+                <p class="text-center mt-4 forgot-password"><a href="?action=forgot-password">Mot de passe oublié ?</a></p>
+            </div>
         </form>
-        <p><a href="?action=forgot-password">Mot de passe oublié ?</a></p>
     </div>
 {% endblock %}
