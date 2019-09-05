@@ -1,52 +1,18 @@
 {% extends 'layout.twig' %}
 
 {% block head %}
+    <link rel="stylesheet" href="./public/css/songs-videos-pages.css" />
     <title>Rechercher des utilisateurs</title>
 {% endblock %}
 
 {% block content %}
-    <p class="search-bar">
-        <form method="post" action="index.php?action=listusers">
-            Rechercher : <input type="text" name="q" required />
-            <input type="submit" value="Rechercher" />
-        </form>
-    </p>
-    <p>
-        <a href="index.php?action=export">Exporter les données</a>
-    </p>
-
-    {% for data in users %}
-        <p>
-            {{ data.surname }} {{ data.firstname }}<br />
-            <a href="index.php?action=readuser&amp;id={{ data.id }}">Lire</a>
-        </p>
-    {% endfor %}
-
-    <h2>Commentaires signalés</h2>
-    {% for notifiedComment in notifiedComments %}
-        <div class="notified-comment">
-            <h4>Commentaire de {{ notifiedComment.author }} signalé le {{ notifiedComment.notify_date_fr }}</h4>
-            <p>{{ notifiedComment.comment }}</p>
-            <a href="index.php?action=removeComment&amp;id={{ notifiedComment.comment_id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
-        </div>
-    {% endfor %}
-
-    <h2>Commentaires</h2>
-    {% for comment in comments %}
-        <div class="comment">
-            <h4>{{ comment.author }} le {{ comment.creation_date_fr }}</h4>
-            <p>{{ comment.comment }}</p>
-            <a href="index.php?action=removeComment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
-        </div>
-    {% endfor %}
-    {% if pages > 1 and page > 1 %}
-        <p>
-            <a href="?action=search&amp;p={{ page - 1 }}">Commentaires précédents</a>
-        </p>
-    {% endif %}
-    {% if pages > 1 and page < pages %}
-        <p>
-            <a href="?action=search&amp;p={{ page + 1 }}">Commentaires suivants</a>
-        </p>
-    {% endif %}
+    <div class="w-50 text-center m-auto part-space-users">
+        <h1 class="title-page briquet">Résultat recherche</h1>
+        {% for data in users %}
+            <p class="found-user">
+                {{ data.surname }} {{ data.firstname }}<br />
+                <a href="index.php?action=readuser&amp;id={{ data.id }}">Détails</a>
+            </p>
+        {% endfor %}
+    </div>
 {% endblock %}

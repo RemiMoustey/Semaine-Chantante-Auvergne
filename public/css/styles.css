@@ -5,10 +5,14 @@
 	src: url('fonts/briquetn.TTF');
 }
 
-.bloc-page
+.bloc-page, .part-space-users
 {
     margin-top: 60px;
-    background-color: rgba(0,255,0,0.5);
+}
+
+.part-space-users, .title-space-users
+{
+    color: #01ff73;
 }
 
 label
@@ -57,6 +61,11 @@ h1
     color: #f00;
 }
 
+.yellow
+{
+    color: #ddbe0e;
+}
+
 .payment
 {
     margin-top: 10px;
@@ -67,7 +76,7 @@ h1
     margin-bottom: 25px;
 }
 
-.title-page, .search-bar, .bloc-success, .form-login h2, .title-comments, .form-forgot-password h2
+.title-page, .bloc-success, .form-login h2, .form-forgot-password h2
 {
     margin-top: 60px;
 }
@@ -89,7 +98,7 @@ a:hover
     color: #fff;
 }
 
-nav, .picture, .dropdown-menu, .formular-button-link
+nav, .picture, .dropdown-menu, .formular-button-link, .button-space-admin
 {
     box-shadow: 6px 6px 10px #000;
 }
@@ -199,7 +208,7 @@ nav a
     margin: 0;
 }
 
-.row-two-images figure figcaption
+.row-two-images figure figcaption, .found-user
 {
     text-align: center;
     font-size: 24px;
@@ -559,16 +568,26 @@ input[type="radio"] + label
     color: #fff;
 }
 
-.formular-button-link
+.formular-button-link, .button-space-admin
 {
     background-color: #ddd;
     padding: 1px 6px;
     border-radius: 0.25rem;
 }
 
-.formular-button-link:hover
+.formular-button-link:hover, .button-page-comment a:hover
 {
     color: #000;
+    text-decoration: none;
+}
+
+.button-space-admin a
+{
+    color: #000;
+}
+
+.button-space-admin a:hover
+{
     text-decoration: none;
 }
 
@@ -579,7 +598,7 @@ input[type="submit" i]
     outline-width: 0; /* Pour Google Chrome */
 }
 
-input[type="submit" i]:hover, .connect:hover, .reinit button:hover
+input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-space-admin a:hover
 {
     color: #00b050;
 }
@@ -604,6 +623,47 @@ input[type="submit" i]:hover, .connect:hover, .reinit button:hover
 .forgot-password a:hover
 {
     color: #fff;
+}
+
+.date-comment
+{
+    font-size: 20px;
+}
+
+.button-page-comment
+{
+    width: 200px;
+}
+
+.button-page-comment a
+{
+    color: #000;
+}
+
+.button-page-comment a:hover
+{
+    color: #00b247;
+}
+
+#comments
+{
+    padding-top: 70px;
+}
+
+.search-bar input[name="q"], .button-space-admin
+{
+    width: 300px;
+}
+
+.button-space-admin
+{
+    margin: auto;
+}
+
+.found-user a
+{
+    color: #ccc;
+    font-size: 16px;
 }
 
 @media all and (max-width: 1199px)

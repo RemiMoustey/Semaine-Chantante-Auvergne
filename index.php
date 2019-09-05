@@ -186,30 +186,32 @@ if (isset($_GET['action']))
             echo $twig->render('contact.twig');
             break;
         case 'space-users':
+            if(isAuthenticatedUser())
+            {
+                authenticatedUser();
+                $user = 'chorist';
+                echo $twig->render('space-users.twig', ['user' => $user]);
+            }
+            else if(isAuthenticatedAdmin())
+            {
+                authenticatedAdmin();
+                $user = 'admin';
+                echo $twig->render('space-users.twig', ['user' => $user]);
+            }
+            else
+            {
+                header('Location: index.php?action=login-user');
+                break;
+            }  
+            break;
+        case 'comments-admin':
             $comments = $registrationController->comments();
             $countComments = $registrationController->countComments();
             $count = $countComments->fetch()[0];
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
             $notifiedComments = $registrationController->notifiedComments();
-            if(isAuthenticatedUser())
-            {
-                authenticatedUser();
-                $user = 'chorist';
-                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
-            }
-            else if(isAuthenticatedAdmin())
-            {
-                authenticatedAdmin();
-                $user = 'admin';
-                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
-            }
-            else
-            {
-                header('Location: index.php?action=login-user');
-                break;
-            }
-            
+            echo $twig->render('comments-admin.twig', ['comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
             break;
         case 'notify-comment':
             authenticatedUser();

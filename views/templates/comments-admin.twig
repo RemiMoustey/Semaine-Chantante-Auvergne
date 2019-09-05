@@ -1,0 +1,41 @@
+{% extends 'layout.twig' %}
+
+{% block head %}
+    <link rel="stylesheet" href="./public/css/songs-videos-pages.css" />
+    <title>Commentaires - administration</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="col-sm-6 text-justify m-auto part-space-users">
+            <h1 class="title-page briquet">Gestion</h1>
+            <h2 class="yellow text-center">Commentaires signalés</h2>
+            {% for notifiedComment in notifiedComments %}
+                <div class="notified-comment mb-5">
+                    <h3 class="grey-white-color"><span class="white">{{ notifiedComment.author }}</span> <span class="date-comment">signalé le {{ notifiedComment.notify_date_fr }}</span></h3>
+                    <p>{{ notifiedComment.comment }}</p>
+                    <a href="index.php?action=removeComment&amp;id={{ notifiedComment.comment_id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+                </div>
+            {% endfor %}
+
+            <h2 class="text-center" id="comments">Commentaires</h2>
+            {% for comment in comments %}
+                <div class="comment mb-5">
+                    <h3 class="grey-white-color"><span class="white">{{ comment.author }}</span> <span class="date-comment">le {{ comment.creation_date_fr }}</span></h3>
+                    <p>{{ comment.comment }}</p>
+                    <a href="index.php?action=removeComment&amp;id={{ comment.id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+                </div>
+            {% endfor %}
+            {% if pages > 1 and page > 1 %}
+                <div class="formular-button-link button-page-comment mb-3 text-center">
+                    <a href="?action=comments-admin&amp;p={{ page - 1 }}#comments">Commentaires précédents</a>
+                </div>
+            {% endif %}
+            {% if pages > 1 and page < pages %}
+                <div class="formular-button-link button-page-comment mb-3 text-center">
+                    <a href="?action=comments-admin&amp;p={{ page + 1 }}#comments">Commentaires suivants</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
