@@ -8,7 +8,7 @@ use controller\RegistrationController;
 $registrationController = new RegistrationController();
 
 // Rendu du template
-$loader = new \Twig_Loader_Filesystem(__DIR__  . '\views\templates');
+$loader = new \Twig_Loader_Filesystem(__DIR__  . '/views/templates');
 
 $twig = new \Twig_Environment($loader, [
     'debug' => true,
@@ -186,11 +186,16 @@ if (isset($_GET['action']))
             echo $twig->render('contact.twig');
             break;
         case 'space-users':
+            $comments = $registrationController->comments();
+            $countComments = $registrationController->countComments();
+            $count = $countComments->fetch()[0];
+            $pages = ceil($count / PER_PAGE);
+            $page = (int)($_GET['p'] ?? 1);
             if(isAuthenticatedUser())
             {
                 authenticatedUser();
                 $user = 'chorist';
-                echo $twig->render('space-users.twig', ['user' => $user]);
+                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page]);
             }
             else if(isAuthenticatedAdmin())
             {

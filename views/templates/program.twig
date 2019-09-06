@@ -3,13 +3,17 @@
 {% block head %}
     <link rel="stylesheet" href="./public/css/special-background.css" />
     {% if page == 'communal-song' %}
-        <title>Chant commun</title>
+        <meta name="description" content="Chant commun : les choristes monteront sur place le répertoire de chansons polyphoniques à quatre voix mixtes sélectionné par les chefs de chœur de la Semaine Chantante. Ils devront apprendre et mettre au point sur place ce nouveau répertoire." />
+        <title>Chant commun - Semaine Chantante en Auvergne</title>
     {% elseif page == 'staging' %}
-        <title>Mise en scène</title>
+        <meta name="description" content="Mise en scène : &#8220;La chanson d'aujourd'hui se doit d'offrir à regarder autant qu'à entendre&#8221;. Les choristes auront à créer les mouvements qui donneront vie à leurs chansons. Une chanson qui bouge ! Un spectacle plutôt qu'un concert." />
+        <title>Mise en scène - Semaine Chantante en Auvergne</title>
     {% elseif page == 'free-time' %}
-        <title>Temps libre</title>
+        <meta name="description" content="Temps libre : La Semaine Chantante offrira aux choristes l'occasion de se détendre et de découvrir un environnement majestueux de l'Auvergne profonde (lacs, volcans, rivières, vallées...). Une sortie touristique guidée sera proposée. Les surprises ne manqueront pas : veillées, mini-spectacles, temps forts inattendus." />
+        <title>Temps libre - Semaine Chantante en Auvergne</title>
     {% elseif page == 'shows' %}
-        <title>Spectacles</title>
+        <meta name="description" content="Spectacles : La Semaine Chantante en Auvergne produira en fin de semaine un spectacle, récompense et résultat du travail accompli. Ils seront donnés à La Bourboule et à Clermont-Ferrand." />
+        <title>Spectacles - Semaine Chantante en Auvergne</title>
     {% endif %}
 {% endblock %}
 

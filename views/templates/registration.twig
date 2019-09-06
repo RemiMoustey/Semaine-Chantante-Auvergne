@@ -2,8 +2,9 @@
 {% import 'group-form.twig' as groupForm %}
 
 {% block head %}
+    <meta name="description" content="L'inscription à la Semaine Chantante en Auvergne est organisée en ligne. Vous pouvez aussi vous inscrire par courrier avec le formulaire à télécharger." />
     <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
-    <title>S'inscrire</title>
+    <title>S'inscrire - Semaine Chantante en Auvergne</title>
 {% endblock %}
 
 {% block content %}
@@ -50,6 +51,7 @@
             {% endif %}
             {% if user != 'admin' %}
                 <h1 class="green-title title-page text-center briquet light-green">Inscription en ligne</h1>
+                <p class="download m-auto pb-5">Vous pouvez aussi vous inscrire par courrier en téléchargeant le bulletin d'inscription <a href="./public/pdf/bulletin_dinscription.pdf">ici</a>.</p>
                 <form class="mb-5" method="post" action="?action=adduser">
             {% endif %}
                 <div class="bloc-form m-auto">

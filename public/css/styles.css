@@ -46,6 +46,13 @@ h1
     text-align: center;
 }
 
+ul
+{
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
 .white
 {
     color: #fff;
@@ -106,6 +113,21 @@ nav, .picture, .dropdown-menu, .formular-button-link, .button-space-admin
 nav a
 {
     color: #01ff73;
+}
+
+.dropdown-menu
+{
+    background-color: #00b247;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 0;
+    margin: 0;
+}
+
+.dropdown-menu a
+{
+    color: #fff;
+    text-decoration: none;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover
@@ -509,9 +531,15 @@ audio
     font-size: 26px;
 }
 
-.bloc-form
+.bloc-form, .download
 {
     width: 470px;
+}
+
+.download
+{
+    margin: 0 34px;
+    font-size: 20px;
 }
 
 .form-contact form
@@ -519,13 +547,13 @@ audio
     width: 500px;
 }
 
-.contact-link
+.contact-link, .download a
 {
     color: #fff;
     text-decoration: underline;
 }
 
-.contact-link:hover
+.contact-link:hover, .download a:hover
 {
     color: #01ff73;
 }
@@ -640,7 +668,7 @@ input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-spac
     color: #000;
 }
 
-.button-page-comment a:hover
+.button-page-comment a:hover, .send-comment:hover
 {
     color: #00b247;
 }
@@ -822,38 +850,7 @@ input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-spac
         display: block;
         text-align: center;
     }
-
-    .dropdown-menu
-    {
-        background-color: #00b247;
-        font-weight: bold;
-        border-radius: 8px;
-        border: 0;
-        margin: 0;
-    }
-
-    .dropdown-menu a
-    {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .dropdown-menu ul
-    {
-        padding: 0;
-        list-style: none;
-    }
     
-    .project
-    {
-        min-width: 150px;
-    }
-
-    .program
-    {
-        min-width: 120px;
-    }
-
     .images_sounds
     {
         min-width: 90px;
@@ -930,7 +927,7 @@ input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-spac
 
 @media all and (max-width: 497px)
 {
-    .bloc-form
+    .bloc-form, .download
     {
         width: 300px;
     }

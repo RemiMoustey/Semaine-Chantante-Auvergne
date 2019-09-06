@@ -1,5 +1,7 @@
 {% extends 'layout.twig' %}
 
+{% import 'add-comment.twig' as addComment %}
+
 {% block head %}
     <link rel="stylesheet" href="./public/css/songs-videos-pages.css" />
     <title>Commentaires - administration</title>
@@ -36,6 +38,7 @@
                     <a href="?action=comments-admin&amp;p={{ page + 1 }}#comments">Commentaires suivants</a>
                 </div>
             {% endif %}
+            {{ addComment.addComment() }}
         </div>
     </div>
 {% endblock %}

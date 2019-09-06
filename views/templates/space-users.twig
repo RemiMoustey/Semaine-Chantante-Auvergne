@@ -1,5 +1,7 @@
 {% extends 'layout.twig' %}
 
+{% import 'add-comment.twig' as addComment %}
+
 {% block head %}
     <link rel="stylesheet" href="public/css/songs-videos-pages.css" />
     <title>Espace inscrits</title>
@@ -39,14 +41,7 @@
             </div>
         {% endif %}
             <div class="form_add_comment m-auto">
-                <h2 class="mt-5">Ajouter un commentaire</h2>
-                <form method="post" action="index.php?action=add-comment">
-                    <label for="author">Auteur :</label>
-                    <input type="text" name="author" class="form-control" required />
-                    <label for="comment">Commentaire :</label>
-                    <textarea name="comment" class="form-control" rows="5" required></textarea>
-                    <button class="btn btn-primary mt-3 mb-5" type="submit" onclick="return(confirm('Êtes-vous sûr de vouloir poster ce commentaire ?'));">Envoyer</button>
-                </form>
+                {{ addComment.addComment() }}
             </div>
         </div>
     {% endif %}

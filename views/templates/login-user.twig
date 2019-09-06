@@ -8,13 +8,13 @@
 {% block content %}
     <div id="bloc-page-light-green">
         <h1 class="title-page text-center briquet">Connexion</h1>
-        {% if error != null %}
-            <div class="alert alert-danger">
-                {{ error }}
-            </div>
-        {% endif %}
         <form method="post" action="#">
             <div class="bloc-form m-auto">
+                {% if error != null %}
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
+                {% endif %}
                 <label for="email">Email :</label>
                 <input type="email" name="email" id="email" class="form-control" required />
                 <label for="password" class="mt-4">Mot de passe :</label>
