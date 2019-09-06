@@ -32,12 +32,12 @@
         <div class="w-50 text-justify m-auto part-space-users">
         {% if pages > 1 and page > 1 %}
             <div class="formular-button-link button-page-comment mb-3 text-center">
-                <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires précédents</a>
+                <a href="?action=space-users&amp;p={{ page - 1 }}">Commentaires plus récents</a>
             </div>
         {% endif %}
         {% if pages > 1 and page < pages %}
             <div class="formular-button-link button-page-comment mb-3 text-center">
-                <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires suivants</a>
+                <a href="?action=space-users&amp;p={{ page + 1 }}">Commentaires plus anciens</a>
             </div>
         {% endif %}
             <div class="form_add_comment m-auto">

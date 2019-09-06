@@ -30,14 +30,17 @@
             {% endfor %}
             {% if pages > 1 and page > 1 %}
                 <div class="formular-button-link button-page-comment mb-3 text-center">
-                    <a href="?action=comments-admin&amp;p={{ page - 1 }}#comments">Commentaires précédents</a>
+                    <a href="?action=comments-admin&amp;p={{ page - 1 }}#comments">Commentaires plus récents</a>
                 </div>
             {% endif %}
             {% if pages > 1 and page < pages %}
                 <div class="formular-button-link button-page-comment mb-3 text-center">
-                    <a href="?action=comments-admin&amp;p={{ page + 1 }}#comments">Commentaires suivants</a>
+                    <a href="?action=comments-admin&amp;p={{ page + 1 }}#comments">Commentaires plus anciens</a>
                 </div>
             {% endif %}
+            <div class ="formular-button-link button-page-comment mb-3 text-center">
+                <a href="?action=space-users">Retour Gestion</a>
+            </div>
             {{ addComment.addComment() }}
         </div>
     </div>

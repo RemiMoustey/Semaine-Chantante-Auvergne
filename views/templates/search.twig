@@ -8,11 +8,17 @@
 {% block content %}
     <div class="w-50 text-center m-auto part-space-users">
         <h1 class="title-page briquet">Résultat recherche</h1>
+        {% if users == null %}
+            <p class="red">Aucun résultat</p>
+        {% endif %}
         {% for data in users %}
             <p class="found-user">
                 {{ data.surname }} {{ data.firstname }}<br />
                 <a href="index.php?action=readuser&amp;id={{ data.id }}">Détails</a>
             </p>
         {% endfor %}
+        <div class ="formular-button-link button-page-comment mb-3 m-auto text-center">
+            <a href="?action=space-users">Retour Gestion</a>
+        </div>
     </div>
 {% endblock %}
