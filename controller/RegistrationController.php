@@ -219,6 +219,6 @@ class RegistrationController
 			return;
         }
 
-        header('Location: index.php?action=search');
+        header('Location: index.php?action=comments-admin');
     }
 }

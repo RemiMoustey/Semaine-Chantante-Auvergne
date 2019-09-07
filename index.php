@@ -251,6 +251,9 @@ if (isset($_GET['action']))
                 echo "<p>Erreur : aucun identifiant de commentaire envoyé";
             }
             break;
+        case 'sent-mail':
+            echo $twig->render('sent-mail.twig', ['subject']);
+            break;
         default:
             echo ('<p>Erreur 404.</p>');
     }

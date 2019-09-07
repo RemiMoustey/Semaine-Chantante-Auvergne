@@ -5,3 +5,4 @@ $message = $_POST['message'];
 $headers = "FROM: $email";
 
 mail('remimoustey@gmail.com', $subject, $message, $headers);
+header('Location: index.php?action=sent-mail');
