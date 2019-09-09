@@ -47,7 +47,7 @@
                     {% endif %}
                     {{ infoUser.payment }}</span>
                 </p>
-                <form method="post" action="index.php?action=updateuser&amp;id={{ infoUser.id }}">
+                <form method="post" action="?action=updateuser&amp;id={{ infoUser.id }}">
             {% endif %}
             {% if user != 'admin' %}
                 <h1 class="green-title title-page text-center briquet light-green">Inscription en ligne</h1>
@@ -78,7 +78,8 @@
                         {{ infoUser.additional }}
                     {% endif %}
                     </p>
-                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Modifier l'inscription" id="submit" class="formular-button"></p>
+                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Retour Gestion" id="submit" class="formular-button"></p>
+                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Enregistrer les modifications" id="submit" class="formular-button"></p>
                     <p>
                     {% if isAccepted %}
                         <div class="under-button"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel formular-button red formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>

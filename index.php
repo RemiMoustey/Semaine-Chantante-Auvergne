@@ -113,7 +113,7 @@ if (isset($_GET['action']))
             AND isset($_POST['payment']))
             {
                 $registrationController->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['password'], $_POST['user_address'], $_POST['postal_code'],
-                strtoupper($_POST['town']), $_POST['phone_number'], $_POST['phone_number_office'], $_POST['music_stand'],
+                strtoupper($_POST['town']), str_replace(' ', '',$_POST['phone_number']), str_replace(' ', '', $_POST['phone_number_office']), $_POST['music_stand'],
                 $_POST['status'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'],
                 $_POST['choir_town'], $_POST['additional'], $_POST['payment']);
             }

@@ -64,11 +64,11 @@ verify('text', 'firstname', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s
 verify('password', 'password', /./, currentError);
 verify('text', 'user_address', /./, currentError);
 verify('number', 'postal_code', /^(([0-8][0-9])|(9[0-5]))[0-9]{3}$/, "Veuillez saisir un code postal valide.");
-verify('text', 'town', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)*$/, currentError);
+verify('text', 'town', /^[a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]*([-'\s]|[a-zA-ZéèîïÉÈÎÏ]|[a-zéèêàçîï])*$/, currentError);
 verify('tel', 'phone_number', /^0?[1-9]([-. ]?\d{2}){4}$/, "Veuillez saisir un numéro de téléphone valide.");
 verify('tel', 'phone_number_office', /^0?[1-9]([-. ]?\d{2}){4}$/, "Veuillez saisir un numéro de téléphone valide.");
 verify('email', 'email', /^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/, "Veuillez saisir un email valide");
-verify('date', 'birthday', /./, "Veuillez saisir une date de naissance valide.");
+verify('date', 'birthday', /^(19\d\d|20[0|1]\d)-([0|1])\d-([0-3])\d/, "Veuillez saisir une date de naissance valide.");
 verify('text', 'choir_name', /./, currentError);
 verify('text', 'choir_town', /./, currentError);
 verifyCheckbox('radio', 'status', /./, 'Veuillez cocher une option');
