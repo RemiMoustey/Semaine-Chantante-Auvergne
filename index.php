@@ -191,11 +191,12 @@ if (isset($_GET['action']))
             $count = $countComments->fetch()[0];
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
+            $notifiedComments = $registrationController->notifiedComments();
             if(isAuthenticatedUser())
             {
                 authenticatedUser();
                 $user = 'chorist';
-                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'pages' => $pages, 'page' => $page]);
+                echo $twig->render('space-users.twig', ['user' => $user, 'comments' => $comments, 'notifiedComments' => $notifiedComments, 'pages' => $pages, 'page' => $page]);
             }
             else if(isAuthenticatedAdmin())
             {

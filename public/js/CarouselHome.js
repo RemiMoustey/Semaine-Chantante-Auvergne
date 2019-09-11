@@ -58,7 +58,12 @@ class CarouselHome {
 			classImage = '.image-2';
 		}
 		$('.new-img').css("position", "absolute");
-		$('.new-img').css("top", "50px");
+		if (screen.width > 767) {
+			$('.new-img').css("top", "50px");
+		}
+		else {
+			$('.new-img').css("top", "290px");
+		}
 		$('.new-img').css("display", "none");
 		
 		$('.new-img').fadeIn(2000).queue(function() {

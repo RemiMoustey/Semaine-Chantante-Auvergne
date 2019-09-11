@@ -748,6 +748,11 @@ input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-spac
 
 @media all and (max-width: 767px)
 {
+    .new-img
+    {
+        top: 416.95px;
+    }
+
     .carousel_image img, .new_carousel_image img
     {
         width: 90%;
