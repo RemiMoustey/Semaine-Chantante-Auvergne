@@ -1,0 +1,36 @@
+.program img
+{
+    margin: 0;
+    width: 100%;
+    height: auto;
+}
+
+.briquet, .program h2
+{
+    font-family: 'Briquet', Arial, serif;
+}
+
+.program p, .program h2
+{
+    margin: 10px;
+}
+
+.program-text
+{
+    margin: auto;
+}
+
+.big-text-program, .text-contact
+{
+    font-size: 24px;
+}
+
+.intro-goals
+{
+    width: 767px;
+}
+
+.detailed-program
+{
+    font-size: 32px;
+}

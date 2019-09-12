@@ -1,0 +1,59 @@
+/* Équipe d'animation */
+
+.animation-text-image
+{
+    text-align: justify;
+}
+
+.gilles-claude, .veronique-francois, .daniel-phil, .diane-dany
+{
+    display: flex;
+    justify-content: center;
+}
+
+.claude, .gilles, .veronique, .francois, .daniel, .phil, .diane, .dany
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.claude, .veronique, .daniel, .diane
+{
+    margin-right: 50px;
+}
+
+.gilles, .francois, .phil, .dany
+{
+    margin-left: 50px;
+}
+
+.claude p, .gilles p, .francois p, .veronique p
+{
+    text-align: justify;
+    width: 300px;
+}
+
+.musicians
+{
+    width: 700px;
+    margin: auto;
+}
+
+.aquarelle img
+{
+    width: 700px;
+    height: auto;
+}
+
+.aquarelle-mini
+{
+    display: none;
+}
+
+.aquarelle-mini img
+{
+    width: 95%;
+    height: auto;
+}

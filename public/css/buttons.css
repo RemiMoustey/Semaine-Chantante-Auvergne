@@ -1,0 +1,69 @@
+/* Buttons */
+
+.formular-button-link, .button-space-admin
+{
+    background-color: #ddd;
+    padding: 1px 6px;
+    border-radius: 0.25rem;
+}
+
+.formular-button-link:hover, .button-page-comment a:hover
+{
+    color: #000;
+    text-decoration: none;
+}
+
+.button-space-admin a
+{
+    color: #000;
+}
+
+.button-space-admin a:hover
+{
+    text-decoration: none;
+}
+
+input[type="submit"]
+{
+    border: none;
+    border-radius: 0.25rem;
+    outline-width: 0; /* Pour Google Chrome */
+}
+
+input[type="submit"]:hover, .connect:hover, .reinit button:hover, .button-space-admin a:hover
+{
+    color: #00b050;
+}
+
+.under-button
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-page-comment
+{
+    width: 250px;
+}
+
+.button-page-comment a
+{
+    color: #000;
+}
+
+.button-page-comment a:hover, .send-comment:hover
+{
+    color: #00b247;
+}
+
+.button-space-admin
+{
+    margin: auto;
+}
+
+.found-user a
+{
+    color: #ccc;
+    font-size: 16px;
+}

@@ -1,144 +1,7 @@
-/* Éléments généraux */
 
-@font-face {
-	font-family: 'Briquet';
-	src: url('fonts/briquetn.TTF');
-}
 
-.bloc-page, .part-space-users
-{
-    margin-top: 60px;
-}
 
-.part-space-users, .title-space-users
-{
-    color: #01ff73;
-}
 
-label
-{
-    margin-top: 10px;
-}
-
-.bold
-{
-    font-weight: bold;
-}
-
-.without-bold
-{
-    font-weight: normal;
-}
-
-.justify
-{
-    text-align: justify;
-}
-
-.align-right
-{
-    text-align: right;
-}
-
-h1
-{
-    font-size: 70px;
-    text-align: center;
-}
-
-ul
-{
-    list-style-type: none;
-    text-align: center;
-    padding: 0;
-}
-
-.white
-{
-    color: #fff;
-}
-
-.green
-{
-    color: #00b050;
-}
-
-.red, .miss-inscription
-{
-    color: #f00;
-}
-
-.yellow
-{
-    color: #ddbe0e;
-}
-
-.payment
-{
-    margin-top: 10px;
-}
-
-.title-page
-{
-    margin-bottom: 25px;
-}
-
-.title-page, .bloc-success, .form-login h2, .form-forgot-password h2
-{
-    margin-top: 60px;
-}
-
-.information-user
-{
-    font-size: 30px;
-    margin-top: 80px;
-    margin-bottom: 10px;
-}
-
-.grey-text
-{
-    color: #aaa;
-}
-
-a:hover
-{
-    color: #fff;
-}
-
-nav, .picture, .dropdown-menu, .formular-button-link, .button-space-admin
-{
-    box-shadow: 6px 6px 10px #000;
-}
-
-nav a
-{
-    color: #01ff73;
-}
-
-.dropdown-menu
-{
-    background-color: #00b247;
-    font-weight: bold;
-    border-radius: 8px;
-    border: 0;
-    margin: 0;
-}
-
-.dropdown-menu a
-{
-    color: #fff;
-    text-decoration: none;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover
-{
-    color: #fff;
-}
-
-.nav-link
-{
-    text-transform: uppercase;
-}
 
 
 
@@ -167,139 +30,6 @@ nav a
     bottom: 10px;
 }
 
-.animation-text-image
-{
-    text-align: justify;
-}
-
-.gilles-claude, .veronique-francois, .daniel-phil, .diane-dany
-{
-    display: flex;
-    justify-content: center;
-}
-
-.claude, .gilles, .veronique, .francois, .daniel, .phil, .diane, .dany
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.claude, .veronique, .daniel, .diane
-{
-    margin-right: 50px;
-}
-
-.gilles, .francois, .phil, .dany
-{
-    margin-left: 50px;
-}
-
-.claude p, .gilles p, .francois p, .veronique p
-{
-    text-align: justify;
-    width: 300px;
-}
-
-.musicians
-{
-    width: 700px;
-    margin: auto;
-}
-
-.aquarelle img
-{
-    width: 700px;
-    height: auto;
-}
-
-.aquarelle-mini
-{
-    display: none;
-}
-
-.aquarelle-mini img
-{
-    width: 95%;
-    height: auto;
-}
-
-.row
-{
-    margin: 0;
-}
-
-.row-two-images figure figcaption, .found-user
-{
-    text-align: center;
-    font-size: 24px;
-}
-
-.row-two-images img
-{
-    max-height: 292px;
-}
-
-.carousel
-{
-    display: flex;
-}
-
-.carousel_image
-{
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.carousel_prev
-{
-    margin-right: 5px;
-}
-
-.carousel_next
-{
-    margin-left: 5px;
-}
-
-.carousel_prev, .carousel_next
-{
-    color: rgb(9, 223, 9);
-    font-size: 25px;
-    cursor: pointer;
-    border: 2px solid rgb(9, 223, 9);
-    padding: 3px 8px;
-    border-radius: 70px;
-}
-
-.new_carousel_image
-{
-    position: relative;
-    left: -1260px;
-}
-
-.slides
-{
-    width: 100%;
-}
-
-.buttons
-{
-    position: fixed;
-    bottom: 0;
-    padding: 5px 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    left: 0;
-    z-index: 2;
-    background-color: #222;
-}
-
-.carousel_image img, .new_carousel_image img
-{
-    width: 60%;
-}
 
 .image-animation img
 {
@@ -311,7 +41,7 @@ nav a
 
 .bloc-holiday h2
 {
-    margin: 10px 0 18px 0
+    margin: 10px 0 18px 0;
 }
 
 .sub-title-holiday, .caption-shows, .important-points, .validation
@@ -619,14 +349,14 @@ input[type="radio"] + label
     text-decoration: none;
 }
 
-input[type="submit" i]
+input[type="submit"]
 {
     border: none;
     border-radius: 0.25rem;
     outline-width: 0; /* Pour Google Chrome */
 }
 
-input[type="submit" i]:hover, .connect:hover, .reinit button:hover, .button-space-admin a:hover
+input[type="submit"]:hover, .connect:hover, .reinit button:hover, .button-space-admin a:hover
 {
     color: #00b050;
 }

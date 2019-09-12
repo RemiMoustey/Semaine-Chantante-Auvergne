@@ -1,0 +1,45 @@
+/* Buts */
+
+.title-free-time
+{
+    font-size: 50px;
+}
+
+.goal .title-right
+{
+    text-align: right;
+}
+
+.goal p
+{
+    width: 300px;
+}
+
+.goal img
+{
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.goal .right-img
+{
+    margin-left: 150px;
+}
+
+.goal .left-img
+{
+    margin-right: 150px;
+}
+
+.goal-left-text
+{
+    position: relative;
+    left: 150px;
+}
+
+.goal-right-text
+{
+    position: relative;
+    right: 150px;
+}

@@ -1,0 +1,188 @@
+/* Éléments généraux */
+
+@font-face {
+	font-family: 'Briquet';
+	src: url('fonts/briquetn.TTF');
+}
+
+.bloc-page, .part-space-users
+{
+    margin-top: 60px;
+}
+
+.part-space-users, .title-space-users
+{
+    color: #01ff73;
+}
+
+label
+{
+    margin-top: 10px;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.without-bold
+{
+    font-weight: normal;
+}
+
+.justify
+{
+    text-align: justify;
+}
+
+.align-right
+{
+    text-align: right;
+}
+
+h1
+{
+    font-size: 70px;
+    text-align: center;
+}
+
+ul
+{
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+.white
+{
+    color: #fff;
+}
+
+.green
+{
+    color: #00b050;
+}
+
+.red, .miss-inscription
+{
+    color: #f00;
+}
+
+.yellow
+{
+    color: #ddbe0e;
+}
+
+.payment
+{
+    margin-top: 10px;
+}
+
+.title-page
+{
+    margin-bottom: 25px;
+}
+
+.title-page, .bloc-success, .form-login h2, .form-forgot-password h2
+{
+    margin-top: 60px;
+}
+
+.information-user
+{
+    font-size: 30px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
+.grey-text
+{
+    color: #aaa;
+}
+
+a:hover
+{
+    color: #fff;
+}
+
+.row
+{
+    margin: 0;
+}
+
+.row-two-images figure figcaption, .found-user
+{
+    text-align: center;
+    font-size: 24px;
+}
+
+.row-two-images img
+{
+    max-height: 292px;
+}
+
+.container-fluid
+{
+    padding: 0;
+}
+
+#mapid
+{
+    height: 600px;
+}
+
+.download
+{
+    margin: 0 34px;
+    font-size: 20px;
+}
+
+#bloc_page
+{
+    margin-top: 50px;
+}
+
+.big-margin
+{
+    margin-top: 200px;
+}
+
+.alert-success
+{
+    font-size: 18px;
+    background-color: #00b247;
+    color: #fff;
+}
+
+.date-comment
+{
+    font-size: 20px;
+}
+
+#comments
+{
+    padding-top: 70px;
+}
+
+.title-video-song, input[type="radio"] + label
+{
+    color: #ccc;
+    font-size: 28px;
+}
+
+.grey-white-color
+{
+    color: #ccc;
+}
+
+.miss-inscription
+{
+    font-size: 18px;
+}
+
+.harmonisation
+{
+    font-size: 20px;
+    position: relative;
+    bottom: 10px;
+}

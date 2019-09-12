@@ -1,0 +1,76 @@
+/* Carousel-newspaper */
+
+.carousel
+{
+    display: flex;
+}
+
+.carousel_image
+{
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.carousel_prev
+{
+    margin-right: 5px;
+}
+
+.carousel_next
+{
+    margin-left: 5px;
+}
+
+.carousel_prev, .carousel_next
+{
+    color: rgb(9, 223, 9);
+    font-size: 25px;
+    cursor: pointer;
+    border: 2px solid rgb(9, 223, 9);
+    padding: 3px 8px;
+    border-radius: 70px;
+}
+
+.new_carousel_image
+{
+    position: relative;
+    left: -1260px;
+}
+
+.slides
+{
+    width: 100%;
+    overflow: hidden;
+}
+
+.buttons
+{
+    position: fixed;
+    bottom: 0;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    left: 0;
+    z-index: 2;
+    background-color: #222;
+}
+
+.carousel_image img, .new_carousel_image img
+{
+    width: 60%;
+}
+
+#carousel_item .printed_image, #carousel_item .new-img, #carousel_item .printed_image img, #carousel_item .new-img img
+{
+    width: 90%;
+    height: auto;
+    text-align: center;
+    align-self: center;
+}
+
+#carousel_item
+{
+    display: flex;
+    justify-content: center;
+}

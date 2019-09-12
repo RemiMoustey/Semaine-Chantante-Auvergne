@@ -1,0 +1,53 @@
+/* Form contact */
+
+.title-contact-formular
+{
+    font-size: 26px;
+}
+
+.bloc-form, .download
+{
+    width: 470px;
+}
+
+.form-contact form
+{
+    width: 500px;
+}
+
+.contact-link, .download a
+{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.contact-link:hover, .download a:hover
+{
+    color: #01ff73;
+}
+
+input, textarea
+{
+    box-shadow: 4px 4px 8px #000;
+}
+
+input[type="radio"]
+{
+    box-shadow: none;
+    margin-right: 20px;
+}
+
+label
+{
+    margin: 0;
+}
+
+label, #status, #music_stand, #payment
+{
+    font-size: 20px;
+}
+
+input[type="radio"] + label
+{
+    font-size: 16px;
+}

@@ -1,0 +1,30 @@
+/* Holiday */
+
+.bloc-holiday h2
+{
+    margin: 10px 0 18px 0;
+}
+
+.sub-title-holiday, .caption-shows, .important-points, .validation
+{
+    font-size: 40px;
+}
+
+.text-holiday
+{
+    width: 1185px;
+    margin: auto;
+}
+
+.grand-panorama-images
+{
+    max-width: 1185px;
+    margin: auto;
+    padding: 25px 0;
+}
+
+.grand-panorama-images img
+{
+    max-width: 395px;
+    border: 2px solid #222;
+}
