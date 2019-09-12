@@ -3,10 +3,17 @@
 namespace model\Logs;
 use model\PDOFactory;
 
+/**
+ * Interagit les identifiants des utilisateurs utiles pour se connecter à l'espace membres.
+ * 
+ * @author  Rémi Moustey <remimoustey@gmail.com>
+ */
 class LogsManager extends PDOFactory
 {
 	/**
-	* Sélectionne les identifiants de l'administrateur du blog
+	* Sélectionne le mot de passe de l'administrateur du site.
+	*
+	* @param string $adminEmail
 	*
 	* @return array
 	*/
@@ -20,6 +27,13 @@ class LogsManager extends PDOFactory
 		return $adminPassword;
 	}
 
+	/**
+	* Sélectionne le mot de passe d'un des utilisateurs du site.
+	*
+	* @param string $userEmail
+	*
+	* @return array
+	*/
 	public function getUserPassword($userEmail)
 	{
 		$db = $this->getMysqlConnexion();
@@ -30,6 +44,13 @@ class LogsManager extends PDOFactory
 		return $password;
 	}
 
+	/**
+	 * Sélectionne l'email d'un des utilisateurs du site afin de vérifier son identité.
+	 *
+	 * @param  string $email
+	 *
+	 * @return array
+	 */
 	public function getUserEmail($email)
 	{
 		$db = $this->getMysqlConnexion();
@@ -40,6 +61,14 @@ class LogsManager extends PDOFactory
 		return $email;
 	}
 
+	/**
+	 * Modifie le mot de passe d'un des utilisateurs du site s'il décide de le changer.
+	 *
+	 * @param  string $email
+	 * @param  string $newPassword
+	 *
+	 * @return void
+	 */
 	public function modifyPassword($email, $newPassword)
 	{
 		$db = $this->getMysqlConnexion();

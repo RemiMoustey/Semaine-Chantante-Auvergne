@@ -1,11 +1,12 @@
 <?php
+
 namespace App;
 require_once 'vendor/autoload.php';
 
-use controller\RegistrationController;
+use controller\Controller;
 
 // Routing
-$registrationController = new RegistrationController();
+$controller = new Controller();
 
 // Rendu du template
 $loader = new \Twig_Loader_Filesystem(__DIR__  . '/views/templates');
@@ -39,8 +40,8 @@ if (isset($_GET['action']))
         case 'login-user':
             if (!empty($_POST['email']))
             {
-                $userPassword = $registrationController->passwordUser($_POST['email']);
-                $adminPassword = $registrationController->passwordAdmin($_POST['email']);
+                $userPassword = $controller->passwordUser($_POST['email']);
+                $adminPassword = $controller->passwordAdmin($_POST['email']);
             }
             $error = null;
             if(!empty($_POST['password']))
@@ -79,10 +80,10 @@ if (isset($_GET['action']))
 
             if (!empty($_POST['email']) AND !empty($_POST['new_password']))
             {
-                $emailUser = $registrationController->emailUser($_POST['email']);
+                $emailUser = $controller->emailUser($_POST['email']);
                 if ($emailUser !== null)
                 {
-                    $registrationController->updatePassword($emailUser, password_hash($_POST['new_password'], PASSWORD_DEFAULT, ['cost' => 12]));
+                    $controller->updatePassword($emailUser, password_hash($_POST['new_password'], PASSWORD_DEFAULT, ['cost' => 12]));
                 }
                 else
                 {
@@ -102,8 +103,8 @@ if (isset($_GET['action']))
             break;
         case 'readuser':
         $user = 'admin';
-            $infos = $registrationController->listInformationUsers($_GET['id']);
-            $acceptedUsers = $registrationController->acceptedUsers();
+            $infos = $controller->listInformationUsers($_GET['id']);
+            $acceptedUsers = $controller->acceptedUsers();
             echo $twig->render('registration.twig', ['user' => $user, 'infos' => $infos->fetchAll(), 'acceptedUsers' => $acceptedUsers]);
             break;
         case 'adduser':
@@ -112,7 +113,7 @@ if (isset($_GET['action']))
             AND !empty($_POST['email']) AND !empty($_POST['birthday']) AND !empty($_POST['choir_name']) AND !empty($_POST['choir_town'])
             AND isset($_POST['payment']))
             {
-                $registrationController->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['password'], $_POST['user_address'], $_POST['postal_code'],
+                $controller->addRegistration(strtoupper($_POST['surname']), $_POST['firstname'], $_POST['password'], $_POST['user_address'], $_POST['postal_code'],
                 strtoupper($_POST['town']), str_replace(' ', '',$_POST['phone_number']), str_replace(' ', '', $_POST['phone_number_office']), $_POST['music_stand'],
                 $_POST['status'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'],
                 $_POST['choir_town'], $_POST['additional'], $_POST['payment']);
@@ -124,30 +125,30 @@ if (isset($_GET['action']))
             break;
         case 'listusers':
             authenticatedAdmin();
-            $users = $registrationController->listRegisteredUsers($_POST['q']);
-            $comments = $registrationController->comments();
-            $notifiedComments = $registrationController->notifiedComments();
+            $users = $controller->listRegisteredUsers($_POST['q']);
+            $comments = $controller->comments();
+            $notifiedComments = $controller->notifiedComments();
             echo $twig->render('search.twig', ['users' => $users, 'comments' => $comments, 'notifiedComments' => $notifiedComments]);
             break;
         case 'acceptuser':
             authenticatedAdmin();
-            $registrationController->acceptOneUser($_GET['id']);
+            $controller->acceptOneUser($_GET['id']);
             break;
         case 'deleteaccepteduser':
             authenticatedAdmin();
-            $registrationController->removeAcceptedUser($_GET['id']);
+            $controller->removeAcceptedUser($_GET['id']);
             break;
         case 'deleteregistereduser':
             authenticatedAdmin();
-            $registrationController->removeRegisteredUser($_GET['id']);
+            $controller->removeRegisteredUser($_GET['id']);
             break;
         case 'updateuser':
             authenticatedAdmin();
-            $registrationController->updateUser($_GET['id'], $_POST['surname'], $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'], $_POST['town'], $_POST['phone_number'], $_POST['phone_number_office'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'], $_POST['choir_town']);
+            $controller->updateUser($_GET['id'], $_POST['surname'], $_POST['firstname'], $_POST['user_address'], $_POST['postal_code'], $_POST['town'], $_POST['phone_number'], $_POST['phone_number_office'], $_POST['email'], $_POST['birthday'], $_POST['choir_name'], $_POST['choir_town']);
             break;
         case 'export':
             authenticatedAdmin();
-            $registrationController->exportData();
+            $controller->exportData();
             break;
         case 'newspaper':
             echo $twig->render('newspaper.twig');
@@ -186,12 +187,12 @@ if (isset($_GET['action']))
             echo $twig->render('contact.twig');
             break;
         case 'space-users':
-            $comments = $registrationController->comments();
-            $countComments = $registrationController->countComments();
+            $comments = $controller->comments();
+            $countComments = $controller->countComments();
             $count = $countComments->fetch()[0];
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
-            $notifiedComments = $registrationController->notifiedComments();
+            $notifiedComments = $controller->notifiedComments();
             if(isAuthenticatedUser())
             {
                 authenticatedUser();
@@ -211,19 +212,19 @@ if (isset($_GET['action']))
             }  
             break;
         case 'comments-admin':
-            $comments = $registrationController->comments();
-            $countComments = $registrationController->countComments();
+            $notifiedComments = $controller->notifiedComments();
+            $comments = $controller->comments();
+            $countComments = $controller->countComments();
             $count = $countComments->fetch()[0];
             $pages = ceil($count / PER_PAGE);
             $page = (int)($_GET['p'] ?? 1);
-            $notifiedComments = $registrationController->notifiedComments();
             echo $twig->render('comments-admin.twig', ['comments' => $comments, 'pages' => $pages, 'page' => $page, 'notifiedComments' => $notifiedComments]);
             break;
         case 'notify-comment':
             authenticatedUser();
             if (isset($_GET['id']) AND $_GET['id'] > 0)
             {
-                $registrationController->reportComment($_GET['id']);
+                $controller->reportComment($_GET['id']);
             }
             else
             {
@@ -234,18 +235,18 @@ if (isset($_GET['action']))
             authenticatedUser();
             if (!empty($_POST['author']) AND !empty($_POST['comment']))
             {
-                $registrationController->addComment($_POST['author'], $_POST['comment']);
+                $controller->addComment($_POST['author'], $_POST['comment']);
             }
             else
             {
                 echo "<p>Erreur : tous les champs ne sont pas remplis.</p>";
             }
             break;
-        case 'removeComment':
-            authenticatedUser();
-            if (isset($_GET['id']) AND $_GET['id'] > 0)
+        case 'remove-comment':
+            authenticatedAdmin();
+            if (isset($_GET['id']) AND $_GET['id'] > 0 && $_GET['action'] === 'remove-comment')
             {
-                $registrationController->removeComment($_GET['id']);
+                $controller->removeComment($_GET['id']);
             }
             else
             {

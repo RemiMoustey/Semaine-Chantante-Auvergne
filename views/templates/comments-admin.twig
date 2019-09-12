@@ -11,21 +11,23 @@
     <div class="container-fluid">
         <div class="col-sm-6 text-justify m-auto part-space-users">
             <h1 class="title-page briquet">Gestion</h1>
-            <h2 class="yellow text-center">Commentaires signalés</h2>
-            {% for notifiedComment in notifiedComments %}
-                <div class="notified-comment mb-5">
-                    <h3 class="grey-white-color"><span class="white">{{ notifiedComment.author }}</span> <span class="date-comment">signalé le {{ notifiedComment.notify_date_fr }}</span></h3>
-                    <p>{{ notifiedComment.comment }}</p>
-                    <a href="index.php?action=removeComment&amp;id={{ notifiedComment.comment_id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
-                </div>
-            {% endfor %}
-
             <h2 class="text-center" id="comments">Commentaires</h2>
             {% for comment in comments %}
                 <div class="comment mb-5">
                     <h3 class="grey-white-color"><span class="white">{{ comment.author }}</span> <span class="date-comment">le {{ comment.creation_date_fr }}</span></h3>
                     <p>{{ comment.comment }}</p>
-                    <a href="index.php?action=removeComment&amp;id={{ comment.id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+                    {% set notified = false %} 
+                    {% for notifiedComment in notifiedComments %}
+                        {% if notifiedComment.comment_id == comment.id %}
+                            {% set notified = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if notified %}
+                        <p class="yellow">Ce commentaire a déjà été signalé.</p>
+                    {% else %}
+                        <p><a href="index.php?action=notify-comment&amp;id={{ comment.id }}" onclick="return(confirm('Êtes-vous sûr de vouloir signaler ce commentaire ?'));" class="red">Signaler</a></p>
+                    {% endif %}
+                    <a href="index.php?action=remove-comment&amp;id={{ comment.id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
                 </div>
             {% endfor %}
             {% if pages > 1 and page > 1 %}
@@ -42,6 +44,17 @@
                 <a href="?action=space-users">Retour Gestion</a>
             </div>
             {{ addComment.addComment() }}
+            <h2 class="yellow text-center">Commentaires signalés</h2>
+            {% if notifiedComments == null %}
+                <p class="text-center mb-5">Aucun commentaire n'a été signalé.</p>
+            {% endif %}
+            {% for notifiedComment in notifiedComments %}
+                <div class="notified-comment mb-5">
+                    <h3 class="grey-white-color"><span class="white">{{ notifiedComment.author }}</span> <span class="date-comment">signalé le {{ notifiedComment.notify_date_fr }}</span></h3>
+                    <p>{{ notifiedComment.comment }}</p>
+                    <a href="index.php?action=remove-comment&amp;id={{ notifiedComment.comment_id }}" class="red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer ce commentaire ?'));">Supprimer</a>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

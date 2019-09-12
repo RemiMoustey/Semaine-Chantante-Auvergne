@@ -3,8 +3,35 @@
 namespace model\Registration;
 use model\PDOFactory;
 
+/**
+ * Interagit avec l'ensemble des informations des utilisateurs que souhaite récupérer l'administrateur lors des inscriptions.
+ * 
+ * @author  Rémi Moustey <remimoustey@gmail.com>
+ */
 class RegistrationManager extends PDOFactory
 {
+    /**
+     * Ajoute un utilisateur dans la base de données après son inscription.
+     *
+     * @param  string $surname
+     * @param  string $firstname
+     * @param  string $password
+     * @param  string $address
+     * @param  string $postalCode
+     * @param  string $town
+     * @param  string $phoneNumber
+     * @param  string $phoneNumberOffice
+     * @param  string $musicStand
+     * @param  string $status
+     * @param  string $email
+     * @param  string $birthday
+     * @param  string $choirName
+     * @param  string $choirTown
+     * @param  string $additional
+     * @param  string $payment
+     *
+     * @return PDOStatement
+     */
     public function insertRegisteredUser($surname, $firstname, $password, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $musicStand, $status, $email, $birthday, $choirName, $choirTown, $additional, $payment)
     {
         $db = $this->getMySqlConnexion();
@@ -15,6 +42,13 @@ class RegistrationManager extends PDOFactory
         return $registration;
     }
 
+    /**
+     * Récupère les informations d'un utilisateur enregistrées dans la base de données.
+     *
+     * @param  string $id
+     *
+     * @return PDOStatement
+     */
     public function getInfos($id)
     {
         $db = $this->getMySqlConnexion();
@@ -24,6 +58,13 @@ class RegistrationManager extends PDOFactory
         return $query;
     }
 
+    /**
+     * Sélectionne une liste d'utilisateurs qui correspondent à la recherche de l'administrateur.
+     *
+     * @param  string $q
+     *
+     * @return PDOStatement
+     */
     public function getUsers($q)
     {
         $db = $this->getMySqlConnexion();
@@ -33,11 +74,23 @@ class RegistrationManager extends PDOFactory
         return $query;
     }
 
+    /**
+     * Sélectionne les utilisateurs dont l'inscription a été validée.
+     *
+     * @return PDOStatement
+     */
     public function getAcceptedUsers()
     {
         return $this->getMySqlConnexion()->query("SELECT * FROM chorists WHERE paid='Payé'")->fetchAll();
     }
 
+    /**
+     * acceptUser
+     *
+     * @param  string $id
+     *
+     * @return PDOStatement
+     */
     public function acceptUser($id)
     {
         $db = $this->getMySqlConnexion();
@@ -46,18 +99,50 @@ class RegistrationManager extends PDOFactory
         return $insertedUser;
     }
 
+    /**
+     * Supprime un utilisateur et ses informations de la base de données.
+     *
+     * @param  string $id
+     *
+     * @return void
+     */
     public function deleteRegisteredUser($id)
     {
         $db = $this->getMySqlConnexion();
         $db->exec("DELETE FROM chorists WHERE id = $id");
     }
 
+    /**
+     * Met à jour le statut d'un utilisateur dont le règlement a été refusé.
+     *
+     * @param  string $id
+     *
+     * @return void
+     */
     public function deleteAcceptedUser($id)
     {
         $db = $this->getMySqlConnexion();
         $db->exec("UPDATE chorists SET paid='Non payé' WHERE id=$id");
     }
 
+    /**
+     * Modifie les informations d'un utilisateur.
+     *
+     * @param  string $id
+     * @param  string $surname
+     * @param  string $firstname
+     * @param  string $address
+     * @param  string $postalCode
+     * @param  string $town
+     * @param  string $phoneNumber
+     * @param  string $phoneNumberOffice
+     * @param  string $email
+     * @param  string $birthday
+     * @param  string $choirName
+     * @param  string $choirTown
+     *
+     * @return void
+     */
     public function modifyUser($id, $surname, $firstname, $address, $postalCode, $town, $phoneNumber, $phoneNumberOffice, $email, $birthday, $choirName, $choirTown)
     {
         $db = $this->getMySqlConnexion();
@@ -76,6 +161,11 @@ class RegistrationManager extends PDOFactory
         ':choir_town' => $choirTown));
     }
 
+    /**
+     * Sélectionne les informations des utilisateurs que l'administrateur souhaite regrouper dans un fichier Excel.
+     *
+     * @return PDOStatement
+     */
     public function exportByCSV()
     {
         $db = $this->getMySqlConnexion();
