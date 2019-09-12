@@ -10,11 +10,24 @@ class CarouselNewspaper {
         this.container = this.createDivWithClass("carousel_container");
         this.container.appendChild(document.querySelector('.carousel_image'));
 		this.slides.appendChild(this.container);
-		this.images = [this.getImage("./public/img/presse/001.png", "Lion à vélo sur photo de Lyon", "image_1"),
-		this.getImage("./public/img/presse/002.png", "Pan de la carte du site et petit cartouche d'explication", "image_2"),
-		this.getImage("./public/img/presse/003.png", "Formulaire à côté de la carte avec les champs 'Nom' et 'Prénom'", "image_3"),
-		this.getImage("./public/img/presse/004.png", "Le champ de signature sous le formulaire", "image_4"),
-        this.getImage("./public/img/presse/009.png", "Compteur de 20 minutes qui symbolise le temps de la réservation", "image_5")];
+		this.images = [this.getImage("./public/img/presse/001.png", "Article Cent fous chantants au théâtre", "image_1"),
+		this.getImage("./public/img/presse/002.png", "Article Cent choristes pour fêter la chanson française", "image_2"),
+		this.getImage("./public/img/presse/003.png", "Article Chansons à voir et à écouter", "image_3"),
+		this.getImage("./public/img/presse/004.png", "Article La chanson québécoise a l'accent français", "image_4"),
+		this.getImage("./public/img/presse/005.png", "Article Parfum de Big Bazar à la semaine chantante", "image_5"),
+		this.getImage("./public/img/presse/006.png", "Article Chansons françaises et tours médiévales", "image_6"),
+		this.getImage("./public/img/presse/007.png", "Article Quand chanson rime avec passion", "image_7"),
+		this.getImage("./public/img/presse/008.png", "Article Quatrième semaine chantante en Auvergne", "image_8"),
+		this.getImage("./public/img/presse/009.png", "Article Une Semaine chantante qui s'ouvre en dansant", "image_9"),
+		this.getImage("./public/img/presse/010.png", "Article Une semaine au service de la chanson française", "image_10"),
+		this.getImage("./public/img/presse/011.png", "Article La 'Semaine chantante' part en week-end", "image_11"),
+		this.getImage("./public/img/presse/012.png", "Article Du 3 au 12 août, à Bromont-Lamothe. La semaine chantante en Auvergne", "image_12"),
+		this.getImage("./public/img/presse/013.png", "Article 'Aquarelle' hisse ses couleurs", "image_13"),
+		this.getImage("./public/img/presse/014.png", "Article Du 30 juillet au 6 août. Si on chantait ?", "image_14"),
+		this.getImage("./public/img/presse/015.png", "Article La Semaine chantante revient", "image_15"),
+		this.getImage("./public/img/presse/016.png", "Article La chanson française et sa mise en scène", "image_16"),
+		this.getImage("./public/img/presse/017.png", "Article Sixième chantante : excellent millésime", "image_17"),
+		this.getImage("./public/img/presse/018.png", "Article Chante, danse et mets tes baskets", "image_18")];
 		this.animationId = null;
 		this.animationStop = true;
 		this.createNavigation();
@@ -83,7 +96,7 @@ class CarouselNewspaper {
 	*/
 	determinePrevNewItem() {
 		if(document.querySelector("img").classList.contains("image_1")) {
-			this.newItem(4);
+			this.newItem(17);
 			this.prevNew();
 			return;
 		}
@@ -97,7 +110,7 @@ class CarouselNewspaper {
 	}
 
 	determineNextNewItem() {
-		if(document.querySelector("img").classList.contains("image_5")) {
+		if(document.querySelector("img").classList.contains("image_18")) {
 			this.newItem(0);
 			this.nextNew();
 			return;
