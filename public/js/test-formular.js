@@ -85,10 +85,10 @@ function testInputs() {
         }
     });
     if (pass && $('input:checked').length === 3 || pass && document.location.href.indexOf('readuser') !== -1) {
-        $('#submit').removeAttr('disabled');
+        $('.submit').removeAttr('disabled');
     }
     else {
-        $('#submit').attr('disabled', '');
+        $('.submit').attr('disabled', '');
     } 
 }
   

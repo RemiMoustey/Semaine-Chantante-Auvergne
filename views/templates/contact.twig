@@ -15,14 +15,14 @@
                 <input type="text" name="surname" id="surname" class="form-control" required />
                 <span id="miss-surname"></span>
                 <label for="subject">Objet</label>
-                <input type="text" name="subject" id="subject" class="form-control" required />
-                <span id="miss-surname"></span>
+                <input type="text" name="subject" class="subject" class="form-control" required />
+                <span id="miss-email"></span>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control" required />
-                <span id="miss-firstname"></span>
+                <span id="miss-message"></span>
                 <label for="message">Message</label>
-                <textarea  type="text" name="message" id="message" class="form-control" rows="4" required></textarea>
-                <input type="submit" value="Envoyer" id="submit" class="mt-4 align-self-center" />
+                <textarea name="message" id="message" class="form-control" rows="4" required></textarea>
+                <input type="submit" value="Envoyer" class="submit" class="mt-4 align-self-center" />
             </form>
         </div>
         <div class="text-contact">
@@ -30,6 +30,5 @@
             <p class="text-center"><i class="fas fa-envelope mr-3 text-center mt-3"></i><br />Semaine Chantante Auvergne - BP 100<br />
             63000 Clermont-Ferrand</p>
         </div>
-        <div 
     </div>
 {% endblock %}

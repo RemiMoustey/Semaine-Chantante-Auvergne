@@ -71,46 +71,46 @@
                     {{ groupForm.groupText('choir_town', 'Ville de la chorale', infoUser.choir_town) }}
 
             {% if user == 'admin' %}
-                    <p class="text-justify"><label for="additional">Complément d'information</label><br />
+                    <p class="text-justify">Complément d'information<br />
                     {% if infoUser.additional == '' %}
                         (Vide)
                     {% else %}
                         {{ infoUser.additional }}
                     {% endif %}
                     </p>
-                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Retour Gestion" id="submit" class="formular-button"></p>
-                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Enregistrer les modifications" id="submit" class="formular-button"></p>
+                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Retour Gestion" class="submit"></p>
+                    <p class="mt-5 mb-5 text-center"><input type="submit" value="Enregistrer les modifications" class="submit"></p>
                     <p>
                     {% if isAccepted %}
-                        <div class="under-button"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel formular-button red formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>
+                        <div class="under-button"><a href="index.php?action=deleteaccepteduser&amp;id={{ infoUser.id }}" class="cancel red formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir annuler le règlement ?'));">Refuser le règlement</a>
                     {% else %}
                         <div class="under-button"><a href="index.php?action=acceptuser&amp;id={{ infoUser.id }}" class="green accept formular-button-link" onclick="return(confirm('Êtes-vous sûr de vouloir accepter le règlement ?'));">Valider le règlement</a>
                     {% endif %}
                         <a href="index.php?action=deleteregistereduser&amp;id={{ infoUser.id }}" class="delete formular-button-link red" onclick="return(confirm('Êtes-vous sûr de vouloir supprimer cette inscription ?'));">Supprimer l'inscription</a></div>
-                    </p>
                 </div>
             </form>
 
             {% else %}
-                {{ groupForm.groupRadio('Êtes-vous :', 'status', {'label1' : 'Choriste', 'label2' : 'Chef de chœur'}) }}
-                {{ groupForm.groupRadio('Cochez votre pupitre', 'music_stand', {'label1' : 'Soprane', 'label2' : 'Alto', 'label3' : 'Ténor', 'label4' : 'Basse'}) }}
+                    {{ groupForm.groupRadio('Êtes-vous :', 'status', {'label1' : 'Choriste', 'label2' : 'Chef de chœur'}) }}
+                    {{ groupForm.groupRadio('Cochez votre pupitre', 'music_stand', {'label1' : 'Soprane', 'label2' : 'Alto', 'label3' : 'Ténor', 'label4' : 'Basse'}) }}
 
-                <label for="additional">Complément d'information (expérience chorale et scénique, autres précisions...)</label>
-                <textarea type="text" name="additional" id="additional" class="form-control" rows="4"></textarea>
-                <h3 class="mt-5 briquet text-center validation">Validation</h3>
-                <div>
-                    <p>Votre inscription sera validée dès la réception du versement de réservation de <span class="grey-white-color">200 €</span></p>
-                    <ul>
-                        <li>soit par virement aux coordonnées bancaires suivantes :<br />
-                        IBAN <span class="grey-white-color">FR76 1600 6000 1000 0000 9000 1000</span><br /> BIC <span class="grey-white-color">AGRIFRXX000</span></li>
-                        <li class="mt-2">soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
-                        <span class="grey-white-color">Semaine Chantante Auvergne<br />
-                        BP 100<br />
-                        63000 Clermont-Ferrand</span></li>
-                    </ul>
+                    <label for="additional">Complément d'information (expérience chorale et scénique, autres précisions...)</label>
+                    <textarea name="additional" id="additional" class="form-control" rows="4"></textarea>
+                    <h3 class="mt-5 briquet text-center validation">Validation</h3>
+                    <div>
+                        <p>Votre inscription sera validée dès la réception du versement de réservation de <span class="grey-white-color">200 €</span></p>
+                        <ul>
+                            <li>soit par virement aux coordonnées bancaires suivantes :<br />
+                            IBAN <span class="grey-white-color">FR76 1600 6000 1000 0000 9000 1000</span><br /> BIC <span class="grey-white-color">AGRIFRXX000</span></li>
+                            <li class="mt-2">soit par chèque à l'ordre de "Semaine Chantante Auvergne" à faire parvenir à :<br />
+                            <span class="grey-white-color">Semaine Chantante Auvergne<br />
+                            BP 100<br />
+                            63000 Clermont-Ferrand</span></li>
+                        </ul>
+                    </div>
+                    {{ groupForm.groupRadio('Mode de versement :', 'payment', {'label1' : 'Virement bancaire', 'label2' : 'Chèque'}) }}
+                    <button type="submit" class="submit" >Envoyer</button>
                 </div>
-                {{ groupForm.groupRadio('Mode de versement :', 'payment', {'label1' : 'Virement bancaire', 'label2' : 'Chèque'}) }}
-                <button type="submit" id="submit" >Envoyer</button>
             </form>
             {% endif %}
         </div>

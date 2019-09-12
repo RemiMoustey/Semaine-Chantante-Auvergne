@@ -4,11 +4,11 @@
         <h2 class="title-video-song" >{{ title }}</h2>
         <p>{{ paragraph }}</p>
     </div>
-    <aside id="modal{{ modalId }}" class="modal" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+    <aside id="modal{{ modalId }}" class="modal" tabindex="-1" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 id="title-video-modal">{{ title }}</h2>
+                    <h2 class="title-video-modal">{{ title }}</h2>
                     <button onclick="document.getElementById('{{ nameSrcVideo }}').pause()" type="button" class="close" data-dismiss="modal">
                         <span class="white" aria-hidden="true">&times;</span>
                     </button>

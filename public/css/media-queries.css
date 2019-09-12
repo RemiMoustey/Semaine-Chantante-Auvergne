@@ -143,6 +143,11 @@
     {
         width: 300px;
     }
+
+    .group-song
+    {
+        margin: 0;
+    }
 }
 
 @media all and (min-width: 767px)
